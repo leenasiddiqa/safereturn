@@ -1,0 +1,224 @@
+/* 🌸 Background same as login/signup */
+.found-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #e9f0f5;
+  background-image: url("/background/loginbg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 40px 0;
+}
+
+/* 🧾 Main white form container */
+.found-container {
+  background-color: #ffffff;
+  border: 2px solid #e68a62; /* Peach border same as lost items */
+  border-radius: 16px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 950px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  font-family: "Inter", sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.found-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* Title */
+.found-container h2 {
+  text-align: center;
+  color: #22426d;
+  margin-bottom: 25px;
+  font-size: 28px;
+  letter-spacing: 0.5px;
+}
+
+/* Message notice */
+.found-notice {
+  text-align: center;
+  background: #e68a62; /* Peach for found items */
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+/* Form styling */
+.found-form {
+  width: 100%;
+}
+
+/* Submit button */
+.found-submit {
+  width: 100%;
+  padding: 12px;
+  margin-top: 30px;
+  background-color: #22426d; /* Peach for found items */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 16px;
+}
+
+.found-submit:hover {
+  background-color: #d87a52; /* Darker peach on hover */
+  transform: translateY(-2px);
+}
+
+/* Matches panel */
+.found-panel {
+  background: #ffffff;
+  border: 2px solid #e68a62; /* Peach border for found items */
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 950px;
+  margin: 20px auto;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.found-panel h3 {
+  color: #11315b;
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.found-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.found-list li {
+  margin-bottom: 8px;
+  color: #22426d;
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.found-list li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* Two-column layout for the form */
+.form-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  width: 100%;
+}
+
+.left-column,
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Ensure all form elements take full width */
+.left-column label,
+.right-column label {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-weight: 600;
+  color: #11315b;
+  font-size: 15px;
+}
+
+/* Input and select styling */
+.left-column input,
+.right-column input,
+.left-column select,
+.right-column select,
+.left-column textarea,
+.right-column textarea {
+  margin-top: 6px;
+  padding: 12px 14px;
+  border: 1.5px solid rgba(17, 49, 91, 0.2);
+  border-radius: 8px;
+  font-size: 15px;
+  width: 100%;
+  background: #f9fafc;
+  color: #11315b;
+  transition: border 0.2s, box-shadow 0.2s;
+  font-family: "Inter", sans-serif;
+}
+
+.left-column input:focus,
+.right-column input:focus,
+.left-column select:focus,
+.right-column select:focus,
+.left-column textarea:focus,
+.right-column textarea:focus {
+  outline: none;
+  border-color: #e68a62; /* Peach focus for found items */
+  box-shadow: 0 0 6px rgba(230, 138, 98, 0.3);
+  background: #fff;
+}
+
+/* Textarea styling */
+.left-column textarea,
+.right-column textarea {
+  resize: vertical;
+  min-height: 120px;
+  width: 100%;
+}
+
+/* Checkbox styling */
+.left-column .inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.left-column .inline input[type="checkbox"] {
+  width: auto;
+  margin-top: 0;
+}
+
+/* File input styling */
+.right-column input[type="file"] {
+  padding: 8px;
+  border: 1.5px solid rgba(17, 49, 91, 0.2);
+  border-radius: 8px;
+  background: #f9fafc;
+}
+
+/* Image preview */
+.right-column img {
+  max-width: 180px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .found-container {
+    padding: 30px 24px;
+    margin: 20px;
+  }
+
+  .form-two-column {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .left-column,
+  .right-column {
+    gap: 15px;
+  }
+}

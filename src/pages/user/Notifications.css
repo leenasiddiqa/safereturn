@@ -1,0 +1,113 @@
+.notifications-container {
+  max-width: 700px;
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(17, 49, 91, 0.08);
+  padding: 32px;
+}
+
+.notifications-title {
+  color: #d3d3d3;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.notifications-subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 24px;
+}
+
+.notifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.notification-card {
+  border-left: 5px solid #11315b;
+  background: #f9fafc;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(17, 49, 91, 0.05);
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.notification-card:hover {
+  background: #f2f6fc;
+  transform: translateY(-2px);
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.notification-type {
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  color: #fff;
+  text-transform: capitalize;
+  font-size: 0.9rem;
+}
+
+.notification-type.match {
+  background-color: #4c9aff;
+}
+
+.notification-type.claim {
+  background-color: #6bcf63;
+}
+
+.notification-type.donation {
+  background-color: #e68a62;
+}
+
+.notification-date {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.notification-message {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.mark-read-btn {
+  background: #11315b;
+  color: #fff;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.mark-read-btn:hover {
+  background: #0d2442;
+}
+
+.no-notifications {
+  text-align: center;
+  color: #888;
+  font-size: 1rem;
+  padding: 20px;
+}
+
+/* Status colors */
+.notification-card.unread {
+  border-left-color: #4c9aff;
+}
+
+.notification-card.read {
+  border-left-color: #ccc;
+}

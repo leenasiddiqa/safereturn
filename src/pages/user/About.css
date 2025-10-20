@@ -1,0 +1,141 @@
+.about-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e9f0f5 0%, #ffffff 100%);
+  padding: 20px 0;
+}
+
+.about-header {
+  background: #11315b;
+  color: white;
+  padding: 20px 0;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.about-header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.about-logo h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.about-logo p {
+  margin: 5px 0 0 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* ✨ Removed navbar styles (about-nav, about-nav-link) */
+
+.about-divider-container {
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  padding: 0 20px;
+}
+
+.about-divider {
+  border: none;
+  height: 2px;
+  background: #e68a62;
+  margin: 0;
+}
+
+.about-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.about-title {
+  color: #11315b;
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.about-points {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.about-point {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.about-point-number {
+  background: #e68a62;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.about-point-text {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  flex: 1;
+}
+
+.about-point-text p {
+  margin: 0;
+  color: #11315b;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.about-footer-spacing {
+  height: 60px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-header-content {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .about-point {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-point-number {
+    align-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-title {
+    font-size: 24px;
+  }
+
+  .about-point-text {
+    padding: 15px;
+  }
+
+  .about-point-text p {
+    font-size: 14px;
+  }
+}

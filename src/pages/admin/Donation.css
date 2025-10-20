@@ -1,0 +1,72 @@
+/* Donation Page Styling */
+.admin-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f7fa;
+  font-family: "Inter", sans-serif;
+}
+
+.admin-main {
+  flex: 1;
+  padding: 40px;
+}
+
+.admin-title {
+  font-size: 1.8rem;
+  color: #7a7a7a; /* Changed from dark blue to light grey */
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.donation-container {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.donation-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.donation-table thead {
+  background: #7a7a7a;
+  color: #fff;
+}
+
+.donation-table th,
+.donation-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.donation-table tr:hover {
+  background: rgba(122, 122, 122, 0.05);
+  transition: background 0.3s ease;
+}
+
+.no-donations {
+  color: #555;
+  text-align: center;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .donation-table {
+    font-size: 0.85rem;
+  }
+
+  .donation-table th,
+  .donation-table td {
+    padding: 8px 10px;
+  }
+
+  .admin-main {
+    padding: 20px;
+  }
+}
