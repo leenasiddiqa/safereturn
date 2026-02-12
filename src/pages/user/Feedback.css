@@ -3,7 +3,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+<<<<<<< HEAD
   background: linear-gradient(120deg, #11315b 60%, white 40%);
+=======
+  background: linear-gradient(120deg, #11315b 60%, #e68a62 40%);
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
   padding: 20px;
 }
 

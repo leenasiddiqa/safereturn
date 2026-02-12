@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 import { useState, useEffect } from "react";
+=======
+import { useState } from "react";
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 import { useStore } from "../../StoreContext";
 import AdminSidebar from "../../components/AdminSidebar";
 import "./Admin.css";
 
 export default function Admin() {
+<<<<<<< HEAD
   const { state, reviewClaim } = useStore();
   const { logs: frontendLogs } = state;
   const [filter, setFilter] = useState("all");
@@ -159,6 +164,24 @@ export default function Admin() {
     );
   }
 
+=======
+  const { state, reviewClaim, finalizeClaim } = useStore();
+  const { items, claims, logs } = state;
+  const [filter, setFilter] = useState("all");
+
+  function handleReview(claimId, action) {
+    reviewClaim(claimId, action);
+  }
+
+  function handleFinalize(claimId) {
+    finalizeClaim(claimId);
+  }
+
+  const filteredClaims = claims.filter((c) =>
+    filter === "all" ? true : c.status === filter
+  );
+
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
   return (
     <div className="admin-dashboard">
       <AdminSidebar />
@@ -177,7 +200,11 @@ export default function Admin() {
                 onChange={(e) => setFilter(e.target.value)}
                 className="admin-select"
               >
+<<<<<<< HEAD
                 <option value="all">All Claims</option>
+=======
+                <option value="all">All</option>
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
                 <option value="pending">Pending</option>
                 <option value="approved">Approved</option>
                 <option value="rejected">Rejected</option>
@@ -189,6 +216,7 @@ export default function Admin() {
                 <p className="admin-empty">No claims available.</p>
               ) : (
                 filteredClaims.map((c) => (
+<<<<<<< HEAD
                   <li key={c._id} className="admin-list-item">
                     <div className="claim-info">
                       <div className="claim-header">
@@ -197,6 +225,33 @@ export default function Admin() {
                       <div className={`status-message ${c.status}`}>
                         {getStatusMessage(c.status)}
                       </div>
+=======
+                  <li key={c.id} className="admin-list-item">
+                    <div>
+                      <strong>{c.claimantName}</strong> — item ID {c.itemId} —{" "}
+                      <em>{c.status}</em>
+                    </div>
+                    <div className="admin-actions">
+                      <button
+                        onClick={() => handleReview(c.id, "approve")}
+                        className="btn approve"
+                      >
+                        Approve
+                      </button>
+                      <button
+                        onClick={() => handleReview(c.id, "reject")}
+                        className="btn reject"
+                      >
+                        Reject
+                      </button>
+                      <button
+                        onClick={() => handleFinalize(c.id)}
+                        className="btn finalize"
+                        disabled={c.status !== "approved"}
+                      >
+                        Finalize
+                      </button>
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
                     </div>
                   </li>
                 ))
@@ -204,6 +259,7 @@ export default function Admin() {
             </ul>
           </div>
 
+<<<<<<< HEAD
           {/* REAL ITEMS OVERVIEW */}
           <div className="admin-panel">
             <h3>Items Overview</h3>
@@ -254,9 +310,39 @@ export default function Admin() {
                 </li>
               ))
             )}
+=======
+          {/* Items Overview */}
+          <div className="admin-panel">
+            <h3>Items Overview</h3>
+            <ul className="admin-list">
+              {items.slice(0, 20).map((i) => (
+                <li key={i.id} className="admin-list-item">
+                  <strong>{i.type.toUpperCase()}</strong> • {i.name} — {i.brand}{" "}
+                  — {i.location} {i.claimId ? "• Claimed" : ""}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Logs */}
+        <div className="admin-panel logs">
+          <h3>Activity Logs</h3>
+          <ul className="admin-list">
+            {logs.slice(0, 50).map((l, idx) => (
+              <li key={idx} className="admin-list-item">
+                <code>{new Date(l.ts).toLocaleString()}</code> — {l.type} —{" "}
+                {l.itemId || ""} {l.claimId || ""}
+              </li>
+            ))}
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
           </ul>
         </div>
       </main>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4

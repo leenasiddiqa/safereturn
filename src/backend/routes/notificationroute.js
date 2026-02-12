@@ -20,7 +20,10 @@ router.post("/", async (req, res) => {
     });
 
     if (existingNotification) {
+<<<<<<< HEAD
       // Return existing notification instead of creating duplicate
+=======
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
       return res.status(200).json({ success: true, notification: existingNotification });
     }
 
@@ -41,7 +44,36 @@ router.post("/", async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 // ✅ Get all notifications
+=======
+// ✅ Get USER'S notifications only
+router.get("/", async (req, res) => {
+  try {
+    const { userId } = req.query;
+    
+    if (!userId) {
+      return res.status(400).json({
+        success: false,
+        message: "User ID required"
+      });
+    }
+
+    const notifications = await Notification.find({ userId }).sort({ createdAt: -1 });
+    res.json(notifications);
+    
+  } catch (error) {
+    console.error("❌ Error fetching notifications:", error);
+    res.status(500).json({
+      success: false,
+      message: "Error fetching notifications",
+      error: error.message,
+    });
+  }
+});
+
+// ✅ Get all notifications (admin ke liye)
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 router.get("/all-notifications", async (req, res) => {
   try {
     const notifications = await Notification.find().sort({ createdAt: -1 });
@@ -70,4 +102,8 @@ router.put("/:id/read", async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 export default router;
+=======
+export default router;
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4

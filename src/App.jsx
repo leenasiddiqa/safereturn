@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { AuthProvider, useAuth } from "./AuthContext";
 import { StoreProvider } from "./StoreContext"; // ✅ ADD THIS IMPORT
+=======
+import { Routes, Route, Navigate } from "react-router-dom";
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 import NavBar from "./components/NavBar";
 import Home from "./pages/user/Home";
 import Landing from "./pages/user/Landing";
@@ -20,6 +24,7 @@ import Matches from "./pages/user/Matches";
 import Notifications from "./pages/user/Notifications";
 import Admin from "./pages/admin/Admin";
 
+<<<<<<< HEAD
 // ✅ Protected Route Component
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth(); // ✅ ADD loading
@@ -53,11 +58,15 @@ const ProtectedRoute = ({ children }) => {
 };
 
 function AppContent() {
+=======
+export default function App() {
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
   return (
     <div className="container">
       <NavBar />
       <main>
         <Routes>
+<<<<<<< HEAD
           {/* ✅ Public routes (without protection) */}
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
@@ -135,6 +144,26 @@ function AppContent() {
               <Found />
             </ProtectedRoute>
           } />
+=======
+          <Route path="/" element={<Landing />} />
+          <Route path="/dashboard" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/lost" element={<Lost />} />
+          <Route path="/found" element={<Found />} />
+          <Route path="/claim" element={<Claim />} />
+          <Route path="/donation" element={<Donation />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/claims" element={<AdminClaims />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/feedback" element={<Feedback />} />
+          <Route path="/matches" element={<Matches />} />
+          <Route path="/history" element={<History />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/view" element={<Found />} />
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
@@ -144,6 +173,7 @@ function AppContent() {
     </div>
   );
 }
+<<<<<<< HEAD
 
 export default function App() {
   return (
@@ -154,3 +184,5 @@ export default function App() {
     </AuthProvider>
   );
 }
+=======
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4

@@ -17,6 +17,7 @@
   font-weight: bold;
   margin-bottom: 24px;
   text-align: center;
+<<<<<<< HEAD
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,6 +30,10 @@
   border-radius: 50%; /* optional rounded corners */
   border: 2px solid #fff;
 }
+=======
+}
+
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 .admin-nav {
   display: flex;
   flex-direction: column;

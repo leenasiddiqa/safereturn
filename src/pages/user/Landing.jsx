@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 import image from "../../assets/image.jpg"; // ✅ Make sure this path is correct
+=======
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 
 export default function Landing() {
   return (
@@ -36,7 +39,11 @@ export default function Landing() {
             alignItems: "flex-start",
             justifyContent: "center",
             minHeight: "100vh",
+<<<<<<< HEAD
             padding: "0 5vw",
+=======
+            padding: "0 5vw 0 5vw",
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
             boxSizing: "border-box",
           }}
         >
@@ -110,6 +117,7 @@ export default function Landing() {
             <li>Instant notifications & full transparency</li>
           </ul>
         </div>
+<<<<<<< HEAD
 
        {/* Right: Original Image */}
 <div
@@ -139,6 +147,55 @@ export default function Landing() {
 
       </main>
 
+=======
+        {/* Right: Illustration/Icon */}
+        <div
+          style={{
+            flex: "0 0 50vw",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            minHeight: "100vh",
+            background: "transparent",
+          }}
+        >
+          <div
+            style={{
+              background: "#fff",
+              borderRadius: "50%",
+              width: 320,
+              height: 320,
+              boxShadow: "0 8px 32px rgba(17,49,91,0.2)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <svg
+              width="160"
+              height="160"
+              viewBox="0 0 48 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="24"
+                cy="24"
+                r="22"
+                stroke="#E68A62"
+                strokeWidth="4"
+                fill="#fff"
+              />
+              <path
+                d="M24 34c-6-4-10-7.5-10-12.5C14 15 18 13 24 13s10 2 10 8.5C34 26.5 30 30 24 34Z"
+                fill="#E68A62"
+              />
+              <circle cx="24" cy="21" r="3.5" fill="#11315B" />
+            </svg>
+          </div>
+        </div>
+      </main>
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
       {/* Responsive Styles */}
       <style>
         {`
@@ -156,9 +213,12 @@ export default function Landing() {
               margin: 0 auto;
               max-width: 400px;
             }
+<<<<<<< HEAD
             img {
               width: 60%;
             }
+=======
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
           }
         `}
       </style>

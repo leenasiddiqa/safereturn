@@ -2,7 +2,10 @@ import React, { useState } from "react";
 
 export default function AuthForm({ mode, onSubmit, loading, error }) {
   const [form, setForm] = useState({
+<<<<<<< HEAD
     sapid: "", 
+=======
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
     username: "",
     password: "",
     confirm: "",
@@ -11,11 +14,15 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
     phone: "",
   });
   const [touched, setTouched] = useState({});
+<<<<<<< HEAD
   const [showErrors, setShowErrors] = useState(false);
+=======
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 
   const isSignup = mode === "signup";
 
   function handleChange(e) {
+<<<<<<< HEAD
     const { name, value } = e.target;
     
     if (name === 'sapid') {
@@ -46,6 +53,9 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
     else {
       setForm({ ...form, [name]: value });
     }
+=======
+    setForm({ ...form, [e.target.name]: e.target.value });
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
   }
 
   function handleBlur(e) {
@@ -54,6 +64,7 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+<<<<<<< HEAD
     setShowErrors(true);
     
     // Check if form is valid
@@ -62,10 +73,13 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
     }
     
     console.log("📱 Final form data:", form);
+=======
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
     if (isSignup && form.password !== form.confirm) return;
     onSubmit(form);
   }
 
+<<<<<<< HEAD
   // ✅ VALIDATION FUNCTIONS (only show after submit attempt)
   const sapidError =
     showErrors && isSignup && (!form.sapid || !/^(?:[a-zA-Z]\d{5}|\d{5})$/.test(form.sapid))
@@ -115,10 +129,32 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
     form.password &&
     (isSignup ? (form.sapid && form.name && form.cnic && form.phone && form.confirm) : true);
 
+=======
+  const usernameError =
+    touched.username && !form.username ? "Username required" : "";
+  const passwordError =
+    touched.password && !form.password ? "Password required" : "";
+  const confirmError =
+    isSignup && touched.confirm && form.password !== form.confirm
+      ? "Passwords do not match"
+      : "";
+  const nameError =
+    isSignup && touched.name && !form.name ? "Name required" : "";
+  const cnicError =
+    isSignup && touched.cnic && !/^\d{13}$/.test(form.cnic)
+      ? "Valid 13-digit CNIC required"
+      : "";
+  const phoneError =
+    isSignup && touched.phone && !/^\d{11}$/.test(form.phone)
+      ? "Valid 11-digit phone required"
+      : "";
+
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
   return (
     <form className="form" onSubmit={handleSubmit} autoComplete="off">
       {isSignup && (
         <>
+<<<<<<< HEAD
           {/* ✅ SAP ID FIELD - SABSE PEHLE */}
           <label>
             SAP ID <span className="required-star">*</span>
@@ -138,12 +174,17 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
 
           <label>
             Full Name <span className="required-star">*</span>
+=======
+          <label>
+            Name
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
             <input
               name="name"
               value={form.name}
               onChange={handleChange}
               onBlur={handleBlur}
               required
+<<<<<<< HEAD
               maxLength={50}
               placeholder="Enter your full name"
               pattern="[a-zA-Z\s.'-]+"
@@ -154,6 +195,13 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
 
           <label>
             CNIC <span className="required-star">*</span>
+=======
+            />
+            {nameError && <span className="notice">{nameError}</span>}
+          </label>
+          <label>
+            CNIC
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
             <input
               name="cnic"
               value={form.cnic}
@@ -161,6 +209,7 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
               onBlur={handleBlur}
               required
               maxLength={13}
+<<<<<<< HEAD
               placeholder="13-digit CNIC without dashes"
               inputMode="numeric"
             />
@@ -169,6 +218,15 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
 
           <label>
             Phone Number <span className="required-star">*</span>
+=======
+              minLength={13}
+              pattern="\d{13}"
+            />
+            {cnicError && <span className="notice">{cnicError}</span>}
+          </label>
+          <label>
+            Phone Number
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
             <input
               name="phone"
               value={form.phone}
@@ -176,23 +234,36 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
               onBlur={handleBlur}
               required
               maxLength={11}
+<<<<<<< HEAD
               placeholder="11-digit phone number"
               inputMode="numeric"
+=======
+              minLength={11}
+              pattern="\d{11}"
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
             />
             {phoneError && <span className="notice">{phoneError}</span>}
           </label>
         </>
       )}
+<<<<<<< HEAD
 
       <label>
         Email <span className="required-star">*</span>
         <input
           name="username"
           type="email"
+=======
+      <label>
+        Username
+        <input
+          name="username"
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
           value={form.username}
           onChange={handleChange}
           onBlur={handleBlur}
           required
+<<<<<<< HEAD
           placeholder="your.email@example.com"
         />
         {usernameError && <span className="notice">{usernameError}</span>}
@@ -200,6 +271,13 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
 
       <label>
         Password <span className="required-star">*</span>
+=======
+        />
+        {usernameError && <span className="notice">{usernameError}</span>}
+      </label>
+      <label>
+        Password
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
         <input
           name="password"
           type="password"
@@ -207,6 +285,7 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
           onChange={handleChange}
           onBlur={handleBlur}
           required
+<<<<<<< HEAD
           maxLength={6}
           placeholder="Enter only  6 characters"
         />
@@ -216,6 +295,14 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
       {isSignup && (
         <label>
           Confirm Password <span className="required-star">*</span>
+=======
+        />
+        {passwordError && <span className="notice">{passwordError}</span>}
+      </label>
+      {isSignup && (
+        <label>
+          Confirm Password
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
           <input
             name="confirm"
             type="password"
@@ -223,21 +310,43 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
             onChange={handleChange}
             onBlur={handleBlur}
             required
+<<<<<<< HEAD
             minLength={6}
             placeholder="Confirm your password"
+=======
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
           />
           {confirmError && <span className="notice">{confirmError}</span>}
         </label>
       )}
+<<<<<<< HEAD
 
       {error && <div className="notice error-message">{error}</div>}
 
       <button
         type="submit"
         disabled={loading}
+=======
+      {error && <div className="notice">{error}</div>}
+      <button
+        type="submit"
+        disabled={
+          loading ||
+          usernameError ||
+          passwordError ||
+          confirmError ||
+          nameError ||
+          cnicError ||
+          phoneError
+        }
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
       >
         {loading ? "Please wait..." : mode === "signup" ? "Sign Up" : "Login"}
       </button>
     </form>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4

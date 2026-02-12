@@ -1,6 +1,9 @@
 import express from "express";
 import Donation from "../models/donation.js";
+<<<<<<< HEAD
 import Notification from "../models/notification.js";
+=======
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 
 const router = express.Router();
 
@@ -33,6 +36,7 @@ router.post("/", async (req, res) => {
 
     const savedDonation = await donation.save();
 
+<<<<<<< HEAD
     // Send notification
     const newNotification = new Notification({
       userId,
@@ -43,6 +47,8 @@ router.post("/", async (req, res) => {
     });
     await newNotification.save();
 
+=======
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
     res.status(201).json({ success: true, donation: savedDonation });
   } catch (error) {
     console.error("❌ Error submitting donation:", error);
@@ -61,4 +67,8 @@ router.get("/", async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 export default router;
+=======
+export default router;
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4

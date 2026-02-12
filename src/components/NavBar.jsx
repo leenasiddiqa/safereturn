@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import UserSidebar from "./UserSidebar";
 import "./NavBar.css";
@@ -23,6 +24,14 @@ export default function NavBar() {
     setSidebarOpen(false);
     navigate("/login");
   };
+=======
+import { NavLink } from "react-router-dom";
+import UserSidebar from "./UserSidebar";
+import "./NavBar.css"; // keep your navbar styles
+
+export default function NavBar() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 
   return (
     <header className="navbar">
@@ -34,6 +43,7 @@ export default function NavBar() {
         >
           ☰
         </button>
+<<<<<<< HEAD
         {/* Logo image */}
         <img
   src={logo}
@@ -41,17 +51,26 @@ export default function NavBar() {
   className="navbar-logo"
 />
 
+=======
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
         <div className="brand">SafeReturn</div>
       </div>
 
       <nav>
+<<<<<<< HEAD
         <NavLink to="/" end>Home</NavLink>
+=======
+        <NavLink to="/" end>
+          Home
+        </NavLink>
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
         <NavLink to="/lost">Report Lost</NavLink>
         <NavLink to="/found">Report Found</NavLink>
         <NavLink to="/matches">Matched Items</NavLink>
         <NavLink to="/about">About</NavLink>
         <NavLink to="/contact">Contact</NavLink>
         <NavLink to="/feedback">Feedback</NavLink>
+<<<<<<< HEAD
         
         {user ? (
           <button onClick={handleLogout} className="logout-btn">
@@ -70,3 +89,14 @@ export default function NavBar() {
     </header>
   );
 }
+=======
+        <NavLink to="/login">Login</NavLink>
+        <NavLink to="/signup">Sign Up</NavLink>
+      </nav>
+
+      {/* Sidebar component */}
+      <UserSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+    </header>
+  );
+}
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4

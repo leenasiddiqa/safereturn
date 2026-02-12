@@ -48,6 +48,7 @@
   transition: background 0.3s ease;
 }
 
+<<<<<<< HEAD
 /* ✅ STATUS CLASSES */
 .status {
   padding: 6px 12px;
@@ -68,6 +69,8 @@
   color: white;
 }
 
+=======
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 .no-donations {
   color: #555;
   text-align: center;
@@ -89,8 +92,12 @@
   .admin-main {
     padding: 20px;
   }
+<<<<<<< HEAD
   .status {
     
     margin-left: -20px; /* ✅ Mobile pe thora kam space */
   }
 }
+=======
+}
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4

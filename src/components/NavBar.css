@@ -4,11 +4,18 @@
   justify-content: space-between;
   align-items: center;
   background-color: #11315b;
+<<<<<<< HEAD
   padding: 6px 16px;
   color: #fff;
   font-family: "Inter", sans-serif;
   position: relative;
   height: 70px;
+=======
+  padding: 12px 24px;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  position: relative;
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 }
 
 .navbar-left {
@@ -121,6 +128,7 @@
 }
 
 .brand {
+<<<<<<< HEAD
   font-size: 1.6rem;
   font-weight: bold;
   color: white;
@@ -128,6 +136,11 @@
    margin-left: -8px; /* small space between logo and text */
   display: flex;
   align-items: center;
+=======
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 }
 
 .sidebar-toggle {
@@ -150,6 +163,7 @@
   margin-left: 20px;
   transition: color 0.2s ease;
 }
+<<<<<<< HEAD
 /* Logout button default */
 .logout-btn {
   background: none;
@@ -175,4 +189,9 @@
   object-fit: cover;        /* ensures image fills circle */
   border-radius: 50%;       /* makes it circular */
   border: 2px solid #fff;   /* optional: adds white border */
+=======
+
+.navbar nav a:hover {
+  color: #e68a62;
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 }

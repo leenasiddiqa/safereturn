@@ -2,11 +2,16 @@ import { useState } from "react";
 import { useAuth } from "../../AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import AuthForm from "../../components/AuthForm";
+<<<<<<< HEAD
 import "./Login.css";
+=======
+import "./Login.css"; // make sure this file contains your CSS
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 
 export default function Login() {
   const { login } = useAuth();
   const [error, setError] = useState("");
+<<<<<<< HEAD
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -44,6 +49,19 @@ export default function Login() {
       setError("Something went wrong");
     } finally {
       setLoading(false);
+=======
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  function handleLogin({ username, password }) {
+    setLoading(true);
+    const res = login(username, password);
+    setLoading(false);
+    if (res.success) {
+      navigate("/");
+    } else {
+      setError(res.message || "Login failed");
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
     }
   }
 
@@ -51,6 +69,7 @@ export default function Login() {
     <div className="login-background">
       <div className="login-form">
         <h2>Welcome Back</h2>
+<<<<<<< HEAD
         <p style={{ textAlign: "center", color: "#607080", marginBottom: "20px" }}>
           Please sign in to your account
         </p>
@@ -95,13 +114,39 @@ export default function Login() {
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
+=======
+        <p
+          style={{
+            textAlign: "center",
+            color: "#607080",
+            marginBottom: "20px",
+          }}
+        >
+          Please sign in to your account
+        </p>
+
+        <AuthForm
+          mode="login"
+          onSubmit={handleLogin}
+          loading={loading}
+          error={error}
+        />
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 
         {error && <p className="error">{error}</p>}
 
         <div className="footer-text">
+<<<<<<< HEAD
           Don't have an account? <Link to="/signup">Sign up</Link>
+=======
+          Don’t have an account? <Link to="/signup">Sign up</Link>
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
         </div>
       </div>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4

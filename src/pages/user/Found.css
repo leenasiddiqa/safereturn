@@ -71,6 +71,13 @@
   font-size: 16px;
 }
 
+<<<<<<< HEAD
+=======
+.found-submit:hover {
+  background-color: #d87a52; /* Darker peach on hover */
+  transform: translateY(-2px);
+}
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 
 /* Matches panel */
 .found-panel {

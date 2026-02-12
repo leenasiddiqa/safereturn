@@ -46,6 +46,7 @@ router.put("/signups/:id", async (req, res) => {
     });
   }
 });
+<<<<<<< HEAD
 // ✅ DELETE ROUTE - Account permanently delete karo
 router.delete("/signups/:id", async (req, res) => {
   try {
@@ -55,25 +56,49 @@ router.delete("/signups/:id", async (req, res) => {
     
     // ✅ Directly delete from Signup collection
     const deletedUser = await Signup.findByIdAndDelete(userId);
+=======
+// ✅ DELETE by SAP ID instead of Mongo _id
+router.delete("/signups/sap/:sapid", async (req, res) => {
+  try {
+    const sapid = req.params.sapid;
+
+    console.log("🗑️ Deleting account for SAP ID:", sapid);
+
+    const deletedUser = await Signup.findOneAndDelete({ sapid: sapid });
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 
     if (!deletedUser) {
       return res.status(404).json({
         success: false,
+<<<<<<< HEAD
         message: "User not found in database"
+=======
+        message: "User not found with this SAP ID"
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
       });
     }
 
     console.log("✅ Account permanently deleted for SAP ID:", deletedUser.sapid);
+<<<<<<< HEAD
     
     res.json({
       success: true,
       message: "Account permanently deleted from system",
+=======
+
+    res.json({
+      success: true,
+      message: "Account deleted successfully using SAP ID",
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
       deletedUser: {
         sapid: deletedUser.sapid,
         name: deletedUser.name
       }
     });
+<<<<<<< HEAD
     
+=======
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
   } catch (error) {
     console.error("❌ Delete account error:", error);
     res.status(500).json({
@@ -82,4 +107,9 @@ router.delete("/signups/:id", async (req, res) => {
     });
   }
 });
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 export default router;

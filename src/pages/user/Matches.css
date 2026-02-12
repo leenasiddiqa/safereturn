@@ -6,7 +6,10 @@
   box-shadow: 0 4px 24px rgba(17, 49, 91, 0.08);
   padding: 40px;
   font-family: "Inter", sans-serif;
+<<<<<<< HEAD
   min-height: calc(100vh - 200px);
+=======
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 }
 
 .matches-title {
@@ -78,3 +81,11 @@
   font-weight: 500;
   transition: background-color 0.3s ease;
 }
+<<<<<<< HEAD
+=======
+
+.claim-btn:hover {
+  background-color: #e68a62;
+  color: #fff;
+}
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4

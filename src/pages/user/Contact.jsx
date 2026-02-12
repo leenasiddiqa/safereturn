@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import "./Contact.css";
 
@@ -118,6 +119,16 @@ export default function Contact() {
     <div className="contact-page">
       <div className="contact-container">
         <h2>Contact Us</h2>
+=======
+import React from "react";
+import "./Contact.css";
+
+export default function Contact() {
+  return (
+    <div className="contact-page">
+      <div className="contact-container">
+        <h2>Contact & Feedback</h2>
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
         <p className="contact-description">
           For help, questions, or to report an issue, please use the feedback
           form below or email{" "}
@@ -127,6 +138,7 @@ export default function Contact() {
           .
         </p>
 
+<<<<<<< HEAD
         {/* ✅ Custom Notification */}
         {message && (
           <div className={`notice ${messageType === 'success' ? 'success' : 'error'}`}>
@@ -136,11 +148,16 @@ export default function Contact() {
 
         <form className="contact-form" onSubmit={handleSubmit}>
           <label htmlFor="email">Your Email *</label>
+=======
+        <form className="contact-form">
+          <label htmlFor="email">Your Email</label>
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
           <input
             type="email"
             id="email"
             name="email"
             placeholder="Enter your email"
+<<<<<<< HEAD
             value={form.email}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -151,11 +168,18 @@ export default function Contact() {
           {emailError && <span className="error-text">{emailError}</span>}
 
           <label htmlFor="message">Message *</label>
+=======
+            required
+          />
+
+          <label htmlFor="message">Message</label>
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
           <textarea
             id="message"
             name="message"
             rows={4}
             placeholder="Write your message here..."
+<<<<<<< HEAD
             value={form.message}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -170,8 +194,18 @@ export default function Contact() {
           <button type="submit" disabled={loading}>
             {loading ? "Sending..." : "Send Message"}
           </button>
+=======
+            required
+          />
+
+          <button type="submit">Send Message</button>
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
         </form>
       </div>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4

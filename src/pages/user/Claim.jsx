@@ -1,8 +1,20 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./Claim.css";
 
 export default function Claim() {
+=======
+// Claim.jsx
+import React, { useState } from "react";
+import { useStore } from "../../StoreContext";
+import "./Claim.css";
+
+export default function Claim() {
+  const { state, addClaim, reviewClaim } = useStore();
+  const { items } = state;
+
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
   const [form, setForm] = useState({
     itemId: "",
     claimantName: "",
@@ -10,6 +22,7 @@ export default function Claim() {
     providedHints: "",
   });
   const [message, setMessage] = useState("");
+<<<<<<< HEAD
   const [loading, setLoading] = useState(false);
   const [itemDetails, setItemDetails] = useState(null);
   
@@ -101,10 +114,17 @@ export default function Claim() {
     
     // ✅ Validation checks
     if (!form.itemId || !form.claimantName || !form.contact || !form.providedHints) {
+=======
+
+  function submit(e) {
+    e.preventDefault();
+    if (!form.itemId || !form.claimantName || !form.contact) {
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
       setMessage("⚠️ Please fill all required fields.");
       return;
     }
 
+<<<<<<< HEAD
     if (form.claimantName.trim().length < 1) {
       setMessage("❌ Please enter your name.");
       return;
@@ -182,27 +202,63 @@ export default function Claim() {
     } finally {
       setLoading(false);
     }
+=======
+    const item = items.find((i) => i.id === form.itemId);
+    const hints = (item?.hiddenHints || "")
+      .toLowerCase()
+      .split(/\W+/)
+      .filter(Boolean);
+    const provided = (form.providedHints || "").toLowerCase().split(/\W+/);
+    const autoApprove =
+      hints.length > 0 && hints.every((h) => provided.includes(h));
+
+    addClaim(form);
+    const claimId = state.claims[0]?.id;
+    if (autoApprove && claimId) {
+      reviewClaim(claimId, "approve");
+      setMessage(
+        "✅ Claim submitted and auto-approved based on matching identifiers. Admin will finalize."
+      );
+    } else {
+      setMessage(
+        "✅ Claim submitted for review. Admin will verify and finalize."
+      );
+    }
+
+    setForm({ itemId: "", claimantName: "", contact: "", providedHints: "" });
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
   }
 
   return (
     <section className="claim-container">
       <h2>Claim & Verification</h2>
 
+<<<<<<< HEAD
       {message && (
         <div className={`notice ${message.includes('✅') ? 'success' : 'error'}`}>
           {message}
         </div>
       )}
+=======
+      {message && <div className="notice">{message}</div>}
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 
       <form className="claim-form" onSubmit={submit}>
         <label>
           Item ID*
           <input
             type="text"
+<<<<<<< HEAD
             value={form.itemId}
             readOnly
             disabled
             className="readonly-input"
+=======
+            placeholder="Enter the item ID you want to claim"
+            value={form.itemId}
+            onChange={(e) => setForm({ ...form, itemId: e.target.value })}
+            required
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
           />
         </label>
 
@@ -211,29 +267,49 @@ export default function Claim() {
             Your Name*
             <input
               type="text"
+<<<<<<< HEAD
               placeholder="Enter your full name (max 15 characters)"
               value={form.claimantName}
               onChange={(e) => handleNameChange(e.target.value)}
               required
               disabled={loading}
               maxLength={15}
+=======
+              placeholder="Enter your full name"
+              value={form.claimantName}
+              onChange={(e) =>
+                setForm({ ...form, claimantName: e.target.value })
+              }
+              required
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
             />
           </label>
           <label>
             Contact Info*
             <input
               type="text"
+<<<<<<< HEAD
               placeholder="Phone (11 digits) or Email"
               value={form.contact}
               onChange={(e) => setForm({ ...form, contact: e.target.value })}
               required
               disabled={loading}
+=======
+              placeholder="Phone or Email"
+              value={form.contact}
+              onChange={(e) => setForm({ ...form, contact: e.target.value })}
+              required
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
             />
           </label>
         </div>
 
         <label>
+<<<<<<< HEAD
           Provide Identifiers to Verify Ownership *
+=======
+          Provide Identifiers to Verify Ownership
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
           <textarea
             placeholder="Describe unique details or identifiers of the item"
             value={form.providedHints}
@@ -241,6 +317,7 @@ export default function Claim() {
               setForm({ ...form, providedHints: e.target.value })
             }
             rows={3}
+<<<<<<< HEAD
             required
             disabled={loading}
           />
@@ -253,3 +330,13 @@ export default function Claim() {
     </section>
   );
 }
+=======
+          />
+        </label>
+
+        <button type="submit">Submit Claim</button>
+      </form>
+    </section>
+  );
+}
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4

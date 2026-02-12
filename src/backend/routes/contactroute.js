@@ -28,7 +28,11 @@ router.post("/", async (req, res) => {
     
     res.status(201).json({
       success: true,
+<<<<<<< HEAD
       message: "Message sent successfully! We'll get back to you soon.",
+=======
+      message: "Your query has been submitted successfully.",
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
       contact: savedContact
     });
     

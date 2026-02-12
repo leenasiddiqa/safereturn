@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 // routes/historyroute.js - COMPLETE CODE
+=======
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 import express from "express";
 import History from "../models/History.js";
 
 const router = express.Router();
 
+<<<<<<< HEAD
 // ✅ GET ALL HISTORY (Frontend ke liye)
 router.get("/", async (req, res) => {
   try {
@@ -32,11 +36,33 @@ router.get("/user/:userId", async (req, res) => {
 
     res.json(userHistory); // ✅ Direct array
 
+=======
+// ✅ GET USER'S HISTORY ONLY
+router.get("/", async (req, res) => {
+  try {
+    const { userId } = req.query;
+    
+    if (!userId) {
+      return res.status(400).json({
+        success: false,
+        message: "User ID required"
+      });
+    }
+
+    const userHistory = await History.find({ userId }).sort({ createdAt: -1 });
+    res.json(userHistory);
+    
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
   } catch (error) {
     console.error("❌ Error fetching user history:", error);
     res.status(500).json({
       success: false,
+<<<<<<< HEAD
       message: "Error fetching user history",
+=======
+      message: "Error fetching history",
+      error: error.message,
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
     });
   }
 });

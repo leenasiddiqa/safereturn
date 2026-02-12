@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { useStore } from "../../StoreContext";
 import ItemForm from "../../components/ItemForm";
+<<<<<<< HEAD
 import "./Lost.css";
+=======
+import "./Lost.css"; // 👈 import CSS
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 
 export default function Lost() {
   const { state, addItem, searchPotentialMatches } = useStore();
   const [form, setForm] = useState({
+<<<<<<< HEAD
     name: "", brand: "", category: "Other", description: "",
     location: "", hiddenHints: "", image: "",
   });
@@ -103,6 +108,39 @@ export default function Lost() {
     } finally {
       setLoading(false);
     }
+=======
+    name: "",
+    brand: "",
+    category: "Other",
+    description: "",
+    location: "",
+    hiddenHints: "",
+    image: "",
+  });
+  const [message, setMessage] = useState("");
+  const [matches, setMatches] = useState([]);
+
+  function submit(e) {
+    e.preventDefault();
+    if (!form.name || !form.location) {
+      setMessage("Please fill required fields (name, location).");
+      return;
+    }
+    addItem({ ...form, type: "lost" });
+    const item = { ...form, type: "lost", id: state.items[0]?.id };
+    const m = searchPotentialMatches(item);
+    setMatches(m);
+    setMessage("Lost item reported. We will notify if a match appears.");
+    setForm({
+      name: "",
+      brand: "",
+      category: "Other",
+      description: "",
+      location: "",
+      hiddenHints: "",
+      image: "",
+    });
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
   }
 
   return (
@@ -110,12 +148,16 @@ export default function Lost() {
       <div className="lost-container">
         <h2>Report Lost Item</h2>
 
+<<<<<<< HEAD
         {/* ✅ Custom Notification */}
         {message && (
           <div className={`notice ${messageType === 'success' ? 'success' : 'error'}`}>
             {message}
           </div>
         )}
+=======
+        {message && <div className="notice">{message}</div>}
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 
         <form onSubmit={submit}>
           <div className="lost-grid">
@@ -127,6 +169,7 @@ export default function Lost() {
             />
           </div>
 
+<<<<<<< HEAD
           <button 
             type="submit" 
             className="lost-submit"
@@ -139,3 +182,26 @@ export default function Lost() {
     </div>
   );
 }
+=======
+          <button type="submit" className="lost-submit">
+            Submit
+          </button>
+        </form>
+      </div>
+
+      {matches.length > 0 && (
+        <div className="panel">
+          <h3>Potential matches from found items</h3>
+          <ul>
+            {matches.map((i) => (
+              <li key={i.id}>
+                <strong>{i.name}</strong> — {i.brand} — {i.location}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -38,11 +39,28 @@ export default function ProfilePage() {
     }
   }, [authUser]);
 
+=======
+import React, { useState } from "react";
+import "./ProfilePage.css";
+
+export default function ProfilePage() {
+  const [user, setUser] = useState({
+    name: "Leena Siddiqa",
+    email: "leena@example.com",
+    phone: "0312-4567890",
+    address: "Karachi, Pakistan",
+  });
+
+  const [isEditing, setIsEditing] = useState(false);
+
+  // Handle input changes
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser((prev) => ({ ...prev, [name]: value }));
   };
 
+<<<<<<< HEAD
   const handleSave = async () => {
     if (!authUser || !authUser.id) {
       setMessage("❌ User not logged in properly");
@@ -168,11 +186,33 @@ export default function ProfilePage() {
     );
   }
 
+=======
+  // Handle save
+  const handleSave = () => {
+    setIsEditing(false);
+    alert("Profile updated successfully!");
+    // later you can connect this to your backend update logic
+  };
+
+  // Handle delete
+  const handleDelete = () => {
+    if (
+      window.confirm(
+        "Are you sure you want to delete your account? This action cannot be undone."
+      )
+    ) {
+      // delete user logic (API call or state clear)
+      alert("Your account has been deleted.");
+    }
+  };
+
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
   return (
     <div className="profile-container">
       <div className="profile-card">
         <h2 className="profile-title">My Profile</h2>
 
+<<<<<<< HEAD
         {message && (
   <div className={`notice ${message.includes('❌') ? 'error' : 'success'}`}>
     {message}
@@ -192,6 +232,10 @@ export default function ProfilePage() {
           </label>
 
           <label>
+=======
+        <div className="profile-info">
+          <label>
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
             Full Name
             <input
               type="text"
@@ -199,11 +243,15 @@ export default function ProfilePage() {
               value={user.name}
               onChange={handleChange}
               disabled={!isEditing}
+<<<<<<< HEAD
               placeholder="Enter your full name"
+=======
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
             />
           </label>
 
           <label>
+<<<<<<< HEAD
             Username/Email
             <input
               type="text"
@@ -212,6 +260,15 @@ export default function ProfilePage() {
               onChange={handleChange}
               disabled={!isEditing}
               placeholder="Enter your username"
+=======
+            Email
+            <input
+              type="email"
+              name="email"
+              value={user.email}
+              onChange={handleChange}
+              disabled={!isEditing}
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
             />
           </label>
 
@@ -223,11 +280,15 @@ export default function ProfilePage() {
               value={user.phone}
               onChange={handleChange}
               disabled={!isEditing}
+<<<<<<< HEAD
               placeholder="Enter your phone number"
+=======
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
             />
           </label>
 
           <label>
+<<<<<<< HEAD
             CNIC
             <input
               type="text"
@@ -236,6 +297,15 @@ export default function ProfilePage() {
               className="read-only-field"
             />
             <small className="field-note">CNIC cannot be changed</small>
+=======
+            Address
+            <textarea
+              name="address"
+              value={user.address}
+              onChange={handleChange}
+              disabled={!isEditing}
+            />
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
           </label>
         </div>
 
@@ -245,6 +315,7 @@ export default function ProfilePage() {
               ✏️ Edit Profile
             </button>
           ) : (
+<<<<<<< HEAD
             <button className="btn save" onClick={handleSave} disabled={loading}>
               {loading ? "⏳ Saving..." : "💾 Save Changes"}
             </button>
@@ -255,9 +326,21 @@ export default function ProfilePage() {
             disabled={deleteLoading}
           >
             {deleteLoading ? "⏳ Deleting..." : "🗑️ Delete Account"}
+=======
+            <button className="btn save" onClick={handleSave}>
+              💾 Save Changes
+            </button>
+          )}
+          <button className="btn delete" onClick={handleDelete}>
+            🗑️ Delete Account
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
           </button>
         </div>
       </div>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4

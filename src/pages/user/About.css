@@ -4,6 +4,53 @@
   padding: 20px 0;
 }
 
+<<<<<<< HEAD
+=======
+.about-header {
+  background: #11315b;
+  color: white;
+  padding: 20px 0;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.about-header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.about-logo h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.about-logo p {
+  margin: 5px 0 0 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* ✨ Removed navbar styles (about-nav, about-nav-link) */
+
+.about-divider-container {
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  padding: 0 20px;
+}
+
+.about-divider {
+  border: none;
+  height: 2px;
+  background: #e68a62;
+  margin: 0;
+}
+
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 .about-content {
   max-width: 1000px;
   margin: 0 auto;

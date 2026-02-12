@@ -52,6 +52,30 @@ app.get('/api/debug-histories', async (req, res) => {
     res.json({ error: error.message });
   }
 });
+<<<<<<< HEAD
+=======
+// server.js mein ye route add karo
+// server.js mein ye routes add karo - CORRECTED IMPORTS
+app.get('/api/all-items/found', async (req, res) => {
+  try {
+    const FoundItem = (await import('./models/found.js')).default; // ✅ found.js
+    const foundItems = await FoundItem.find().sort({ dateReported: -1 });
+    res.json(foundItems);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.get('/api/all-items/lost', async (req, res) => {
+  try {
+    const LostItem = (await import('./models/lost.js')).default; // ✅ lost.js
+    const lostItems = await LostItem.find().sort({ dateReported: -1 });
+    res.json(lostItems);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+>>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 // ✅ Simple MongoDB connection (deprecated options remove karo)
 mongoose.connect("mongodb://127.0.0.1:27017/safereturn")
 .then(() => console.log("✅ MongoDB connected"))
