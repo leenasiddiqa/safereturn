@@ -1,0 +1,76 @@
+.user-sidebar {
+  position: fixed;
+  top: 0;
+  left: -260px; /* hidden by default */
+  width: 240px;
+  height: 100vh;
+  background-color: #11315b;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  transition: left 0.3s ease;
+  z-index: 2000;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2);
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.user-sidebar.open {
+  left: 0; /* slide in from left */
+}
+
+.user-logo {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  align-self: center;
+  color: #eaeaea;
+}
+
+.user-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.user-link {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.user-link:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.user-logout {
+  margin-top: auto;
+  background-color: #e68a62;
+  border: none;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.user-logout:hover {
+  background-color: #cf7550;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1500;
+}
