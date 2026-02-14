@@ -2,11 +2,7 @@
 
 A simple React + Vite front-end prototype for a university Lost & Found portal. Data persists in localStorage only (no backend). Includes modules for Lost, Found, Claim & Verification, Donation & Important Documents, and Admin.
 
-<<<<<<< HEAD
 ## 🚀 Features
-=======
-## Features
->>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
 
 - Report lost and found items with details (name, brand, category, description, location)
 - Hidden identifiers (for lost items) for later claim verification
@@ -16,19 +12,7 @@ A simple React + Vite front-end prototype for a university Lost & Found portal. 
 - Auto-processing after 30 days: general items marked for donation; important docs for secure delivery
 - Simple admin dashboard for reviewing claims and activity logs
 
-<<<<<<< HEAD
 ## 🧰 Getting Started
-
-**Prerequisites:** Node 18+ recommended.
-
-Install dependencies and start the dev server:
-
-```bash
-npm install
-npm run dev
-```
-=======
-## Getting started
 
 Prerequisites: Node 18+ recommended.
 
@@ -61,4 +45,3 @@ npm run preview
 - Add real notifications to owners when matches or claim updates occur
 - Stronger matching (fuzzy match, image support)
 - Audit trail export and report generation
->>>>>>> b56f2b7001a859163ea53d10d9995b034e4f39a4
