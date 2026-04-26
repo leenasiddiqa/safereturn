@@ -1,42 +1,122 @@
 import { useState } from "react";
 import { useStore } from "../../StoreContext";
 import ItemForm from "../../components/ItemForm";
-import "./Lost.css"; // 👈 import CSS
+import "./Lost.css";
 
 export default function Lost() {
   const { state, addItem, searchPotentialMatches } = useStore();
   const [form, setForm] = useState({
-    name: "",
-    brand: "",
-    category: "Other",
-    description: "",
-    location: "",
-    hiddenHints: "",
-    image: "",
+    name: "", brand: "", category: "Other", description: "",
+    location: "", hiddenHints: "", image: "",
+    isImportantDoc: false,
   });
-  const [message, setMessage] = useState("");
   const [matches, setMatches] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState(""); // ✅ Message state add ki
+  const [messageType, setMessageType] = useState(""); // ✅ success ya error ke liye
 
-  function submit(e) {
+  const saveToBackend = async (itemData) => {
+    try {
+      // ✅ Get current user from localStorage
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    const userId = user._id || user.id;
+    
+    console.log("📤 Sending userId:", userId);  // ✅ Debug
+    
+    if (!userId) {
+      throw new Error("User not logged in");
+    }
+      const response = await fetch("http://localhost:5000/api/items/lost", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+       body: JSON.stringify({
+        userId: userId,  // ✅ Ab sahi hai
+        ...itemData
+      }),
+      });
+
+      if (!response.ok) throw new Error(`Server error: ${response.status}`);
+      
+      const result = await response.json();
+      if (result.success) return result.item;
+      else throw new Error(result.message);
+      
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  // ✅ Show message function
+  const showMessage = (text, type) => {
+    setMessage(text);
+    setMessageType(type);
+    // Auto hide after 3 seconds
+    setTimeout(() => {
+      setMessage("");
+      setMessageType("");
+    }, 3000);
+  };
+
+  async function submit(e) {
     e.preventDefault();
+    
     if (!form.name || !form.location) {
-      setMessage("Please fill required fields (name, location).");
+      showMessage("⚠️ Please fill required fields (name, location).", "error");
       return;
     }
-    addItem({ ...form, type: "lost" });
-    const item = { ...form, type: "lost", id: state.items[0]?.id };
-    const m = searchPotentialMatches(item);
-    setMatches(m);
-    setMessage("Lost item reported. We will notify if a match appears.");
-    setForm({
-      name: "",
-      brand: "",
-      category: "Other",
-      description: "",
-      location: "",
-      hiddenHints: "",
-      image: "",
-    });
+
+    // ✅ Prepare form data for comparison
+    const formData = {
+      name: form.name.trim(),
+      brand: (form.brand || "").trim(),
+      category: (form.category || "Other").trim(),
+      description: (form.description || "").trim(),
+      location: form.location.trim(),
+      hiddenHints: (form.hiddenHints || "").trim(),
+      image: (form.image || "").trim(),
+      isImportantDoc: form.isImportantDoc || false,
+    };
+
+    // ✅ STRICT DUPLICATE CHECK
+    const isExactDuplicate = state.items.some(item => 
+      item.type === "lost" && 
+      item.name?.trim() === formData.name &&
+      item.brand?.trim() === formData.brand &&
+      item.category?.trim() === formData.category &&
+      item.description?.trim() === formData.description &&
+      item.location?.trim() === formData.location &&
+      item.hiddenHints?.trim() === formData.hiddenHints
+    );
+
+    if (isExactDuplicate) {
+      showMessage("❌ This exact item has already been reported.", "error");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const savedItem = await saveToBackend(formData);
+      addItem({ ...formData, type: "lost", id: savedItem._id });
+      
+      const item = { ...formData, type: "lost", id: savedItem._id };
+      const m = searchPotentialMatches(item);
+      setMatches(m);
+      
+      showMessage("✅ Lost item reported successfully. We will notify if a match appears.", "success");
+      
+      setForm({
+        name: "", brand: "", category: "Other", description: "",
+        location: "", hiddenHints: "", image: "",
+      });
+      
+    } catch (error) {
+      showMessage("❌ Error: " + error.message, "error");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -44,7 +124,12 @@ export default function Lost() {
       <div className="lost-container">
         <h2>Report Lost Item</h2>
 
-        {message && <div className="notice">{message}</div>}
+        {/* ✅ Custom Notification */}
+        {message && (
+          <div className={`notice ${messageType === 'success' ? 'success' : 'error'}`}>
+            {message}
+          </div>
+        )}
 
         <form onSubmit={submit}>
           <div className="lost-grid">
@@ -56,24 +141,15 @@ export default function Lost() {
             />
           </div>
 
-          <button type="submit" className="lost-submit">
-            Submit
+          <button 
+            type="submit" 
+            className="lost-submit"
+            disabled={loading}
+          >
+            {loading ? "Saving..." : "Submit"}
           </button>
         </form>
       </div>
-
-      {matches.length > 0 && (
-        <div className="panel">
-          <h3>Potential matches from found items</h3>
-          <ul>
-            {matches.map((i) => (
-              <li key={i.id}>
-                <strong>{i.name}</strong> — {i.brand} — {i.location}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
     </div>
   );
 }

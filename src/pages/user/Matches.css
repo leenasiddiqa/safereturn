@@ -1,11 +1,13 @@
+
 .matches-container {
   max-width: 900px;
   margin: 50px auto;
-  background: #ffffff;
+  background: #f0f4f8;
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(17, 49, 91, 0.08);
   padding: 40px;
   font-family: "Inter", sans-serif;
+  min-height: calc(100vh - 200px);
 }
 
 .matches-title {
@@ -33,11 +35,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #e0e6ed;
+  border: 1px solid #e68a62;
   border-radius: 12px;
   padding: 20px 24px;
   transition: all 0.3s ease;
-  background-color: #fafcff;
+  background-color: #0f2b4d;
 }
 
 .match-card:hover {
@@ -46,13 +48,13 @@
 }
 
 .match-info h3 {
-  color: #11315b;
+  color: #fff;
   margin-bottom: 6px;
 }
 
 .match-info p {
   margin: 4px 0;
-  color: #444;
+  color: #fff;
   font-size: 0.95rem;
 }
 
@@ -68,7 +70,7 @@
 }
 
 .claim-btn {
-  background-color: #11315b;
+  background-color: #e68a62;
   color: #fff;
   text-decoration: none;
   padding: 10px 16px;
@@ -76,9 +78,4 @@
   font-size: 0.95rem;
   font-weight: 500;
   transition: background-color 0.3s ease;
-}
-
-.claim-btn:hover {
-  background-color: #e68a62;
-  color: #fff;
 }

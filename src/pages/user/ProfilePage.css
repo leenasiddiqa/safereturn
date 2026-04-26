@@ -3,22 +3,52 @@
   justify-content: center;
   align-items: center;
   min-height: 90vh;
-  background: #f5f7fa;
+  background: #f0f4f8;
   font-family: "Inter", sans-serif;
 }
 
 .profile-card {
-  background: #fff;
+  background: #0f2b4d;
   width: 420px;
   padding: 32px;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(17, 49, 91, 0.1);
 }
+.notice {
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 20px; /* 👈 added spacing from text */
+  margin-top: -10px;   /* 👈 slightly move it up */
+  font-size: 15px;
+  text-align: center;
+  font-weight: 500;
+  color: #fff;
+  animation: fadeIn 0.4s ease-in-out;
+}
 
+.notice.success {
+  background-color: #e68a62; /* orange same as login */
+}
+
+.notice.error {
+  background-color: #e68a62; /* red for error */
+}
+
+/* 🔄 Smooth appearance animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .profile-title {
   text-align: center;
   font-size: 1.6rem;
-  color: #11315b;
+  color: #fff;
   margin-bottom: 20px;
 }
 
@@ -32,7 +62,7 @@
   display: flex;
   flex-direction: column;
   font-size: 0.95rem;
-  color: #444;
+  color: #fff;
 }
 
 .profile-info input,
@@ -66,36 +96,37 @@
 
 .btn {
   border: none;
-  padding: 10px 16px;
+  padding: 15px 20px !important;
   border-radius: 8px;
   color: #fff;
-  font-size: 0.95rem;
+  font-size: 2rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-weight: bold;
 }
 
 .btn.edit {
-  background-color: #11315b;
+  background-color: #e68a62;
 }
 
 .btn.edit:hover {
-  background-color: #0d2442;
+  background-color: #e68a62;
 }
 
 .btn.save {
-  background-color: #28a745;
+  background-color: #e68a62;
 }
 
 .btn.save:hover {
-  background-color: #218838;
+  background-color: #e68a62;
 }
 
 .btn.delete {
-  background-color: #dc3545;
+  background-color: #e68a62;
 }
 
 .btn.delete:hover {
-  background-color: #b02a37;
+  background-color: #e68a62;
 }
 
 /* Responsive */
@@ -104,4 +135,11 @@
     width: 90%;
     padding: 24px;
   }
+}
+
+.field-note {
+  display: block;
+  margin-top: 8px; /* ✅ Text aur input ke beech space */
+  color: #afbeca;
+  font-size: 12px;
 }

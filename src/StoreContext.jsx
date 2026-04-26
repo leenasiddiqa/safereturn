@@ -105,6 +105,12 @@ function reducer(state, action) {
       }
       return { ...state, logs };
     }
+    case "SET_ITEMS": {
+      return {
+        ...state,
+        items: action.payload,
+      };
+    }
     case "LOAD": {
       return action.state;
     }
@@ -128,6 +134,15 @@ export function StoreProvider({ children }) {
   const reviewClaim = (claimId, status) => dispatch({ type: "REVIEW_CLAIM", claimId, status });
   const finalizeClaim = (claimId) => dispatch({ type: "FINALIZE_CLAIM", claimId });
   const autoProcessAging = () => dispatch({ type: "AUTO_PROCESS_AGING" });
+
+  // ✅ Refresh items from localStorage
+  const refreshItems = () => {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      const data = JSON.parse(stored);
+      dispatch({ type: "SET_ITEMS", payload: data.items || [] });
+    }
+  };
 
   // Matching logic (pure function)
   const searchPotentialMatches = (item) => {
@@ -163,6 +178,7 @@ export function StoreProvider({ children }) {
         finalizeClaim,
         autoProcessAging,
         searchPotentialMatches,
+        refreshItems,  // ✅ EXPORT refreshItems
       }}
     >
       {children}

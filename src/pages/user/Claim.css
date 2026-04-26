@@ -1,14 +1,15 @@
 .claim-container {
   max-width: 600px;
   margin: 40px auto;
-  background: #ffffff;
+  background: #0f2b4d;
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(17, 49, 91, 0.08);
   padding: 32px;
+  margin-top: 130px;
 }
 
 .claim-container h2 {
-  color: #11315b;
+  color: #fff;
   margin-bottom: 24px;
 }
 
@@ -24,7 +25,7 @@
 
 .claim-form label {
   display: block;
-  color: #11315b;
+  color: #fff;
   font-weight: 500;
   margin-bottom: 12px;
 }
@@ -40,6 +41,8 @@
   font-size: 14px;
   outline: none;
   transition: border-color 0.2s ease;
+  background-color: #f0f4f8;
+  color: #2c3e50;
 }
 
 .claim-form input:focus,
@@ -55,7 +58,7 @@
 
 .claim-form button {
   width: 100%;
-  background: #11315b;
+  background: #e68a62;
   color: #ffffff;
   font-size: 16px;
   font-weight: 500;

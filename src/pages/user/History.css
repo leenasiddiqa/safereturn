@@ -1,14 +1,15 @@
 .history-container {
   max-width: 900px;
   margin: 40px auto;
-  background: #ffffff;
+  background: #f0f4f8;
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(17, 49, 91, 0.08);
   padding: 32px;
+  min-height: calc(85vh - 100px);
 }
 
 .history-title {
-  color: #d3d3d3;
+  color: black;
   font-size: 1.8rem;
   font-weight: 600;
   text-align: center;

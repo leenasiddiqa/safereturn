@@ -17,8 +17,18 @@
   font-weight: bold;
   margin-bottom: 24px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
-
+.admin-logo-img {
+  width: 60px;  /* adjust as needed */
+  height: 60px;
+  object-fit: cover; 
+  border-radius: 50%; /* optional rounded corners */
+  border: 2px solid #fff;
+}
 .admin-nav {
   display: flex;
   flex-direction: column;
