@@ -17,7 +17,7 @@
   margin-bottom: 8px;
 }
 
-/* ── Notice Banner ── */
+
 .notice {
   padding: 10px 14px;
   border-radius: 8px;
@@ -37,7 +37,7 @@
   border: 1px solid #F09595;
 }
 
-/* ── Panel ── */
+
 .admin-panel {
   background: #fff;
   border: 1px solid #e8ecf0;
@@ -45,7 +45,7 @@
   padding: 20px;
 }
 
-/* ── Claim Cards ── */
+
 .admin-list {
   list-style: none;
   padding: 0;
@@ -66,7 +66,7 @@
   border-color: #b5d4f4;
 }
 
-/* Urgent overrides */
+
 .admin-list-item[style*="fff3cd"] {
   background: #FAEEDA !important;
   border: 1px solid #EF9F27 !important;
@@ -80,7 +80,7 @@
   margin-bottom: 10px;
 }
 
-/* Inner white box */
+
 .admin-list-item > div[style*="background: #fff"] {
   background: #fff !important;
   padding: 14px !important;
@@ -88,7 +88,7 @@
   border-left: 3px solid #EF9F27 !important;
 }
 
-/* ── Claim Details ── */
+
 .claim-header {
   display: flex;
   justify-content: space-between;
@@ -135,7 +135,7 @@
   color: #9aa5b4;
 }
 
-/* ── Action Buttons ── */
+
 .admin-actions {
   display: flex;
   gap: 8px;
@@ -184,7 +184,7 @@
   text-align: center;
   display: block;
 }
-/* ── Responsive ── */
+
 @media (max-width: 700px) {
   .admin-main { padding: 20px 16px; }
   .claim-details .claim-info { grid-template-columns: 1fr; }
