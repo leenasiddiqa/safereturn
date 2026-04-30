@@ -1,19 +1,19 @@
 import React, { useState } from "react";
+import { useAuth } from "../../AuthContext";  // ✅ ADD THIS
 import "./Feedback.css";
 
 export default function Feedback() {
+  const { user } = useAuth();  // ✅ Now works
   const [feedbackForm, setFeedbackForm] = useState({
     message: ""
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [messageType, setMessageType] = useState(""); // ✅ Message type ke liye
+  const [messageType, setMessageType] = useState("");
 
-  // ✅ Show message function
   const showMessage = (text, type) => {
     setMessage(text);
     setMessageType(type);
-    // Auto hide after 3 seconds for success
     if (type === 'success') {
       setTimeout(() => {
         setMessage("");
@@ -22,7 +22,6 @@ export default function Feedback() {
     }
   };
 
-  // ✅ Feedback submit karna
   const handleFeedbackSubmit = async (e) => {
     e.preventDefault();
     
@@ -35,10 +34,20 @@ export default function Feedback() {
     setMessage("");
     setMessageType("");
 
+    // ✅ Get email from logged-in user
+    const email = user?.username || user?.email;
+
+    if (!email) {
+      showMessage("❌ User email not found. Please login again.", "error");
+      setLoading(false);
+      return;
+    }
+
     try {
       const feedbackData = {
-        type: "feedback",
-        message: feedbackForm.message.trim()
+        email: email,  // ✅ Send email
+        message: feedbackForm.message.trim(),
+        rating: 5
       };
 
       console.log("📤 Sending feedback data:", feedbackData);
@@ -54,15 +63,15 @@ export default function Feedback() {
       const result = await response.json();
 
       if (result.success) {
-        showMessage("✅ " + result.message, "success");
-        setFeedbackForm({ message: "" }); // Form reset
+        showMessage("✅ Thank you for your feedback!", "success");
+        setFeedbackForm({ message: "" });
       } else {
         showMessage("❌ " + result.message, "error");
       }
       
     } catch (error) {
       console.error("❌ Feedback submit error:", error);
-      showMessage("❌ Error submitting feedback: " + error.message, "error");
+      showMessage("❌ Error submitting feedback", "error");
     } finally {
       setLoading(false);
     }
@@ -77,9 +86,10 @@ export default function Feedback() {
           you're facing with the SafeReturn platform.
         </p>
 
-        {/* ✅ Custom Notification */}
+        <p className="feedback"><strong>Logged in as:</strong> {user?.username || "Loading..."}</p>
+
         {message && (
-          <div className={`notice ${messageType === 'success' ? 'success' : 'error'}`}>
+          <div className={`feedback-notice ${messageType === 'success' ? 'success' : 'error'}`}>
             {message}
           </div>
         )}

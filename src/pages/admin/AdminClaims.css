@@ -171,7 +171,19 @@
 .btn.reject:hover {
   background: #FCEBEB;
 }
-
+.admin-notice {
+ background-color: #e68a62;
+  color: #fff;
+  border-left: 4px solid #28a745;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 8px;
+  margin: 0 auto 20px auto;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+  display: block;
+}
 /* ── Responsive ── */
 @media (max-width: 700px) {
   .admin-main { padding: 20px 16px; }

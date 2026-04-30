@@ -14,9 +14,17 @@ export default function Claim() {
   const [itemDetails, setItemDetails] = useState(null);
   
   const location = useLocation();
-
+useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => {
+        setMessage("");
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
   // ✅ URL se item ID extract karna aur auto-fill karna
   useEffect(() => {
+    
     const urlParams = new URLSearchParams(location.search);
     const itemIdFromUrl = urlParams.get('itemId');
     
@@ -189,7 +197,7 @@ export default function Claim() {
       <h2>Claim & Verification</h2>
 
       {message && (
-        <div className={`notice ${message.includes('✅') ? 'success' : 'error'}`}>
+        <div className={`claim-notice ${message.includes('✅') ? 'success' : 'error'}`}>
           {message}
         </div>
       )}

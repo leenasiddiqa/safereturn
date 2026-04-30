@@ -13,14 +13,16 @@
   margin-bottom: 24px;
 }
 
-.notice {
-  background: #e6f4ea;
-  color: #2e7d32;
+.claim-notice {
+  background: #e68a62;
+  color: #fff !important;
   padding: 12px 16px;
   border-radius: 8px;
   margin-bottom: 20px;
-  font-size: 14px;
+  font-size: 14px !important;
   border-left: 4px solid #2e7d32;
+  font-weight: 500 !important;
+  text-align: center;
 }
 
 .claim-form label {
@@ -41,7 +43,7 @@
   font-size: 14px;
   outline: none;
   transition: border-color 0.2s ease;
-  background-color: #f0f4f8;
+  background-color: #fff;
   color: #2c3e50;
 }
 
@@ -70,5 +72,5 @@
 }
 
 .claim-form button:hover {
-  background: #0d2547;
+  background: #e68a62;
 }

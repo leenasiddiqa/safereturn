@@ -8,11 +8,10 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const { userId, all } = req.query;
-    
     // Agar all=true hai to saare items, warna sirf specific user ke
     const query = (all === 'true') ? {} : (userId ? { userId: userId } : {});
-    
-    const foundItems = await FoundItem.find(query).sort({ dateReported: -1 });
+    const finalQuery = (all === 'true') ? query : { ...query, claimed: false };
+    const foundItems = await FoundItem.find(all === 'true' ? query : finalQuery).sort({ dateReported: -1 });
     res.json(foundItems);
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });

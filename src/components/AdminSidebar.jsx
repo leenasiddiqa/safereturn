@@ -28,6 +28,9 @@ const handleLogout = () => {
         <Link to="/admin/donation" className="admin-link">
           💰 Donations
         </Link>
+        <Link to="/admin/feedback" className="admin-link">
+  💬 Feedback
+</Link>
         <button className="admin-logout" onClick={handleLogout}>
           🚪 Logout
         </button>

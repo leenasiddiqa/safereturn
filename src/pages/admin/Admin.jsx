@@ -165,9 +165,6 @@ export default function Admin() {
       <main className="admin-main">
         <div className="admin-header">
           <h2 className="admin-title">Admin Dashboard</h2>
-          <button className="refresh-btn" onClick={fetchRealDataFromBackend}>
-            ↻ Refresh
-          </button>
         </div>
 
         {/* STATS ROW */}

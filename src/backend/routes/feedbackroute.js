@@ -6,22 +6,23 @@ const router = express.Router();
 // ✅ New feedback save karna
 router.post("/", async (req, res) => {
   try {
-    const { type, message } = req.body;
+    const { email, message, rating } = req.body;
     
-    console.log("📥 Received feedback data:", { type, message });
-
-    if (!type || !message) {
-      return res.status(400).json({
-        success: false,
-        message: "Type and message are required"
+    console.log("📥 Received feedback data:", { email, message, rating });
+    
+    if (!email || !message) {
+      return res.status(400).json({ 
+        success: false, 
+        message: "Email and message are required" 
       });
     }
-
-    const newFeedback = new Feedback({
-      type: type.trim(),
-      message: message.trim()
+    
+    const newFeedback = new Feedback({ 
+      email: email.trim(), 
+      message: message.trim(),
+      rating: rating || 5
     });
-
+    
     const savedFeedback = await newFeedback.save();
     
     console.log("✅ Feedback saved successfully:", savedFeedback._id);
@@ -45,11 +46,25 @@ router.post("/", async (req, res) => {
 // ✅ All feedback get karna (admin ke liye)
 router.get("/", async (req, res) => {
   try {
-    const feedbacks = await Feedback.find().sort({ submissionDate: -1 });
+    const feedbacks = await Feedback.find().sort({ createdAt: -1 });
     res.json(feedbacks);
   } catch (error) {
     console.error("❌ Error fetching feedback:", error);
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ 
+      success: false, 
+      message: error.message 
+    });
+  }
+});
+
+// ✅ Delete feedback (admin ke liye)
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Feedback.findByIdAndDelete(id);
+    res.json({ success: true, message: "Feedback deleted" });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 

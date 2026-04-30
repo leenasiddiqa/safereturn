@@ -18,7 +18,19 @@ router.post("/", async (req, res) => {
         message: "Claimant name, contact, and item ID are required"
       });
     }
+// ✅ Duplicate claim check
+const existingClaim = await Claim.findOne({ 
+  itemId: itemId,
+  claimantName: claimantName,
+  status: { $in: ["pending", "approved", "auto-approved"] }
+});
 
+if (existingClaim) {
+  return res.status(400).json({ 
+    success: false, 
+    message: "You have already claimed this item. Please wait for admin approval." 
+  });
+}
     // ✅ Fetch item to get isImportantDoc
     const foundItem = await FoundItem.findById(itemId);
     const lostItem = await LostItem.findById(itemId);
@@ -94,16 +106,34 @@ router.put("/:id", async (req, res) => {
 
     claim.status = status;
     const updatedClaim = await claim.save();
+   if (status === "approved") {
+      let item = await FoundItem.findById(claim.itemId);
+      if (!item) {
+        item = await LostItem.findById(claim.itemId);
+      }
+      
+      if (item) {
+        item.claimed = true;
+        await item.save();
+        console.log("✅ Item claimed status updated:", item._id);
+      }
+    }
 
-    console.log("✅ Claim updated successfully:", updatedClaim._id);
+    // ✅ If rejected, delete claim so user can claim again
+    if (status === "rejected") {
+      await Claim.findByIdAndDelete(id);
+      console.log("✅ Rejected claim deleted:", id);
+    }
+
+    console.log("✅ Claim updated successfully:", claim._id);
 
     res.json({
       success: true,
       message: "Claim status updated successfully",
-      claim: updatedClaim
+      claim: claim
     });
-
-  } catch (error) {
+  }
+   catch (error) {
     console.error("❌ Error updating claim:", error);
     res.status(500).json({
       success: false,

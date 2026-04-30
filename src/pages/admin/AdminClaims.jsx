@@ -93,7 +93,7 @@ export default function AdminClaims() {
         <h2 className="admin-title">Manage Claims</h2>
         
         {message && (
-          <div className={`notice ${messageType === 'success' ? 'success' : 'error'}`}>
+          <div className={`admin-notice ${messageType === 'success' ? 'success' : 'error'}`}>
             {message}
           </div>
         )}
