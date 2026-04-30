@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useAuth } from "../../AuthContext";  // ✅ ADD THIS
+import { useAuth } from "../../AuthContext"; 
 import "./Feedback.css";
 
 export default function Feedback() {
-  const { user } = useAuth();  // ✅ Now works
+  const { user } = useAuth();  
   const [feedbackForm, setFeedbackForm] = useState({
     message: ""
   });
@@ -34,7 +34,7 @@ export default function Feedback() {
     setMessage("");
     setMessageType("");
 
-    // ✅ Get email from logged-in user
+    // Get email from logged-in user
     const email = user?.username || user?.email;
 
     if (!email) {
@@ -45,7 +45,7 @@ export default function Feedback() {
 
     try {
       const feedbackData = {
-        email: email,  // ✅ Send email
+        email: email,  //  Send email
         message: feedbackForm.message.trim(),
         rating: 5
       };
