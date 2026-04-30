@@ -4,7 +4,7 @@ import Notification from "../models/notification.js";
 
 const router = express.Router();
 
-// ✅ Add new donation
+//  Add new donation
 router.post("/", async (req, res) => {
   try {
     const { userId, itemId, itemName, category, foundDate } = req.body;
@@ -50,7 +50,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// ✅ Get all donations
+//  Get all donations
 router.get("/", async (req, res) => {
   try {
     const donations = await Donation.find().sort({ donatedOn: -1 });
