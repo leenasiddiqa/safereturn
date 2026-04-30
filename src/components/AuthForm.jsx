@@ -15,7 +15,7 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
 
   const isSignup = mode === "signup";
 
-  // ---------- Input Formatting ----------
+  // Input Formatting
   function handleChange(e) {
     const { name, value } = e.target;
 
@@ -39,7 +39,7 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
     }
   }
 
-  // ---------- Validation ----------
+  // Validation 
   const sapidError =
     showErrors &&
     isSignup &&
@@ -47,7 +47,7 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
       ? "Enter your 5-digit or 6-digit SAP ID (e.g.46416 or f46416)"
       : "";
 
-  // Sirf email format check
+  // only check email format
   const usernameError = () => {
   if (!showErrors) return "";
   if (!form.username) return "";
@@ -71,7 +71,7 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
   return "";
 };
 
-  // SAP mismatch error (tab dikhega jab email format sahi ho)
+  // SAP mismatch error 
   const sapMismatchError = () => {
   if (!showErrors || !isSignup || !form.username || !form.sapid) return "";
   
@@ -99,7 +99,7 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
   return "";
 };
 
-  // Email field ke liye final error (pehle format error, phir mismatch error)
+  // Email field final error - combines username format and SAP mismatch errors
   const emailError = usernameError() || sapMismatchError();
 
 const passwordError = () => {
@@ -111,7 +111,7 @@ const passwordError = () => {
     return "Use at least 8 characters";
   }
   
-  // Letters check (A-Z or a-z)
+  // Letters check 
   if (!/[A-Za-z]/.test(form.password)) {
     return "Password must contain at least one letter";
   }
