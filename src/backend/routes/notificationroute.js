@@ -3,7 +3,7 @@ import Notification from "../models/notification.js";
 
 const router = express.Router();
 
-// ✅ Create new notification (no duplicates)
+//  Create new notification 
 router.post("/", async (req, res) => {
   try {
     const { userId, type, message, relatedItemId } = req.body;
@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ success: false, message: "User ID and message required" });
     }
 
-    // ✅ Check if a similar notification already exists
+    //  Check if a similar notification already exists
     const existingNotification = await Notification.findOne({
       userId,
       type: type || "general",
@@ -41,7 +41,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// ✅ Get all notifications
+//  Get all notifications
 router.get("/all-notifications", async (req, res) => {
   try {
     const notifications = await Notification.find().sort({ createdAt: -1 });
@@ -51,7 +51,7 @@ router.get("/all-notifications", async (req, res) => {
   }
 });
 
-// ✅ Mark notification as read
+//  Mark notification as read
 router.put("/:id/read", async (req, res) => {
   try {
     const { id } = req.params;
