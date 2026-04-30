@@ -13,7 +13,5 @@ const lostSchema = new mongoose.Schema({
   dateReported: { type: Date, default: Date.now },
   status: { type: String, default: "active" },
   resolved: { type: Boolean, default: false },
-  // type field nahi hoga kyunki yeh specifically lost items ke liye hai
 });
-
 export default mongoose.model("Lost", lostSchema);
