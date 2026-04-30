@@ -32,7 +32,7 @@ export default function Login() {
       role: "admin"
     };
     
-    // ✅ Use sessionStorage (not localStorage)
+    // sessionStorage for admin user
     sessionStorage.setItem('admin', JSON.stringify(adminUser));
     
     setSuccess("✅ Admin Login successful!");
@@ -115,7 +115,7 @@ export default function Login() {
           </label>
         </div>
 
-        {/* Mode Indicator */}
+       
         <div style={{ textAlign: "center", marginBottom: "20px" }}>
           <span style={{ 
             background: "#e68a62", 
@@ -129,7 +129,7 @@ export default function Login() {
           </span>
         </div>
 
-        {/* ✅ Success & Error Messages - SAME STYLE */}
+        {/*  Success & Error Messages  */}
         {success && (
           <div className="notice success" style={{ 
             backgroundColor: "#e68a62", 
