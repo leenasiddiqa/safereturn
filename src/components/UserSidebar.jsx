@@ -7,7 +7,6 @@ export default function UserSidebar({ isOpen, onClose }) {
 
   return (
     <>
-      {/* Overlay to close when clicking outside */}
       {isOpen && <div className="sidebar-overlay" onClick={onClose}></div>}
 
       <aside className={`user-sidebar ${isOpen ? "open" : ""}`}>
