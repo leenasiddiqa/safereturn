@@ -6,23 +6,23 @@ import Signup from "../models/signupp.js";
 
 const router = express.Router();
 
-// Email config (APNA EMAIL AUR PASSWORD DALO)
+// enter sender's email and password
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "irtazamuhammad030@gmail.com",    // ✅ APNA EMAIL DALO
-    pass: "myat dekx pwch nzjz"        // ✅ APNA APP PASSWORD DALO
+    user: "irtazamuhammad030@gmail.com",    
+    pass: "myat dekx pwch nzjz"        
   }
 });
 
-// 📧 Send OTP for Signup
+//  Send OTP for Signup
 router.post("/send-signup-otp", async (req, res) => {
   console.log("📨 FULL REQUEST BODY:", req.body);
   
   const { email } = req.body;
 console.log("📧 EMAIL VALUE:", email); 
   try {
-    // Check karo email already exist to nahi karta
+    // Check email exists or not
     const existingUser = await Signup.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ success: false, message: "Email already registered" });
@@ -37,7 +37,7 @@ console.log("📧 EMAIL VALUE:", email);
     );
 
     await transporter.sendMail({
-      from: "tumhara_email@gmail.com",
+      from: "irtazamuhammad030@gmail.com",
       to: email,
       subject: "Verify Your Email - OTP",
       text: `Your OTP for signup is: ${otp}\nIt will expire in 5 minutes.`
@@ -50,7 +50,7 @@ console.log("📧 EMAIL VALUE:", email);
   }
 });
 
-// ✅ Verify OTP and complete signup
+//  Verify OTP and complete signup
 router.post("/verify-signup-otp", async (req, res) => {
   const { email, otp, username, password, name, cnic, phone } = req.body;
 
@@ -60,7 +60,7 @@ router.post("/verify-signup-otp", async (req, res) => {
       return res.status(400).json({ success: false, message: "Invalid or expired OTP" });
     }
 
-    // OTP delete karo
+    // OTP delete 
     await OTP.deleteOne({ email });
 const sapidValue = email.split('@')[0];
     // User create karo
