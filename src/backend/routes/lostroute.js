@@ -4,12 +4,12 @@ import History from "../models/History.js";
 
 const router = express.Router();
 
-// ✅ GET ALL LOST ITEMS
+//  GET ALL LOST ITEMS
 router.get("/", async (req, res) => {
   try {
     const { userId, all } = req.query;
     
-    // Agar all=true hai to saare items, warna sirf specific user ke
+    // if all=true then show all items,otherwise show user specific items
     const query = (all === 'true') ? {} : (userId ? { userId: userId } : {});
     
     const lostItems = await LostItem.find(query).sort({ dateReported: -1 });
@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// ✅ POST NEW LOST ITEM
+//  POST NEW LOST ITEM
 router.post("/", async (req, res) => {
   try {
     const { userId, name, brand, category, description, location, hiddenHints, image, isImportantDoc  } = req.body;
@@ -52,7 +52,7 @@ router.post("/", async (req, res) => {
 
     const savedItem = await newLost.save();
 
-    // ✅ AUTOMATICALLY CREATE HISTORY ENTRY
+    //  AUTOMATICALLY CREATE HISTORY ENTRY
     const historyEntry = new History({
       userId: "anonymous",
       itemId: savedItem._id,
@@ -80,7 +80,7 @@ router.post("/", async (req, res) => {
     });
   }
 });
-// ✅ UPDATE lost item (for resolved status)
+//  UPDATE lost item 
 router.put("/:id", async (req, res) => {
   try {
     const { resolved, status } = req.body;
