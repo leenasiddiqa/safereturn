@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate, useLocation,Link,useNavigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./AuthContext";
-import { StoreProvider } from "./StoreContext"; // ✅ ADD THIS IMPORT
+import { StoreProvider } from "./StoreContext"; 
 import NavBar from "./components/NavBar";
 import Home from "./pages/user/Home";
 import Landing from "./pages/user/Landing";
@@ -20,12 +20,12 @@ import Matches from "./pages/user/Matches";
 import Notifications from "./pages/user/Notifications";
 import Admin from "./pages/admin/Admin";
 import AdminFeedback from "./pages/admin/AdminFeedback";
-// ✅ Protected Route Component
+//  Protected Route Component
 const ProtectedRoute = ({ children }) => {
-  const { user, loading } = useAuth(); // ✅ ADD loading
+  const { user, loading } = useAuth(); 
   const location = useLocation();
 
-  // ✅ Agar still loading hai, to loading show karo
+
   if (loading) {
     return (
       <div className="loading-container">
@@ -34,21 +34,21 @@ const ProtectedRoute = ({ children }) => {
     );
   }
 
-  // ✅ PUBLIC ROUTES - No login required
+  //  PUBLIC ROUTES - No login required
   const publicRoutes = ['/', '/login', '/signup', '/about'];
   
-  // ✅ Agar route public hai, allow without login
+  // if it is publicRoutes, then allow wothout login
   if (publicRoutes.includes(location.pathname)) {
     return children;
   }
 
-  // ✅ Agar user logged in nahi hai to login par redirect karo
+  // if user is not logged in then redirect to login page
   if (!user) {
     console.log("🚫 No user found, redirecting to login");
     return <Navigate to="/login" replace state={{ from: location }} />;
   }
 
-  // ✅ User logged in hai, allow access
+  // if logged in then allow access
   return children;
 };
 const hideFooterRoutes = ['/', '/login', '/signup', '/about'];
@@ -65,12 +65,12 @@ function AppContent() {
       <NavBar />
       <main className="main-content">
         <Routes>
-          {/* ✅ Public routes (without protection) */}
+          {/* Public routes */}
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/about" element={<About />} />
-          {/* ✅ Protected routes (require login) */}
+          {/* Protected routes (require login) */}
           <Route path="/dashboard" element={
             <ProtectedRoute>
               <Home />
@@ -192,7 +192,7 @@ function AppContent() {
 export default function App() {
   return (
     <AuthProvider>
-      <StoreProvider> {/* ✅ ADD StoreProvider HERE */}
+      <StoreProvider> 
         <AppContent />
       </StoreProvider>
     </AuthProvider>
