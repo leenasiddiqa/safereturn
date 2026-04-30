@@ -4,11 +4,11 @@ import History from "../models/History.js";
 
 const router = express.Router();
 
-// ✅ GET ALL FOUND ITEMS
+// GET ALL FOUND ITEMS
 router.get("/", async (req, res) => {
   try {
     const { userId, all } = req.query;
-    // Agar all=true hai to saare items, warna sirf specific user ke
+    // if all=true  then all items, otherwise only unclaimed items for the user
     const query = (all === 'true') ? {} : (userId ? { userId: userId } : {});
     const finalQuery = (all === 'true') ? query : { ...query, claimed: false };
     const foundItems = await FoundItem.find(all === 'true' ? query : finalQuery).sort({ dateReported: -1 });
@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// ✅ POST NEW FOUND ITEM
+//  POST NEW FOUND ITEM
 router.post("/", async (req, res) => {
   try {
     const {userId, name, brand, category, description, location, isImportantDoc, hiddenHints, image } = req.body;
@@ -42,7 +42,7 @@ const isImportant = isImportantDoc === true || isImportantDoc === "true";
 
     const savedItem = await newFound.save();
 
-    // ✅ AUTOMATICALLY CREATE HISTORY ENTRY
+    //  AUTOMATICALLY CREATE HISTORY ENTRY
     const historyEntry = new History({
       userId: userId,
       itemId: savedItem._id,
@@ -70,7 +70,7 @@ const isImportant = isImportantDoc === true || isImportantDoc === "true";
     });
   }
 });
-// ✅ UPDATE found item (for resolved status)
+//  UPDATE found item (for resolved status)
 router.put("/:id", async (req, res) => {
   try {
     const { resolved, status } = req.body;
