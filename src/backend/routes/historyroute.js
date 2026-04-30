@@ -1,10 +1,9 @@
-// routes/historyroute.js - COMPLETE CODE
 import express from "express";
 import History from "../models/History.js";
 
 const router = express.Router();
 
-// ✅ GET ALL HISTORY (Frontend ke liye)
+// GET ALL HISTORY for frontend
 router.get("/", async (req, res) => {
   try {
     const { userId } = req.query;
@@ -20,14 +19,14 @@ router.get("/", async (req, res) => {
   }
 });
 
-// ✅ GET USER SPECIFIC HISTORY
+// GET USER SPECIFIC HISTORY
 router.get("/user/:userId", async (req, res) => {
   try {
     const { userId } = req.params;
 
     const userHistory = await History.find({ userId }).sort({ createdAt: -1 });
 
-    res.json(userHistory); // ✅ Direct array
+    res.json(userHistory); 
 
   } catch (error) {
     console.error("❌ Error fetching user history:", error);
@@ -38,7 +37,7 @@ router.get("/user/:userId", async (req, res) => {
   }
 });
 
-// ✅ ADD TO HISTORY
+//  ADD TO HISTORY
 router.post("/", async (req, res) => {
   try {
     const { userId, itemId, itemName, category, type, action } = req.body;
