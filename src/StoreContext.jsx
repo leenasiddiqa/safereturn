@@ -135,7 +135,7 @@ export function StoreProvider({ children }) {
   const finalizeClaim = (claimId) => dispatch({ type: "FINALIZE_CLAIM", claimId });
   const autoProcessAging = () => dispatch({ type: "AUTO_PROCESS_AGING" });
 
-  // ✅ Refresh items from localStorage
+  // Refresh items from localStorage
   const refreshItems = () => {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
@@ -144,7 +144,7 @@ export function StoreProvider({ children }) {
     }
   };
 
-  // Matching logic (pure function)
+  // Matching logic for lost items
   const searchPotentialMatches = (item) => {
     const tokens = (item.name + " " + item.brand)
       .toLowerCase()
@@ -178,7 +178,7 @@ export function StoreProvider({ children }) {
         finalizeClaim,
         autoProcessAging,
         searchPotentialMatches,
-        refreshItems,  // ✅ EXPORT refreshItems
+        refreshItems,  
       }}
     >
       {children}

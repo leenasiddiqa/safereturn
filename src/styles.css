@@ -1,45 +1,39 @@
-/* 60-30-10 color rule: 60% #11315B, 30% #fff, 10% #E68A62 */
 :root {
-  --bg: #fff;            /* 60%: main background (now white) */
-  --panel: #11315B;      /* 30%: panels, cards, forms (now blue) */
-  --text: #11315B;       /* main text color on white */
-  --muted: #6b7a99;      /* muted text on white */
-  --brand: #E68A62;      /* 10%: accent color */
-  --accent: #E68A62;
-  --warn: #E68A62;
+  --bg: #fff;
+  --panel: #11315B;
+  --text: #11315B;
+  --muted: #6b7a99;
+  --brand: #E68A62;
 }
+
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-html,
-body,
-#root {
+
+html, body, #root {
   height: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
 }
-}
-/* Container stays on bg, panels/cards are white */
 .container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background: var(--bg);
 }
+
 main {
-  flex: 1 0 auto;
-  width: 100vw;
-  margin: 0;
-  padding: 0;
+  flex: 1;
+  width: 100%;
 }
+
+
 .footer {
   flex-shrink: 0;
   padding: 16px;
@@ -48,6 +42,7 @@ main {
   background: var(--panel);
   border-top: 2px solid var(--brand);
 }
+
 
 .navbar {
   display: flex;
@@ -60,12 +55,13 @@ main {
   top: 0;
   z-index: 10;
 }
+
 .navbar .brand {
   font-weight: 800;
-  letter-spacing: 0.5px;
   color: var(--brand);
   font-size: 22px;
 }
+
 .navbar nav a {
   color: #fff;
   margin-left: 16px;
@@ -74,25 +70,26 @@ main {
   border-radius: 8px;
   transition: 0.2s;
 }
-.navbar nav a.active,
-.navbar nav a:hover {
+
+.navbar nav a:hover,
+.navbar nav a.active {
   background: var(--brand);
   color: var(--panel);
 }
 
-h1,
-h2,
-h3 {
+
+h1, h2, h3 {
   margin: 8px 0 12px;
 }
-  color: var(--bg);
-}
+
+
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
   margin-top: 16px;
 }
+
 .card {
   display: block;
   padding: 18px;
@@ -104,11 +101,12 @@ h3 {
   font-weight: 600;
   transition: 0.2s;
 }
+
 .card:hover {
-  border-color: var(--brand);
   background: var(--brand);
   color: var(--panel);
 }
+
 
 .form {
   display: grid;
@@ -119,46 +117,55 @@ h3 {
   padding: 16px;
   color: #fff;
 }
-.form .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
-}
-.form .grid2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-  display: grid;
-  gap: 6px;
-  font-size: 14px;
-  color: var(--bg);
-}
+
+.form input,
+.form select,
+.form textarea {
   background: #fff;
-  color: var(--bg);
+  color: var(--text);
   border: 1.5px solid var(--brand);
   border-radius: 8px;
   padding: 10px;
 }
-textarea {
+
+.form textarea {
   resize: vertical;
 }
+
+.form button {
   background: var(--brand);
   color: #fff;
-  border: 0;
+  border: none;
   padding: 10px 14px;
   font-weight: 700;
   border-radius: 8px;
   cursor: pointer;
   transition: 0.2s;
 }
+
+.form button:hover {
   background: #fff;
   color: var(--brand);
 }
+
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
 
 .panel {
   background: var(--panel);
@@ -168,11 +175,8 @@ button:disabled {
   margin-top: 16px;
   color: #fff;
 }
-.grid2 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 16px;
-}
+
+
 .notice {
   background: var(--brand);
   border: 1.5px solid var(--bg);
@@ -180,28 +184,36 @@ button:disabled {
   border-radius: 8px;
   color: #fff;
 }
+
+
 .list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 .list li {
   padding: 8px 4px;
   border-bottom: 1px solid var(--brand);
 }
+
 .list li:last-child {
-  border-bottom: 0;
+  border-bottom: none;
 }
+
+
 .inline {
   display: flex;
   align-items: center;
   gap: 8px;
 }
+
 .actions {
   display: flex;
   gap: 8px;
   margin-top: 8px;
 }
+
 .tag {
   background: var(--brand);
   color: #fff;
@@ -209,23 +221,19 @@ button:disabled {
   border-radius: 6px;
 }
 
-/* (login styles removed - reverted) */
 
-/* Override AuthForm wrapper when used on the login page */
 .login-form .form {
   background: transparent !important;
   border: none !important;
-  box-shadow: none !important;
   padding: 0 !important;
-  color: var(--text) !important;
 }
 
-/* Ensure inputs/buttons inside the login-form keep readable styles */
 .login-form .form input {
   background: #fff !important;
   color: var(--text) !important;
   border: 1px solid #e0e0e0 !important;
 }
+
 .login-form .form button {
   background: #22426d !important;
   color: #fff !important;
