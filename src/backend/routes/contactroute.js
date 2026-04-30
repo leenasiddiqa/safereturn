@@ -3,7 +3,7 @@ import Contact from "../models/contact.js";
 
 const router = express.Router();
 
-// ✅ New contact message save karna
+// New contact message 
 router.post("/", async (req, res) => {
   try {
     const { email, message } = req.body;
@@ -42,7 +42,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// ✅ All contact messages get karna (admin ke liye)
+// get all contact messages for admin
 router.get("/", async (req, res) => {
   try {
     const contacts = await Contact.find().sort({ contactDate: -1 });
