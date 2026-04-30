@@ -11,7 +11,7 @@ export default function Matches() {
     fetchRealMatches();
   }, []);
 
-  // ✅ Found owner ko notification (match nahi dikhega)
+  // notify found owner about potential match
   const notifyFoundOwner = async (userId, itemName) => {
     try {
       await fetch("http://localhost:5000/api/notifications", {
@@ -45,7 +45,7 @@ export default function Matches() {
         return;
       }
       
-      // ✅ CROSS-USER MATCHING: Saare items fetch karo (bina userId filter ke)
+      // Fetch all lost and found items (for matching)
       const [lostResponse, foundResponse] = await Promise.all([
         fetch(`http://localhost:5000/api/items/lost`),
         fetch(`http://localhost:5000/api/items/found`)
@@ -57,18 +57,18 @@ export default function Matches() {
       console.log("📦 All Lost items:", allLostItems.length);
       console.log("📦 All Found items:", allFoundItems.length);
 
-      // ✅ Sirf current user ki LOST items ke matches dikhao
+      // only match items for currect user
       const realMatches = [];
       
       for (const lostItem of allLostItems) {
-        // Sirf current user ki lost items
+        // lost items for current user
         if (lostItem.userId !== userId) continue;
         
         for (const foundItem of allFoundItems) {
-          // Found item claimed nahi hona chahiye
+          // unclaimed found items only
           if (foundItem.claimed) continue;
           
-          // ✅ MATCH CHECK: Name, Category, Location
+          //  MATCH CHECK: Name, Category, Location
           const isMatch = 
             lostItem.name && foundItem.name && 
             lostItem.name.toLowerCase() === foundItem.name.toLowerCase() &&
@@ -78,7 +78,7 @@ export default function Matches() {
           if (isMatch) {
             console.log("✅ MATCH FOUND for lost item:", lostItem.name);
             
-            // ✅ Important document match resolved — mark as resolved
+            //  Important document match  
             if (lostItem.isImportantDoc || foundItem.isImportantDoc) {
               await fetch(`http://localhost:5000/api/items/lost/${lostItem._id}`, {
                 method: "PUT",
@@ -103,7 +103,7 @@ export default function Matches() {
               lostItemId: lostItem._id
             });
             
-            // ✅ Found owner ko notification bhejo (match nahi dikhega)
+            // notify to found owner
             notifyFoundOwner(foundItem.userId, foundItem.name);
           }
         }
@@ -120,7 +120,7 @@ export default function Matches() {
     }
   };
 
-  // ✅ Claim button handler
+  //  Claim button handler
   const handleClaimClick = (itemId) => {
     navigate(`/claim?itemId=${itemId}`);
   };
