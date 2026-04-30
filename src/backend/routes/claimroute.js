@@ -5,7 +5,7 @@ import LostItem from "../models/lost.js";
 
 const router = express.Router();
 
-// ✅ New claim create karna
+// create new claim
 router.post("/", async (req, res) => {
   try {
     const { itemId, claimantName, contact, providedHints, itemName, itemBrand, itemCategory, itemLocation, itemType, status } = req.body;
@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
         message: "Claimant name, contact, and item ID are required"
       });
     }
-// ✅ Duplicate claim check
+//  Duplicate claim check
 const existingClaim = await Claim.findOne({ 
   itemId: itemId,
   claimantName: claimantName,
@@ -31,7 +31,7 @@ if (existingClaim) {
     message: "You have already claimed this item. Please wait for admin approval." 
   });
 }
-    // ✅ Fetch item to get isImportantDoc
+    //  Fetch item to get isImportantDoc
     const foundItem = await FoundItem.findById(itemId);
     const lostItem = await LostItem.findById(itemId);
     const item = foundItem || lostItem;
@@ -70,7 +70,7 @@ if (existingClaim) {
   }
 });
 
-// ✅ All claims get karna (admin ke liye)
+// Get all claims for admin
 router.get("/", async (req, res) => {
   try {
     const claims = await Claim.find().sort({ claimDate: -1 });
@@ -81,7 +81,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// ✅ Claim update karna
+// updare claim
 router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -119,7 +119,7 @@ router.put("/:id", async (req, res) => {
       }
     }
 
-    // ✅ If rejected, delete claim so user can claim again
+    //  If rejected, delete claim so user can claim again
     if (status === "rejected") {
       await Claim.findByIdAndDelete(id);
       console.log("✅ Rejected claim deleted:", id);
