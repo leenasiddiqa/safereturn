@@ -117,7 +117,7 @@ export default function AdminClaims() {
 >
   
   
-  {/* ✅ WHITE BOX INSIDE - JAISA IMPORTANT DOCUMENTS MEIN HAI */}
+  {/*  WHITE BOX INSIDE  */}
   <div style={{
     backgroundColor: "#fff",
     padding: "15px",
@@ -156,11 +156,11 @@ export default function AdminClaims() {
     </div>
   </div>
 </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </main>
-    </div>
+ ))}
+</ul>
+)}
+</div>
+</main>
+</div>
   );
 }
