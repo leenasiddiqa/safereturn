@@ -6,7 +6,7 @@ export default function ItemForm({ form, setForm, onSubmit, mode = "lost" }) {
   const [showErrors, setShowErrors] = useState(false);
   const [aiLoading, setAiLoading] = useState(false);
 
-  // ✅ AI IMAGE ANALYSIS - FILLS ALL FIELDS
+  //  AI IMAGE ANALYSIS - FILLS ALL FIELDS
   async function handleFile(e) {
     const file = e.target.files[0];
     if (!file) return;
@@ -64,7 +64,7 @@ export default function ItemForm({ form, setForm, onSubmit, mode = "lost" }) {
     }
   }
 
-  // ✅ CALL BACKEND AI API
+  //  CALL BACKEND AI API
   async function getAIAnalysis(file) {
     try {
       // Convert file to base64
@@ -107,7 +107,7 @@ export default function ItemForm({ form, setForm, onSubmit, mode = "lost" }) {
     }
   }
 
-  // Rest of your existing functions...
+
   function handleBlur(e) {
     setTouched({ ...touched, [e.target.name]: true });
   }
@@ -123,7 +123,7 @@ export default function ItemForm({ form, setForm, onSubmit, mode = "lost" }) {
     }
   }
 
-  // Function to validate form (for parent component)
+  // validate form 
   const validateForm = () => {
     setShowErrors(true);
     return form.name && form.name.trim().length >= 10 &&
@@ -133,7 +133,7 @@ export default function ItemForm({ form, setForm, onSubmit, mode = "lost" }) {
            form.description && form.description.trim().length >= 15;
   };
 
-  // ✅ COMPREHENSIVE VALIDATION FUNCTIONS (only show after submit attempt)
+  //   VALIDATION (only show after submit attempt)
   const nameError = 
     showErrors && (!form.name || form.name.trim().length < 10)
       ? "Item name must be at least 10-15 characters" 
@@ -258,7 +258,6 @@ export default function ItemForm({ form, setForm, onSubmit, mode = "lost" }) {
 </label>
         </div>
 
-        {/* Right Column */}
         <div className="right-column">
           <label>
             Description 
