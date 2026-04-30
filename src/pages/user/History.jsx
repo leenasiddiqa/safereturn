@@ -10,7 +10,7 @@ export default function History() {
     fetchAllHistoryData();
   }, []);
 
-  // ✅ YE NAYA FUNCTION ADD KARO - FRONTEND DATA KO BACKEND MEIN SAVE KAREGA
+  // Save history to backend
   const saveToBackendHistory = async (data, type) => {
     try {
       const response = await fetch("http://localhost:5000/api/history?userId=${currentUser._id}", {
@@ -40,7 +40,7 @@ export default function History() {
   try {
     console.log("📊 Fetching history data...");
     
-    // ✅ Get current user
+    //  Get current user
     const user = JSON.parse(localStorage.getItem("user") || "{}");
     const userId = user._id || user.id;
     
@@ -50,7 +50,7 @@ export default function History() {
       return;
     }
     
-    // ✅ Fetch only current user's items
+    //  Fetch only current user's items
     const foundItemsResponse = await fetch(`http://localhost:5000/api/items/found?userId=${userId}`);
     const claimsResponse = await fetch(`http://localhost:5000/api/claims?userId=${userId}`);
     const lostItemsResponse = await fetch(`http://localhost:5000/api/items/lost?userId=${userId}`);
@@ -74,7 +74,7 @@ export default function History() {
   }
 };
 
-  // ✅ Format date function
+  //  Format date 
   const formatDate = (dateString) => {
     if (!dateString) return 'N/A';
     try {
@@ -84,7 +84,7 @@ export default function History() {
     }
   };
 
-  // ✅ Get status display text
+  //  Get status display text
   const getStatusText = (item, type) => {
     if (type === 'found') {
       return item.claimed ? 'Claimed' : 'Not Claimed';
@@ -98,7 +98,7 @@ export default function History() {
     return 'Unknown';
   };
 
-  // ✅ Get field value safely
+  //  Get field value 
   const getFieldValue = (item, fieldNames) => {
     for (let field of fieldNames) {
       if (item[field] !== undefined && item[field] !== null) {
@@ -146,7 +146,7 @@ export default function History() {
       </div>
 
       <div className="history-content">
-        {/* ✅ FOUND ITEMS TABLE */}
+        {/*  FOUND ITEMS TABLE */}
         {activeTab === "found" && (
           <table className="history-table">
             <thead>
@@ -177,7 +177,7 @@ export default function History() {
           </table>
         )}
 
-        {/* ✅ CLAIMS TABLE */}
+        {/*  CLAIMS TABLE */}
         {activeTab === "claims" && (
           <table className="history-table">
             <thead>
@@ -204,7 +204,7 @@ export default function History() {
           </table>
         )}
 
-        {/* ✅ LOST ITEMS TABLE */}
+        {/*  LOST ITEMS TABLE */}
         {activeTab === "lost" && (
           <table className="history-table">
             <thead>
