@@ -64,7 +64,6 @@
   height: 60px;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .about-header-content {
     flex-direction: column;
