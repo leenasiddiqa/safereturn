@@ -5,7 +5,6 @@
   font-family: "Inter", sans-serif;
 }
 
-/* ── Sidebar ── */
 .admin-sidebar {
   width: 220px;
   background-color: #0d2547;
@@ -69,7 +68,6 @@
   background-color: #993C1D;
 }
 
-/* ── Main Content ── */
 .admin-main {
   flex: 1;
   padding: 32px 36px;
@@ -106,7 +104,6 @@
   background-color: #f0f2f5;
 }
 
-/* ── Stats Row ── */
 .stats-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -141,7 +138,6 @@
   margin-top: 6px;
 }
 
-/* ── Urgent Banner ── */
 .important-docs-section {
   background: #FAEEDA;
   border: 1px solid #EF9F27;
@@ -180,7 +176,6 @@
   color: #2c2c2a;
 }
 
-/* ── Grid ── */
 .admin-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -188,7 +183,6 @@
   margin-bottom: 16px;
 }
 
-/* ── Panels ── */
 .admin-panel {
   background-color: #fff;
   padding: 20px;
@@ -227,7 +221,6 @@
   padding: 3px 10px;
 }
 
-/* ── Filter Buttons ── */
 .filter-buttons {
   display: flex;
   gap: 6px;
@@ -258,7 +251,6 @@
   border-color: #0d2547;
 }
 
-/* ── Lists ── */
 .admin-list {
   list-style: none;
   padding: 0;
@@ -286,7 +278,6 @@
   padding: 10px 0;
 }
 
-/* ── Claims ── */
 .claim-info {
   width: 100%;
 }
@@ -314,7 +305,7 @@
 .status-message.approved { background: #EAF3DE; color: #27500A; }
 .status-message.rejected { background: #FCEBEB; color: #791F1F; }
 
-/* ── Items ── */
+
 .items-section {
   margin-bottom: 8px;
 }
@@ -372,7 +363,6 @@
   font-weight: bold;
 }
 
-/* ── Logs ── */
 .logs {
   margin-top: 0;
 }
@@ -398,7 +388,6 @@
   color: #4a5568;
 }
 
-/* ── Responsive ── */
 @media (max-width: 900px) {
   .admin-grid { 
     grid-template-columns: 1fr; 
