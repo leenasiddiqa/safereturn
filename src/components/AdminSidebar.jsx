@@ -7,7 +7,7 @@ export default function AdminSidebar() {
   const navigate = useNavigate();
 const { logout } = useAuth(); 
 const handleLogout = () => {
-    logout();  // ✅ Clear localStorage and user state
+    logout();  //  Clear localStorage and user state
   };
   return (
     <aside className="admin-sidebar">
