@@ -1,4 +1,3 @@
-// models/donation.js - Ye model create karo agar nahi hai
 import mongoose from "mongoose";
 
 const donationSchema = new mongoose.Schema({
