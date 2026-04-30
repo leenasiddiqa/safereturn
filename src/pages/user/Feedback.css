@@ -97,7 +97,6 @@
   font-weight: bold;
  
 }
-/* Responsive */
 @media (max-width: 600px) {
   .feedback-container {
     padding: 30px 25px;
