@@ -16,7 +16,7 @@ export default function Signup() {
   const [tempFormData, setTempFormData] = useState(null);
   const [otp, setOtp] = useState("");
   const [otpError, setOtpError] = useState("");
-  // ✅ TIMER FOR AUTO-HIDE MESSAGES
+  //  TIMER FOR AUTO-HIDE MESSAGES
 useEffect(() => {
   if (success) {
     const timer = setTimeout(() => setSuccess(""), 3000);
@@ -37,24 +37,24 @@ useEffect(() => {
     return () => clearTimeout(timer);
   }
 }, [otpError]);
-  // Step 1: Send OTP with validation
+  //  Send OTP with validation
 const sendOTP = async (formData) => {
   const { username, sapid, password, name, phone } = formData;
   setLoading(true);
   setError("");
 
-  console.log("🔍 1. sendOTP called for:", username);  // ✅ YE DALO
+  console.log("🔍 1. sendOTP called for:", username); 
   
   try {
-    console.log("🔍 2. Calling check-email...");  // ✅ YE DALO
+    console.log("🔍 2. Calling check-email...");  
     const checkRes = await fetch("http://localhost:5000/api/signup/check-email", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: username })
     });
-    console.log("🔍 3. check-email response status:", checkRes.status);  // ✅ YE DALO
+    console.log("🔍 3. check-email response status:", checkRes.status); 
     const checkData = await checkRes.json();
-    console.log("🔍 4. checkData:", checkData);  // ✅ YE DALO
+    console.log("🔍 4. checkData:", checkData); 
     
     if (checkData.exists) {
       setError("Email already registered. Please use a different email.");
@@ -65,7 +65,7 @@ const sendOTP = async (formData) => {
     console.log("🔍 5. Check failed:", err);
   }
   
-    // ✅ 1. SAP ID validation
+    // SAP ID validation
     const sapidRegex = /^(?:f\d{5}|\d{5})$/;
     if (!sapidRegex.test(sapid)) {
       setError("SAP ID must be 5 digits (e.g., 46416) or f + 5 digits (e.g., f12345)");
@@ -73,11 +73,11 @@ const sendOTP = async (formData) => {
       return;
     }
     
-    // ========== ✅ UPDATED EMAIL VALIDATION (Student + Faculty) ==========
+    // UPDATED EMAIL VALIDATION (Student + Faculty)
     const isFacultySapId = sapid.startsWith('f');
 
     if (isFacultySapId) {
-      // Faculty: Sirf domain @riphah.edu.pk hona chahiye
+      // Faculty domain @riphah.edu.pk
       const facultyEmailRegex = /^[^\s@]+@riphah\.edu\.pk$/;
       if (!facultyEmailRegex.test(username)) {
         setError("Use your Riphah email: name@riphah.edu.pk");
@@ -86,7 +86,7 @@ const sendOTP = async (formData) => {
       }
       console.log("✅ Faculty email validation passed.");
     } else {
-      // Student: Exact match with sapid@students.riphah.edu.pk
+      // For Student: Exact match with sapid@students.riphah.edu.pk
       const studentEmailRegex = /^[^\s@]+@students\.riphah\.edu\.pk$/;
       if (!studentEmailRegex.test(username)) {
         setError("Use your Riphah student email: sapid@students.riphah.edu.pk");
@@ -102,16 +102,16 @@ const sendOTP = async (formData) => {
       }
       console.log("✅ Student email validation passed.");
     }
-    // ========== END OF UPDATED VALIDATION ==========
     
-    // ✅ 4. Name validation
+    
+    // Name validation
     if (!name || name.length < 2) {
       setError("Please enter your full name");
       setLoading(false);
       return;
     }
     
-    // ✅ 5. Phone validation
+    //  Phone validation
     const phoneRegex = /^\d{11}$/;
     if (!phoneRegex.test(phone)) {
       setError("Phone number must be 11 digits");
@@ -119,14 +119,14 @@ const sendOTP = async (formData) => {
       return;
     }
     
-   // ✅ 6. Password validation
+   //  Password validation
 if (!password) {
   setError("Password is required");
   setLoading(false);
   return;
 }
 
-    // ✅ Sab sahi hai — ab OTP bhejo
+    // send otp
     console.log("📧 Sending OTP to email:", username);
     
     setLoading(true);
@@ -154,7 +154,7 @@ if (!password) {
     }
   };
 
-  // Step 2: Verify OTP and complete signup
+  //  Verify OTP and complete signup
   const verifyOTPAndSignup = async () => {
      if (!otp || otp.trim() === "") {
     setOtpError("Please enter OTP");

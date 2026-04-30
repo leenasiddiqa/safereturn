@@ -91,7 +91,7 @@ export default function ProfilePage() {
     }
   };
 
-  // ✅ Direct delete - bina confirm box ke
+  //  Direct delete 
   const handleDelete = async () => {
     if (!authUser || !authUser.id) {
       setMessage("❌ User not logged in properly");
@@ -222,7 +222,7 @@ export default function ProfilePage() {
           )}
           <button 
             className="btn delete" 
-            onClick={handleDelete}  // ✅ Direct delete, no confirm box
+            onClick={handleDelete}  
             disabled={deleteLoading}
           >
             {deleteLoading ? "⏳ Deleting..." : "🗑️ Delete Account"}
