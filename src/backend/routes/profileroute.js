@@ -3,7 +3,7 @@ import Signup from "../models/signupp.js";
 
 const router = express.Router();
 
-// ✅ SIRF UPDATE ROUTE - Profile changes save karo signup database mein
+//UPDATE ROUTE - save profile changes in signup database
 router.put("/signups/:id", async (req, res) => {
   try {
     const { name, username, phone, address } = req.body;
@@ -12,7 +12,7 @@ router.put("/signups/:id", async (req, res) => {
     console.log("🔄 Updating profile in SIGNUP database for user:", userId);
     console.log("📝 Update data:", { name, username, phone, address });
     
-    // ✅ Directly update in Signup collection
+    //  Directly update in Signup collection
     const updatedUser = await Signup.findByIdAndUpdate(
       userId,
       {
@@ -46,14 +46,14 @@ router.put("/signups/:id", async (req, res) => {
     });
   }
 });
-// ✅ DELETE ROUTE - Account permanently delete karo
+//  DELETE ROUTE - Account permanently delete 
 router.delete("/signups/:id", async (req, res) => {
   try {
     const userId = req.params.id;
     
     console.log("🗑️ Deleting account from SIGNUP database for user:", userId);
     
-    // ✅ Directly delete from Signup collection
+    //  Directly delete from Signup collection
     const deletedUser = await Signup.findByIdAndDelete(userId);
 
     if (!deletedUser) {
