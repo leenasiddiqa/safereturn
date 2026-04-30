@@ -1,7 +1,7 @@
 .user-sidebar {
   position: fixed;
   top: 0;
-  left: -260px; /* hidden by default */
+  left: -260px; 
   width: 240px;
   height: 100vh;
   background-color: #11315b;
@@ -18,7 +18,7 @@
 }
 
 .user-sidebar.open {
-  left: 0; /* slide in from left */
+  left: 0;
 }
 
 .user-logo {
