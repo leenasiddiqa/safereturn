@@ -17,12 +17,12 @@ export default function Found() {
   });
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState(""); // ✅ Message state add ki
-  const [messageType, setMessageType] = useState(""); // ✅ success ya error ke liye
+  const [message, setMessage] = useState(""); 
+  const [messageType, setMessageType] = useState(""); 
 
   const saveToBackend = async (itemData) => {
     try {
-       // ✅ Get current user from localStorage
+       //  Get current user from localStorage
     const user = JSON.parse(localStorage.getItem("user") || "{}");
     const userId = user._id || user.id;  // Check karo konsa field hai
     
@@ -35,7 +35,7 @@ export default function Found() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-        userId: userId,  // ✅ ADD THIS
+        userId: userId,  
         ...itemData  }),
       });
 
@@ -55,8 +55,7 @@ export default function Found() {
       throw error;
     }
   };
-
-  // ✅ Show message function
+  //  Show message 
   const showMessage = (text, type) => {
     setMessage(text);
     setMessageType(type);
@@ -91,7 +90,7 @@ export default function Found() {
     try {
       const savedItem = await saveToBackend(formData);
       
-      // Get potential matches (lekin show nahi karenge)
+      // Get potential matches for this found item
       const item = { ...formData, type: "found", id: savedItem._id };
       const m = searchPotentialMatches(item);
       
@@ -131,7 +130,6 @@ export default function Found() {
       <div className="found-container">
         <h2>Report Found Item</h2>
 
-        {/* ✅ Custom Notification */}
         {message && (
           <div className={`notice ${messageType === 'success' ? 'success' : 'error'}`}>
             {message}
