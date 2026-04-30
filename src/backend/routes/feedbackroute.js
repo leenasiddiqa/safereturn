@@ -3,7 +3,7 @@ import Feedback from "../models/feedback.js";
 
 const router = express.Router();
 
-// ✅ New feedback save karna
+// save new feedback
 router.post("/", async (req, res) => {
   try {
     const { email, message, rating } = req.body;
@@ -43,7 +43,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// ✅ All feedback get karna (admin ke liye)
+// get all feedbacks
 router.get("/", async (req, res) => {
   try {
     const feedbacks = await Feedback.find().sort({ createdAt: -1 });
@@ -57,7 +57,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// ✅ Delete feedback (admin ke liye)
+//  Delete feedback for admin
 router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
