@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 
-// ✅ Import routes
+//  Import routes
 import loginRoutes from './routes/loginroute.js';
 import signupRoutes from './routes/signuproute.js';
 import foundRoutes from './routes/foundroute.js';
@@ -19,14 +19,14 @@ import otpRoute from "./routes/otproute.js";
 
 const app = express();
 
-// ✅ MIDDLEWARE - PEHLE LAGAO (ORDER MATTERS!)
-app.use(cors()); // CORS ki limit nahi hoti
+// MIDDLEWARE - for orderly processing of requests
+app.use(cors()); // cors have no limit
 
-// ✅ FIX: 100MB limit for JSON and URL encoded data
+// 100MB limit for JSON and URL encoded data
 app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({ extended: true, limit: '100mb' }));
 
-// ✅ Register routes
+//  Register routes
 app.use('/api/login', loginRoutes);
 app.use('/api/signup', signupRoutes);
 app.use('/api/items/found', foundRoutes);
@@ -41,12 +41,12 @@ app.use('/api/profile', profileRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/otp", otpRoute);
 
-// ✅ Test route
+//  Test route
 app.get('/api/test', (req, res) => {
   res.json({ message: 'Backend is working!' });
 });
 
-// ✅ Debug route
+//  Debug route
 app.get('/api/debug-histories', async (req, res) => {
   try {
     const History = (await import('./models/History.js')).default;
@@ -61,12 +61,12 @@ app.get('/api/debug-histories', async (req, res) => {
   }
 });
 
-// ✅ MongoDB connection
+//  MongoDB connection
 mongoose.connect("mongodb://127.0.0.1:27017/safereturn")
   .then(() => console.log("✅ MongoDB connected"))
   .catch(err => console.error("❌ MongoDB connection error:", err));
 
-// ✅ Server start
+//  Server start
 const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
