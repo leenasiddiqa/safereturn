@@ -82,18 +82,18 @@
 }
 
 .status.pending {
-  background-color: #facc15; /* yellow */
+  background-color: #facc15; 
   color: #333;
 }
 
 .status.matched {
-  background-color: #3b82f6; /* blue */
+  background-color: #3b82f6; 
 }
 
 .status.verified {
-  background-color: #16a34a; /* green */
+  background-color: #16a34a; 
 }
 
 .status.rejected {
-  background-color: #dc2626; /* red */
+  background-color: #dc2626; 
 }
