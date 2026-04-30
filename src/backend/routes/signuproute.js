@@ -3,13 +3,12 @@ import Signup from "../models/signupp.js";
 
 const router = express.Router();
 
-// ✅ Email validation function
+//  Email validation function
 const isValidRiphahEmail = (email) => {
   // Regex for sapid@students.riphah.edu.pk
   const riphahEmailRegex = /^\d+@students\.riphah\.edu\.pk$/;
   return riphahEmailRegex.test(email);
 };
-// Add this at the top with other routes
 router.post("/check-email", async (req, res) => {
   const { email } = req.body;
   try {
@@ -19,7 +18,7 @@ router.post("/check-email", async (req, res) => {
     res.json({ exists: false });
   }
 });
-// ✅ POST route - Signup with email validation
+// POST route - Signup with email validation
 router.post("/", async (req, res) => {
   const { sapid, username, password, name, phone } = req.body;
 
@@ -27,7 +26,7 @@ router.post("/", async (req, res) => {
     console.log("📝 Signup attempt for:", username);
     console.log("📦 Database:", "safereturn");
     
-    // ✅ CHECK 1: Email validation - Sirf Riphah email allowed
+    //  CHECK 1: Email validation - only riphah mail allowed
     if (!isValidRiphahEmail(username)) {
       console.log("❌ Invalid email format:", username);
       return res.status(400).json({
@@ -36,8 +35,8 @@ router.post("/", async (req, res) => {
       });
     }
     
-    // ✅ CHECK 2: SAP ID format validation (sapid email se match karna chahiye)
-    const emailSapid = username.split('@')[0]; // Email se sapid nikalna
+    //  CHECK 2: SAP ID format validation - match sap id with email sap id
+    const emailSapid = username.split('@')[0]; 
     if (emailSapid !== sapid) {
       console.log("❌ SAP ID mismatch:", { emailSapid, sapid });
       return res.status(400).json({
@@ -45,7 +44,7 @@ router.post("/", async (req, res) => {
         message: "SAP ID must match with email SAP ID"
       });
     }
-    // ✅ CHECK 2.5: SAP ID format validation (NEW)
+    //  CHECK 2.5: SAP ID format validation 
     const sapidFormatRegex = /^(?:f\d{5}|\d{5})$/;
     if (!sapidFormatRegex.test(sapid)) {
       return res.status(400).json({
@@ -53,7 +52,7 @@ router.post("/", async (req, res) => {
         message: "SAP ID must be 5 digits (e.g., 46416) OR 'f' followed by 5 digits (e.g., f12345)"
       });
     }
-    // ✅ CHECK 3: Check if SAP ID already exists
+    //  CHECK 3: Check if SAP ID already exists
     const existingSapId = await Signup.findOne({ sapid: sapid });
     if (existingSapId) {
       return res.status(400).json({
@@ -62,7 +61,7 @@ router.post("/", async (req, res) => {
       });
     }
     
-    // ✅ CHECK 4: Check if username/email already exists
+    // CHECK 4: Check if username/email already exists
     const existingUser = await Signup.findOne({ username });
     if (existingUser) {
       console.log("❌ Username exists in safereturn database");
@@ -72,7 +71,7 @@ router.post("/", async (req, res) => {
       });
     }
 
-    // ✅ Create and save new user
+    //  Create and save new user
     const newUser = new Signup({ sapid, username, password, name, phone });
     const savedUser = await newUser.save();
 
@@ -97,7 +96,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// ✅ PUT route - Update profile
+//  PUT route - Update profile
 router.put("/:id", async (req, res) => {
   console.log("🔄 PUT /:id route HIT!");
   console.log("📝 Request params:", req.params);
@@ -107,7 +106,7 @@ router.put("/:id", async (req, res) => {
     const { name, username, phone } = req.body;
     const userId = req.params.id;
     
-    // ✅ If email is being updated, validate it
+    //  If email is being updated, validate it
     if (username && !isValidRiphahEmail(username)) {
       return res.status(400).json({
         success: false,
@@ -149,7 +148,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// ✅ DELETE route - Delete account
+// DELETE route - Delete account
 router.delete("/:id", async (req, res) => {
   console.log("🗑️ DELETE /:id route HIT!");
   console.log("📝 Request params:", req.params);
@@ -190,7 +189,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// ✅ TEST ROUTE
+//  TEST ROUTE
 router.get("/test", (req, res) => {
   console.log("✅ Test route hit!");
   res.json({ success: true, message: "Signup routes are working!" });
