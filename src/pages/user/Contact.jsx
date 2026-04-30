@@ -11,13 +11,13 @@ export default function Contact() {
   const [messageType, setMessageType] = useState("");
   const [touched, setTouched] = useState({ email: false, message: false }); // ✅ Touch tracking
 
-  // ✅ Email validation function
+  //Email validation 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
-  // ✅ Show message function
+  //  Show message 
   const showMessage = (text, type) => {
     setMessage(text);
     setMessageType(type);
@@ -29,12 +29,12 @@ export default function Contact() {
     }
   };
 
-  // ✅ Handle input changes with validation
+  // Handle input changes with validation
   const handleChange = (e) => {
     const { name, value } = e.target;
     
     if (name === 'message') {
-      // ✅ Message length limit (500 characters)
+      //  Message length limit (500 characters)
       const truncatedValue = value.slice(0, 500);
       setForm({ ...form, [name]: truncatedValue });
     } else {
@@ -42,16 +42,16 @@ export default function Contact() {
     }
   };
 
-  // ✅ Handle blur for validation
+  //  Handle blur for validation
   const handleBlur = (e) => {
     setTouched({ ...touched, [e.target.name]: true });
   };
 
-  // ✅ Backend mein contact message save karna
+  //  contact message saved in backend
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // ✅ Validation checks
+    //  Validation checks
     if (!form.email || !form.message) {
       showMessage("⚠️ Please fill all required fields.", "error");
       return;
@@ -91,8 +91,8 @@ export default function Contact() {
 
       if (result.success) {
         showMessage("✅ " + result.message, "success");
-        setForm({ email: "", message: "" }); // Form reset
-        setTouched({ email: false, message: false }); // Reset touched
+        setForm({ email: "", message: "" }); 
+        setTouched({ email: false, message: false }); 
       } else {
         showMessage("❌ " + result.message, "error");
       }
@@ -105,7 +105,7 @@ export default function Contact() {
     }
   };
 
-  // ✅ Validation errors (submit ke baad show honge)
+  //  Validation errors after submit
   const emailError = messageType === 'error' && !validateEmail(form.email) 
     ? "Please enter a valid email address" 
     : "";
@@ -127,7 +127,6 @@ export default function Contact() {
           .
         </p>
 
-        {/* ✅ Custom Notification */}
         {message && (
           <div className={`notice ${messageType === 'success' ? 'success' : 'error'}`}>
             {message}
