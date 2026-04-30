@@ -4,9 +4,9 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); // ✅ ADD loading state
+  const [loading, setLoading] = useState(true); 
 
-  // ✅ Load user from localStorage on app start
+  //  Load user from localStorage on web start
   useEffect(() => {
     const savedUser = localStorage.getItem('user');
     const savedAdmin = sessionStorage.getItem('admin');
@@ -53,7 +53,7 @@ export function AuthProvider({ children }) {
       console.log("📨 Login response:", data);
       
       if (data.success) {
-        // ✅ PROPERLY SAVE USER DATA
+        //  SAVE USER DATA
         const userData = {
           id: data.user.id,
           username: data.user.username,
@@ -132,13 +132,13 @@ export function AuthProvider({ children }) {
     console.log("✅ User logged out and removed from localStorage");
   }
 
-  // ✅ Return loading state in context value
+  
   const value = {
     user,
     login,
     signup,
     logout,
-    loading // ✅ ADD loading to context
+    loading 
   };
 
   return (
