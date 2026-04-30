@@ -22,7 +22,7 @@ useEffect(() => {
       return () => clearTimeout(timer);
     }
   }, [message]);
-  // ✅ URL se item ID extract karna aur auto-fill karna
+  // fetch itemid from URL
   useEffect(() => {
     
     const urlParams = new URLSearchParams(location.search);
@@ -34,7 +34,7 @@ useEffect(() => {
     }
   }, [location]);
 
-  // ✅ Item details fetch karna
+  // Fetch item details from both lost and found items
   const fetchItemDetails = async (itemId) => {
     try {
       const [lostResponse, foundResponse] = await Promise.all([
@@ -57,7 +57,7 @@ useEffect(() => {
     }
   };
 
-  // ✅ Backend mein claim save karna
+  //save claim to Backend
   const saveClaimToBackend = async (claimData) => {
     try {
       const response = await fetch("http://localhost:5000/api/claims", {
@@ -85,7 +85,7 @@ useEffect(() => {
     }
   };
 
-  // ✅ Contact validation function
+  // ✅ Contact validation 
   const validateContact = (contact) => {
     // Phone number check (exactly 11 digits)
     const phoneRegex = /^\d{11}$/;
@@ -95,7 +95,7 @@ useEffect(() => {
     return phoneRegex.test(contact) || emailRegex.test(contact);
   };
 
-  // ✅ Name validation - only letters and spaces, max 15 characters
+  //  Name validation - only letters and spaces, max 15 characters
   const handleNameChange = (value) => {
     // Allow only letters and spaces
     const filteredValue = value.replace(/[^a-zA-Z\s]/g, '');
@@ -107,7 +107,7 @@ useEffect(() => {
   async function submit(e) {
     e.preventDefault();
     
-    // ✅ Validation checks
+    //  Validation checks
     if (!form.itemId || !form.claimantName || !form.contact || !form.providedHints) {
       setMessage("⚠️ Please fill all required fields.");
       return;
@@ -127,7 +127,7 @@ useEffect(() => {
     setMessage("");
 
     try {
-      // ✅ Item details fetch karen
+      // fetch item details if not already fetched
       if (!itemDetails) {
         setMessage("❌ Item ID not found. Please check the ID and try again.");
         setLoading(false);
@@ -137,7 +137,7 @@ useEffect(() => {
       const item = itemDetails;
       const type = item.type || "found";
 
-      // ✅ Auto-approval logic
+      //  Auto-approval
       const hints = (item.hiddenHints || "")
         .toLowerCase()
         .split(/\W+/)
@@ -146,7 +146,7 @@ useEffect(() => {
       const autoApprove =
         hints.length > 0 && hints.every((h) => provided.includes(h));
 
-      // ✅ Claim data prepare karen
+      // prepare claim data
       const claimData = {
         claimantName: form.claimantName.trim(),
         contact: form.contact.trim(),
@@ -162,7 +162,7 @@ useEffect(() => {
 
       console.log("📤 Sending claim data:", claimData);
 
-      // ✅ Backend mein save karen
+      //save to backend
       const savedClaim = await saveClaimToBackend(claimData);
 
       if (autoApprove) {
@@ -175,7 +175,7 @@ useEffect(() => {
         );
       }
 
-      // ✅ Form reset karen
+      // reset form
       setForm({ 
         itemId: "", 
         claimantName: "", 
