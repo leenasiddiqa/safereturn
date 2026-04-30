@@ -12,16 +12,16 @@ export default function Lost() {
   });
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState(""); // ✅ Message state add ki
-  const [messageType, setMessageType] = useState(""); // ✅ success ya error ke liye
+  const [message, setMessage] = useState(""); 
+  const [messageType, setMessageType] = useState(""); 
 
   const saveToBackend = async (itemData) => {
     try {
-      // ✅ Get current user from localStorage
+      //  Get current user from localStorage
     const user = JSON.parse(localStorage.getItem("user") || "{}");
     const userId = user._id || user.id;
     
-    console.log("📤 Sending userId:", userId);  // ✅ Debug
+    console.log("📤 Sending userId:", userId);  
     
     if (!userId) {
       throw new Error("User not logged in");
@@ -32,7 +32,7 @@ export default function Lost() {
           "Content-Type": "application/json",
         },
        body: JSON.stringify({
-        userId: userId,  // ✅ Ab sahi hai
+        userId: userId,  
         ...itemData
       }),
       });
@@ -48,7 +48,7 @@ export default function Lost() {
     }
   };
 
-  // ✅ Show message function
+  //  Show message 
   const showMessage = (text, type) => {
     setMessage(text);
     setMessageType(type);
@@ -67,7 +67,7 @@ export default function Lost() {
       return;
     }
 
-    // ✅ Prepare form data for comparison
+    //  Prepare form data for comparison
     const formData = {
       name: form.name.trim(),
       brand: (form.brand || "").trim(),
@@ -79,7 +79,7 @@ export default function Lost() {
       isImportantDoc: form.isImportantDoc || false,
     };
 
-    // ✅ STRICT DUPLICATE CHECK
+    // DUPLICATE CHECK
     const isExactDuplicate = state.items.some(item => 
       item.type === "lost" && 
       item.name?.trim() === formData.name &&
@@ -124,7 +124,7 @@ export default function Lost() {
       <div className="lost-container">
         <h2>Report Lost Item</h2>
 
-        {/* ✅ Custom Notification */}
+       
         {message && (
           <div className={`notice ${messageType === 'success' ? 'success' : 'error'}`}>
             {message}
