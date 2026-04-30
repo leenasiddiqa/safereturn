@@ -8,12 +8,12 @@ export default function NavBar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation(); // ✅ Current location check karne ke liye
+  const location = useLocation(); 
 
-  // ✅ Check if current route is admin route
+  //  Check if current route is admin route
   const isAdminRoute = location.pathname.startsWith('/admin');
 
-  // ✅ Agar admin route hai toh NavBar mat show karo
+  // if route is an admin then dont show navbar
   if (isAdminRoute) {
     return null;
   }
@@ -34,7 +34,6 @@ export default function NavBar() {
         >
           ☰
         </button>
-        {/* Logo image */}
         <img
   src={logo}
   alt="SafeReturn Logo"
@@ -65,7 +64,7 @@ export default function NavBar() {
         )}
       </nav>
 
-      {/* UserSidebar - yeh bhi sirf user pages pe hi show hoga */}
+      {/* usersidebar shows only in user pages */}
       <UserSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
     </header>
   );
