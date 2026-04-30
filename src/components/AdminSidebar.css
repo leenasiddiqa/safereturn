@@ -23,10 +23,10 @@
   gap: 8px;
 }
 .admin-logo-img {
-  width: 60px;  /* adjust as needed */
+  width: 60px;  
   height: 60px;
   object-fit: cover; 
-  border-radius: 50%; /* optional rounded corners */
+  border-radius: 50%; 
   border: 2px solid #fff;
 }
 .admin-nav {
