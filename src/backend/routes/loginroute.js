@@ -8,7 +8,7 @@ router.post("/", async (req, res) => {
 
   try {
     console.log("🔐 Login attempt:", username);
- // ✅ ADMIN CREDENTIALS CHECK (Database check se PEHLE)
+ // check admin crdentials
     if (username === "admin123" && password === "admin") {
       console.log("✅ Admin login successful");
       return res.json({ 
@@ -18,11 +18,11 @@ router.post("/", async (req, res) => {
           id: "admin001",
           username: "admin123",
           name: "Administrator",
-          role: "admin"  // ✅ Important: role = "admin"
+          role: "admin"  
         }
       });
     }
-   // ✅ Normal user check - COMPLETE DATA RETURN KARO
+   //  Normal user check 
     const user = await Signup.findOne({ username, password });
     
     if (user) {
@@ -32,11 +32,11 @@ router.post("/", async (req, res) => {
         message: "Login successful!",
         user: {
           id: user._id,
-          sapid: user.sapid,      // ✅ SAP ID RETURN KARO
+          sapid: user.sapid,      
           username: user.username,
-          name: user.name,        // ✅ NAME RETURN KARO
-          cnic: user.cnic,        // ✅ CNIC RETURN KARO
-          phone: user.phone,      // ✅ PHONE RETURN KARO
+          name: user.name,        
+          cnic: user.cnic,        
+          phone: user.phone,     
           role: "user"
         }
       });
