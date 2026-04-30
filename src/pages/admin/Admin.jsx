@@ -167,7 +167,6 @@ export default function Admin() {
           <h2 className="admin-title">Admin Dashboard</h2>
         </div>
 
-        {/* STATS ROW */}
         <div className="stats-row">
           <div className="stat-card">
             <div className="stat-num">{uniqueClaims.length}</div>
@@ -190,8 +189,6 @@ export default function Admin() {
             <div className="stat-delta">Unclaimed</div>
           </div>
         </div>
-
-        {/* IMPORTANT DOCUMENTS SECTION */}
         {importantDocs.length > 0 && (
           <div className="important-docs-section">
             <h3 style={{ color: "#633806", display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
@@ -212,7 +209,6 @@ export default function Admin() {
         )}
 
         <div className="admin-grid">
-          {/* Claims Review */}
           <div className="admin-panel">
             <div className="panel-header">
               <h3>Claims Review</h3>
@@ -285,7 +281,6 @@ export default function Admin() {
             </ul>
           </div>
 
-          {/* ITEMS OVERVIEW */}
           <div className="admin-panel">
             <div className="panel-header">
               <h3>Items Overview</h3>
@@ -340,7 +335,6 @@ export default function Admin() {
           </div>
         </div>
 
-        {/* ACTIVITY LOGS */}
         <div className="admin-panel logs">
           <div className="panel-header">
             <h3>Activity Log</h3>
