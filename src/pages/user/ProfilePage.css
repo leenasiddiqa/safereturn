@@ -17,8 +17,8 @@
 .notice {
   padding: 12px 16px;
   border-radius: 6px;
-  margin-bottom: 20px; /* 👈 added spacing from text */
-  margin-top: -10px;   /* 👈 slightly move it up */
+  margin-bottom: 20px; 
+  margin-top: -10px;   
   font-size: 15px;
   text-align: center;
   font-weight: 500;
@@ -27,14 +27,14 @@
 }
 
 .notice.success {
-  background-color: #e68a62; /* orange same as login */
+  background-color: #e68a62; 
 }
 
 .notice.error {
-  background-color: #e68a62; /* red for error */
+  background-color: #e68a62;
 }
 
-/* 🔄 Smooth appearance animation */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -129,7 +129,7 @@
   background-color: #e68a62;
 }
 
-/* Responsive */
+
 @media (max-width: 480px) {
   .profile-card {
     width: 90%;
@@ -139,7 +139,7 @@
 
 .field-note {
   display: block;
-  margin-top: 8px; /* ✅ Text aur input ke beech space */
+  margin-top: 8px; 
   color: #afbeca;
   font-size: 12px;
 }

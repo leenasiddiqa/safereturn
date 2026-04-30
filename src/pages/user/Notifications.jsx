@@ -17,7 +17,7 @@ export default function Notifications() {
         const allNotifications = await response.json();
         console.log("📦 All notifications from backend:", allNotifications);
 
-        // ✅ Remove duplicates based on userId + type + relatedItemId
+        //  Remove duplicates based on userId + type + relatedItemId
         const uniqueNotifications = allNotifications.filter(
           (notif, index, arr) =>
             index === arr.findIndex(
