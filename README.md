@@ -1,56 +1,55 @@
-# SafeReturn (Prototype)
+# SafeReturn
 
-A simple React + Vite front-end prototype for a university Lost & Found portal. Data persists in localStorage only (no backend). Includes modules for Lost, Found, Claim & Verification, Donation & Important Documents, and Admin.
+**Lost and Found Management System for Educational Institutions**
 
-## Features
+---
 
-- Report lost and found items with details (name, brand, category, description, location)
-- Hidden identifiers (for lost items) for later claim verification
-- Important document flag for found reports (IDs, CNIC, university cards)
-- Basic matching to surface potential counterpart items
-- Claims with simple auto-approval if hints match; admin finalization
-- Auto-processing after 30 days: general items marked for donation; important docs for secure delivery
-- Simple admin dashboard for reviewing claims and activity logs
+## 📖 About
 
-## Tech Stack 
-- Layer: Technology 
-- Frontend: React.js, Bootstrap, CSS Modules
-- Backend: Node.js, Express.js 
-- Database: MongoDB Atlas 
-- Authentication: JWT, Bcrypt 
-- AI Integration: AI Image Recognition Service
-- Email Service: Nodemailer (OTP & Notifications) 
+SafeReturn is a web-based platform that simplifies the process of reporting, tracking, and reclaiming lost belongings in universities. Students, faculty, and staff can report lost or found items, and the system automatically matches them. Unclaimed items are donated to charity after 30 days.
 
-## Getting started
+---
 
-Prerequisites: Node 18+ recommended.
+## ✨ Key Features
 
-Install dependencies and start the dev server:
+- **User Registration** with OTP email verification
+- **AI Smart Item Recognition** – upload an image to auto-extract item details
+- **Automated Matching** of lost and found items
+- **Secure Claim Process** with admin verification
+- **Real-Time Notifications** for matches and claim decisions
+- **SSD Handover & Donation Management** for unclaimed items
+- **Admin Dashboard** with real-time statistics and activity logs
 
-```powershell
-npm install
-npm run dev
-```
+---
 
-Then open the URL shown (typically http://localhost:5173).
+## 🛠 Tech Stack
 
-Build for production:
+| Layer | Technology |
+| :--- | :--- |
+| **Frontend** | React.js, Bootstrap, CSS Modules |
+| **Backend** | Node.js, Express.js |
+| **Database** | MongoDB Atlas |
+| **Authentication** | JWT, Bcrypt |
+| **AI Integration** | AI Image Recognition Service |
+| **Email Service** | Nodemailer (OTP & Notifications) |
 
-```powershell
-npm run build
-npm run preview
-```
+---
 
-## Notes
+## 👥 User Roles
 
-- This is a front-end only demo; no authentication or server storage.
-- Admin actions are available to any user in this prototype.
-- 30-day logic is simulated by logging items that have aged; donation/delivery are represented in logs and Donation page lists.
-- You can clear browser storage to reset: Application > Local Storage > safereturn:v1.
+- **Student / Faculty** – Report lost/found items, claim belongings
+- **SSD Staff** – Manage physical item handovers and donations
+- **Admin** – Verify claims, monitor system dashboard
 
-## Next steps
+---
 
-- Hook up a backend (REST or Firebase) for persistence and auth (roles: User, Admin)
-- Add real notifications to owners when matches or claim updates occur
-- Stronger matching (fuzzy match, image support)
-- Audit trail export and report generation
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js
+- MongoDB Atlas account
+
+### Installation
+
+1. Clone the repository
+```bashgit clone https://github.com/Usva-Qandeel/SafeReturn.git
