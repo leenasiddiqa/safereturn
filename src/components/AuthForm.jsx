@@ -23,7 +23,7 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
       const alphanumeric = value.replace(/[^a-zA-Z0-9]/g, "");
       let truncated;
       if (alphanumeric.length > 0 && /f/.test(alphanumeric[0])) {
-        truncated = alphanumeric.slice(0, 6);
+        truncated = alphanumeric.slice(0, 5);
       } else {
         truncated = alphanumeric.slice(0, 5);
       }
@@ -43,8 +43,8 @@ export default function AuthForm({ mode, onSubmit, loading, error }) {
   const sapidError =
     showErrors &&
     isSignup &&
-    (!form.sapid || !/^(?:f\d{5}|\d{5})$/.test(form.sapid))
-      ? "Enter your 5-digit or 6-digit SAP ID (e.g.46416 or f46416)"
+    (!form.sapid || !/^(?:f\d{4}|\d{5})$/.test(form.sapid))
+      ? "Enter valid SAP ID"
       : "";
 
   // only check email format
@@ -183,11 +183,12 @@ const passwordError = () => {
     setShowConfirmPassword(!showConfirmPassword);
 
   return (
-    <form className="form" onSubmit={handleSubmit} autoComplete="off">
+    <form className="form" onSubmit={handleSubmit} autoComplete="off" noValidate>
       {isSignup && (
         <>
+        <div className="signup-field">
           <label>
-            SAP ID <span className="required-star">*</span>
+            SAP ID <span className="required-star">*</span></label>
             <input
               name="sapid"
               value={form.sapid}
@@ -196,11 +197,11 @@ const passwordError = () => {
               maxLength={6}
               placeholder="Enter sap id"
             />
-            {sapidError && <span className="notice">{sapidError}</span>}
-          </label>
-
+            {sapidError && <span className="signup-error">{sapidError}</span>}
+</div>
+<div className="signup-field">
           <label>
-            Full Name <span className="required-star">*</span>
+            Full Name <span className="required-star">*</span></label>
             <input
               name="name"
               value={form.name}
@@ -209,11 +210,12 @@ const passwordError = () => {
               maxLength={25}
               placeholder="Enter your full name"
             />
-            {nameError && <span className="notice">{nameError}</span>}
-          </label>
-
+            {nameError && <span className="signup-error">{nameError}</span>}
+        
+</div>
+<div className="signup-field">
           <label>
-            Phone Number <span className="required-star">*</span>
+            Phone Number <span className="required-star">*</span></label>
             <input
               name="phone"
               value={form.phone}
@@ -222,13 +224,14 @@ const passwordError = () => {
               maxLength={11}
               placeholder="11-digit phone number"
             />
-            {phoneError && <span className="notice">{phoneError}</span>}
-          </label>
+            {phoneError && <span className="signup-error">{phoneError}</span>}
+          
+          </div>
         </>
       )}
-
+<div className="signup-field">
       <label>
-        Email <span className="required-star">*</span>
+        Email <span className="required-star">*</span></label>
         <input
           name="username"
           type="email"
@@ -237,71 +240,56 @@ const passwordError = () => {
           required
           placeholder="sapid@students.riphah.edu.pk"
         />
-        {emailError && <span className="notice">{emailError}</span>}
-      </label>
-
-      <div style={{ display: "flex", gap: "16px", width: "100%" }}>
-        <div style={{ flex: 1 }}>
-          <label>
-            Password*
-            <div
-              className="password-container"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                width: "100%",
-                gap: "8px",
-              }}
-            >
-              <input
-                name="password"
-                value={form.password}
-                onChange={handleChange}
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                 maxLength={15}
-                className="password-input"
-                style={{ flex: 1, width: "100%" }}
-              />
-              <span className="toggle-icon" onClick={togglePassword}>
-                {showPassword ? "🙈" : "👁️"}
-              </span>
-            </div>
-            {passwordError() && <span className="notice">{passwordError()}</span>}
-          </label>
-        </div>
-
-        {isSignup && (
-          <div style={{ flex: 1 }}>
-            <label>
-              Confirm Password <span className="required-star">*</span>
-              <div
-                className="password-container"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  width: "100%",
-                  gap: "8px",
-                }}
-              >
-                <input
-                  name="confirm"
-                  value={form.confirm}
-                  onChange={handleChange}
-                  type={showConfirmPassword ? "text" : "password"}
-                  placeholder="Confirm Password"
-                  className="password-input"
-                  style={{ flex: 1, width: "100%" }}
-                />
-                <span className="toggle-icon" onClick={toggleConfirmPassword}>
-                  {showConfirmPassword ? "🙈" : "👁️"}
-                </span>
-              </div>
-              {confirmError && <span className="notice">{confirmError}</span>}
-            </label>
-          </div>
-        )}
+        {emailError && <span className="signup-error">{emailError}</span>}
+      
+</div>
+<div className="signup-field">
+  <div style={{ display: "flex", gap: "16px", width: "100%" }}>
+    
+    {/* Password Field */}
+    <div style={{ flex: 1 }}>
+      <label>Password *</label>
+      <div className="password-container">
+        <input
+          name="password"
+          value={form.password}
+          onChange={handleChange}
+          type={showPassword ? "text" : "password"}
+          placeholder="Password"
+          maxLength={15}
+          className="password-input"
+        />
+        <span className="toggle-icon" onClick={togglePassword}>
+          {showPassword ? "🙈" : "👁️"}
+        </span>
       </div>
+      {passwordError() && <span className="signup-error">{passwordError()}</span>}
+    </div>
+
+    {/* Confirm Password Field */}
+    {isSignup && (
+      <div style={{ flex: 1 }}>
+        <label>Confirm Password <span className="required-star">*</span></label>
+        <div className="password-container">
+          <input
+            name="confirm"
+            value={form.confirm}
+            onChange={handleChange}
+            type={showConfirmPassword ? "text" : "password"}
+            placeholder="Confirm Password"
+            className="password-input"
+          />
+          <span className="toggle-icon" onClick={toggleConfirmPassword}>
+            {showConfirmPassword ? "🙈" : "👁️"}
+          </span>
+        </div>
+        {confirmError && <span className="signup-error">{confirmError}</span>}
+      </div>
+    )}
+    
+  </div>
+</div>
+      
 
       
       <button type="submit" disabled={loading}>

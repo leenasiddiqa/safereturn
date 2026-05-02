@@ -87,7 +87,49 @@
   background: #e68a62;
   transform: translateY(-2px);
 }
+/* ✅ Success & Error Notices */
+/* ✅ Success & Error Notices - Same style */
+.contact-toast-success {
+  background: #e68a62 !important;
+  color: #fff !important;
+  border-left: 4px solid #28a745 !important;
+  padding: 12px 20px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  margin-bottom: 20px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  display: block !important;
+  width: 100% !important;
+}
 
+.contact-toast-error {
+  background: #e68a62 !important;
+  color: #fff !important;
+  border-left: 4px solid #28a745 !important;
+  padding: 12px 20px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  margin-bottom: 20px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  display: block !important;
+  width: 100% !important;
+}
+.readonly-input {
+  background-color: rgba(255, 255, 255, 0.221); /* ✅ Ya jo color chahiye */
+  cursor: default;
+  opacity: 1;
+  border: 1.5px solid rgba(255, 255, 255, 0.138);
+  color: #fff;
+}
+.error-text {
+  color: #fff;
+  font-size: 12px;
+  margin-top: -8px;
+  margin-bottom: 8px;
+  display: block;
+}
 @media (max-width: 600px) {
   .contact-container {
     padding: 30px 25px;

@@ -21,9 +21,11 @@ router.get("/", async (req, res) => {
 //  POST NEW FOUND ITEM
 router.post("/", async (req, res) => {
   try {
-    const {userId, name, brand, category, description, location, isImportantDoc, hiddenHints, image } = req.body;
+    const {userId, name, brand, category, description, location, isImportantDoc, notForDonation, hiddenHints, image } = req.body;
 console.log("📝 isImportantDoc received:", isImportantDoc);  // ✅ Debug
 const isImportant = isImportantDoc === true || isImportantDoc === "true";
+
+    const isNotForDonation = notForDonation === true || notForDonation === "true";
     // Create new found item
     const newFound = new FoundItem({
       userId,
@@ -33,6 +35,7 @@ const isImportant = isImportantDoc === true || isImportantDoc === "true";
       description,
       location,
        isImportantDoc: Boolean(isImportant),
+       notForDonation: Boolean(isNotForDonation), 
       hiddenHints,
       image,
       claimed: false,

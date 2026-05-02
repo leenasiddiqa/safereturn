@@ -16,7 +16,19 @@ export default function ProfilePage() {
   const [loading, setLoading] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [message, setMessage] = useState("");
+const validateName = (name) => {
+    const nameRegex = /^[a-zA-Z\s.'-]{2,15}$/;
+    if (!name) return "Name is required";
+    if (!nameRegex.test(name)) return "Name must be 2-15  characters";
+    return "";
+  };
 
+  const validatePhone = (phone) => {
+    const phoneRegex = /^\d{11}$/;
+    if (!phone) return "Phone number is required";
+    if (!phoneRegex.test(phone)) return "Phone number must be exactly 11 digits";
+    return "";
+  };
   useEffect(() => {
     if (authUser) {
       console.log("✅ AuthContext User Data:", authUser);
@@ -32,9 +44,20 @@ export default function ProfilePage() {
     }
   }, [authUser]);
 
-  const handleChange = (e) => {
+ const handleChange = (e) => {
     const { name, value } = e.target;
-    setUser((prev) => ({ ...prev, [name]: value }));
+    
+    if (name === "name") {
+      const lettersOnly = value.replace(/[^a-zA-Z\s.'-]/g, "");
+      setUser((prev) => ({ ...prev, [name]: lettersOnly.slice(0, 25) }));
+    } 
+    else if (name === "phone") {
+      const digitsOnly = value.replace(/\D/g, "");
+      setUser((prev) => ({ ...prev, [name]: digitsOnly.slice(0, 11) }));
+    } 
+    else {
+      setUser((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSave = async () => {
@@ -43,13 +66,21 @@ export default function ProfilePage() {
       return;
     }
 
+    // Validation
+    const nameError = validateName(user.name);
+    if (nameError) {
+      setMessage(`❌ ${nameError}`);
+      return;
+    }
+
+    const phoneError = validatePhone(user.phone);
+    if (phoneError) {
+      setMessage(`❌ ${phoneError}`);
+      return;
+    }
+
     try {
       setLoading(true);
-      console.log("💾 Saving to SIGNUP database for User ID:", authUser.id);
-      console.log("📊 Data to update:", { 
-        name: user.name, 
-        phone: user.phone, 
-      });
       
       const response = await fetch(`http://localhost:5000/api/signup/${authUser.id}`, {
         method: "PUT",
@@ -63,14 +94,12 @@ export default function ProfilePage() {
       });
 
       const responseText = await response.text();
-      console.log("📨 Raw server response:", responseText);
       
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}. Response: ${responseText}`);
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const data = JSON.parse(responseText);
-      console.log("✅ Parsed response:", data);
       
       if (data.success) {
         setIsEditing(false);
@@ -84,13 +113,11 @@ export default function ProfilePage() {
         setMessage("❌ Update failed: " + data.message);
       }
     } catch (error) {
-      console.error("❌ Save error:", error);
       setMessage("❌ Server error: " + error.message);
     } finally {
       setLoading(false);
     }
   };
-
   //  Direct delete 
   const handleDelete = async () => {
     if (!authUser || !authUser.id) {
@@ -156,7 +183,7 @@ export default function ProfilePage() {
         <h2 className="profile-title">My Profile</h2>
 
         {message && (
-          <div className={`notice ${message.includes('❌') ? 'error' : 'success'}`}>
+          <div className={`notice ${message.includes('❌') ? 'profile-toast-error' : 'profile-toast-success'}`}>
             {message}
           </div>
         )}
@@ -213,11 +240,11 @@ export default function ProfilePage() {
         <div className="profile-actions">
           {!isEditing ? (
             <button className="btn edit" onClick={() => setIsEditing(true)}>
-              ✏️ Edit Profile
+               Edit Profile
             </button>
           ) : (
             <button className="btn save" onClick={handleSave} disabled={loading}>
-              {loading ? "⏳ Saving..." : "💾 Save Changes"}
+              {loading ? "⏳ Saving..." : " Save Changes"}
             </button>
           )}
           <button 
@@ -225,7 +252,7 @@ export default function ProfilePage() {
             onClick={handleDelete}  
             disabled={deleteLoading}
           >
-            {deleteLoading ? "⏳ Deleting..." : "🗑️ Delete Account"}
+            {deleteLoading ? "⏳ Deleting..." : " Delete Account"}
           </button>
         </div>
       </div>

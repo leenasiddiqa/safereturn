@@ -63,7 +63,7 @@ export default function Lost() {
     e.preventDefault();
     
     if (!form.name || !form.location) {
-      showMessage("⚠️ Please fill required fields (name, location).", "error");
+      showMessage(" Please fill required fields.", "error");
       return;
     }
 
@@ -126,12 +126,12 @@ export default function Lost() {
 
        
         {message && (
-          <div className={`notice ${messageType === 'success' ? 'success' : 'error'}`}>
+          <div className={`notice ${messageType === 'success' ? 'lost-toast-success' : 'lost-toast-error'}`}>
             {message}
           </div>
         )}
 
-        <form onSubmit={submit}>
+        <form onSubmit={submit} noValidate>
           <div className="lost-grid">
             <ItemForm
               form={form}

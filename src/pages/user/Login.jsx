@@ -131,7 +131,7 @@ export default function Login() {
 
         {/*  Success & Error Messages  */}
         {success && (
-          <div className="notice success" style={{ 
+          <div className="login-toast-success" style={{ 
             backgroundColor: "#e68a62", 
             color: "#fff", 
             padding: "12px 16px",
@@ -144,7 +144,7 @@ export default function Login() {
         )}
         
         {error && (
-          <div className="notice error" style={{ 
+          <div className="login-toast-error" style={{ 
             backgroundColor: "#e68a62", 
             color: "#fff", 
             padding: "12px 16px",
@@ -156,7 +156,7 @@ export default function Login() {
           </div>
         )}
 
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleLogin} noValidate>
           <label>
             Username *
             <input

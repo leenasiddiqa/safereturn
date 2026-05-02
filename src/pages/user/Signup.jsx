@@ -66,9 +66,9 @@ const sendOTP = async (formData) => {
   }
   
     // SAP ID validation
-    const sapidRegex = /^(?:f\d{5}|\d{5})$/;
+    const sapidRegex = /^(?:f\d{4}|\d{5})$/;
     if (!sapidRegex.test(sapid)) {
-      setError("SAP ID must be 5 digits (e.g., 46416) or f + 5 digits (e.g., f12345)");
+      setError("Enter valid sap id");
       setLoading(false);
       return;
     }
@@ -218,17 +218,27 @@ console.log("📤 Sending to backend:", {
           OTP sent to {tempFormData?.email}
         </p>
 
-          {otpError && <div className="notice success" style={{ backgroundColor: "#c7704f", fontWeight: "bold", color: "white", border: "1px solid" }}>{otpError}</div>}
-          {success && <div className="notice success">{success}</div>}
+          {otpError && <div className="signup-toast-error">{otpError}</div>}
+          {success && <div className="signup-toast-success">{success}</div>}
 
-          <label>Enter OTP *</label>
+                    <label style={{ 
+            color: "#fff", 
+            display: "block", 
+            marginBottom: "8px", 
+            fontWeight: "600", 
+            fontSize: "12px", 
+            textTransform: "uppercase", 
+            letterSpacing: "1px" 
+          }}>
+            Enter OTP *
+          </label>
           <input 
             type="text" 
             placeholder="Enter 6-digit OTP" 
             value={otp} 
             onChange={(e) => setOtp(e.target.value)} 
-            disabled={loading}
-            style={{ width: "100%", padding: "12px", marginBottom: "20px" }}
+            className="otp-input"
+            style={{ marginBottom: "20px",marginTop: "8px" }}
           />
 
          <button 
@@ -265,8 +275,8 @@ console.log("📤 Sending to backend:", {
           Join us and start your journey today
         </p>
 
-        {success && <div className="notice success">{success}</div>}
-        {error && <div className="notice success" style={{ backgroundColor: "#c7704f", color: "white", border: "1px solid", fontWeight: "bold" }}>{error}</div>}
+        {success && <div className="signup-toast-success">{success}</div>}
+        {error && <div className="signup-toast-error">{error}</div>}
 
         <AuthForm
           mode="signup"

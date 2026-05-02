@@ -252,14 +252,15 @@ export default function Landing() {
               </div>
               <h1 style={{ fontSize: "clamp(32px, 5vw, 52px)", color: "#fff", fontWeight: 800, lineHeight: 1.1, marginBottom: 16, letterSpacing: "-1px" }}>
                 Lost &amp; Found,<br />
-                <span style={{ color: "#E68A62" }}>Simplified.</span>
+                <span style={{ color: "#E68A62" }}>Portal.</span>
               </h1>
             </Reveal>
             
             <Reveal delay={100}>
               <p style={{ fontSize: "clamp(14px, 1.6vw, 17px)", color: "#a8bdd4", marginBottom: 28, maxWidth: 520, lineHeight: 1.7 }}>
-                A secure, transparent portal for reporting, claiming, and managing lost and found items at your university. 
-                Empowering students, staff, and admins for a safer campus.
+                A secure, transparent, and user-friendly portal for reporting, claiming, and managing lost and found items across your university campus. 
+
+Empowering students, faculty to report lost belongings, discover found matches — building a safer, more connected, and responsible campus community where every lost item finds its way back home.
               </p>
             </Reveal>
 

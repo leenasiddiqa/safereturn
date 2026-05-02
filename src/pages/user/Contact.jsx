@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useAuth } from "../../AuthContext";
 import "./Contact.css";
 
 export default function Contact() {
+  const { user } = useAuth();  // ✅ Get logged-in user
   const [form, setForm] = useState({
     email: "",
     message: ""
@@ -9,56 +11,60 @@ export default function Contact() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState("");
-  const [touched, setTouched] = useState({ email: false, message: false }); // ✅ Touch tracking
+  const [touched, setTouched] = useState({ email: false, message: false });
 
-  //Email validation 
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  //  Show message 
-  const showMessage = (text, type) => {
-    setMessage(text);
-    setMessageType(type);
-    if (type === 'success') {
-      setTimeout(() => {
-        setMessage("");
-        setMessageType("");
-      }, 3000);
+  // ✅ Auto-fetch email from logged-in user
+  useEffect(() => {
+    if (user) {
+      const userEmail = user.username || user.email;
+      setForm(prev => ({ ...prev, email: userEmail || "" }));
     }
+  }, [user]);
+
+  // ✅ Email validation - only Riphah domains
+  const validateEmail = (email) => {
+    const riphahEmailRegex = /^[^\s@]+@(students\.riphah\.edu\.pk|riphah\.edu\.pk)$/;
+    return riphahEmailRegex.test(email);
   };
 
-  // Handle input changes with validation
+  const showMessage = (text, type) => {
+  setMessage(text);
+  setMessageType(type);
+
+  setTimeout(() => {
+    setMessage("");
+    setMessageType("");
+  }, 2000); // ✅ ab dono (success + error) hide honge
+};
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     
     if (name === 'message') {
-      //  Message length limit (500 characters)
       const truncatedValue = value.slice(0, 500);
       setForm({ ...form, [name]: truncatedValue });
-    } else {
-      setForm({ ...form, [name]: value });
     }
   };
 
-  //  Handle blur for validation
   const handleBlur = (e) => {
-    setTouched({ ...touched, [e.target.name]: true });
-  };
+  const { name, value } = e.target;
+  setTouched({ ...touched, [name]: true });
 
-  //  contact message saved in backend
+  if (name === "message" && value.length < 4) {
+    showMessage("❌ Message must be at least 4 characters long.", "error");
+  }
+};
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    //  Validation checks
     if (!form.email || !form.message) {
-      showMessage("⚠️ Please fill all required fields.", "error");
+      showMessage("Please enter your issue.", "error");
       return;
     }
 
     if (!validateEmail(form.email)) {
-      showMessage("❌ Please enter a valid email address.", "error");
+      showMessage("❌ Please use your Riphah email (@students.riphah.edu.pk or @riphah.edu.pk)", "error");
       return;
     }
 
@@ -91,8 +97,7 @@ export default function Contact() {
 
       if (result.success) {
         showMessage("✅ " + result.message, "success");
-        setForm({ email: "", message: "" }); 
-        setTouched({ email: false, message: false }); 
+        setForm({ ...form, message: "" });  // ✅ Only clear message, email stays
       } else {
         showMessage("❌ " + result.message, "error");
       }
@@ -105,12 +110,11 @@ export default function Contact() {
     }
   };
 
-  //  Validation errors after submit
-  const emailError = messageType === 'error' && !validateEmail(form.email) 
-    ? "Please enter a valid email address" 
+  const emailError = messageType === 'error' && !validateEmail(form.email) && touched.email
+    ? "Please use your Riphah email (@students.riphah.edu.pk or @riphah.edu.pk)" 
     : "";
 
-  const messageError = messageType === 'error' && form.message.length < 10 
+  const messageError = messageType === 'error' && form.message.length < 4 && touched.message
     ? "Message must be at least 4 characters" 
     : "";
 
@@ -119,35 +123,27 @@ export default function Contact() {
       <div className="contact-container">
         <h2>Contact Us</h2>
         <p className="contact-description">
-          For help, questions, or to report an issue, please use the feedback
-          form below or email{" "}
-          <a href="mailto:support@safereturn.edu.pk" className="contact-link">
-            support@safereturn.edu.pk
-          </a>
-          .
+          For help, questions, or to report an issue, please use the form below.
         </p>
 
         {message && (
-          <div className={`notice ${messageType === 'success' ? 'success' : 'error'}`}>
+          <div className={`notice ${messageType === 'success' ? 'contact-toast-success' : 'contact-toast-error'}`}>
             {message}
           </div>
         )}
 
-        <form className="contact-form" onSubmit={handleSubmit}>
+        <form className="contact-form" onSubmit={handleSubmit} noValidate>
           <label htmlFor="email">Your Email *</label>
           <input
             type="email"
             id="email"
             name="email"
-            placeholder="Enter your email"
+            placeholder="Your email will auto-fill"
             value={form.email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            required
-            disabled={loading}
-            className={emailError ? "input-error" : ""}
+            readOnly  // ✅ Not editable
+            disabled
+            className="readonly-input"
           />
-          {emailError && <span className="error-text">{emailError}</span>}
 
           <label htmlFor="message">Message *</label>
           <textarea
@@ -160,11 +156,9 @@ export default function Contact() {
             onBlur={handleBlur}
             required
             disabled={loading}
-            minLength={4}
             maxLength={500}
             className={messageError ? "input-error" : ""}
           />
-          {messageError && <span className="error-text">{messageError}</span>}
 
           <button type="submit" disabled={loading}>
             {loading ? "Sending..." : "Send Message"}

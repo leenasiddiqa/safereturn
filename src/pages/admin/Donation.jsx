@@ -20,9 +20,7 @@ export default function Donation() {
       
       console.log("📦 Existing donations:", donations);
       
-      // if no donations, then create donations
-      if (donations.length === 0) {
-        console.log("🔍 No donations found, checking eligible items...");
+      
         
         const foundResponse = await fetch("http://localhost:5000/api/items/found");
         const foundItems = await foundResponse.json();
@@ -35,13 +33,13 @@ export default function Donation() {
           const diffDays = (now - foundDate) / (1000 * 60 * 60 * 24); 
 
           //  30 DAYS CONDITION 
-          if (!item.claimed && diffDays > 30 && item.category?.toLowerCase() !== "document") {
+          if (!item.claimed && diffDays > 30 && item.category?.toLowerCase() !== "document" && item.notForDonation !== true) {
             donationsToCreate.push({
               itemId: item._id,
               itemName: item.name,
               category: item.category,
               foundDate: item.dateReported,
-              userId: "admin-user", 
+              userId: item.userId, 
             });
             console.log(`✅ Item eligible for donation: ${item.name} (${diffDays.toFixed(2)} days old)`);
           }
@@ -69,10 +67,6 @@ export default function Donation() {
         const updatedDonationsResponse = await fetch("http://localhost:5000/api/donations");
         const updatedDonations = await updatedDonationsResponse.json();
         setDonationItems(updatedDonations);
-      } else {
-        // If donations already exist, just set them
-        setDonationItems(donations);
-      }
       
       setLoading(false);
     } catch (error) {

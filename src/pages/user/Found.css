@@ -36,14 +36,38 @@
   letter-spacing: 0.5px;
 }
 
-.found-notice {
-  text-align: center;
-  background: #e68a62; 
-  color: #fff;
-  border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 20px;
-  font-weight: 500;
+.found-toast-success {
+  background: #e68a62 !important;
+  color: #fff !important;
+  border-left: 4px solid #28a745 !important;
+  padding: 12px 20px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  margin-bottom: 20px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  display: table !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: auto !important;
+  max-width: 90% !important;
+}
+
+.found-toast-error {
+  background: #e68a62 !important;
+  color: #fff !important;
+  border-left: 4px solid #28a745 !important;
+  padding: 12px 20px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  margin-bottom: 20px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  display: table !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: auto !important;
+  max-width: 90% !important;
 }
 
 
@@ -51,7 +75,41 @@
   width: 100%;
 }
 
+/* Make checkbox sections stable */
+.checkbox-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  clear: both;
+  position: relative;
+  z-index: 1;
+}
 
+.donation-checkbox {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600 !important;
+  margin: 0 !important;
+  cursor: pointer;
+}
+
+.donation-checkbox input[type="checkbox"] {
+  accent-color: #e68a62;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  margin: 0;
+}
+.image-preview-container {
+  min-height: 120px;
+  margin-bottom: 10px;
+}
 .found-submit {
   width: 50%;
   padding: 12px;

@@ -197,12 +197,12 @@ useEffect(() => {
       <h2>Claim & Verification</h2>
 
       {message && (
-        <div className={`claim-notice ${message.includes('✅') ? 'success' : 'error'}`}>
+        <div className={`claim-notice ${message.includes('✅') ? 'claim-toast-success' : 'claim-toast-error'}`}>
           {message}
         </div>
       )}
 
-      <form className="claim-form" onSubmit={submit}>
+      <form className="claim-form" onSubmit={submit} noValidate>
         <label>
           Item ID*
           <input

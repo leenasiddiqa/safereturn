@@ -20,6 +20,7 @@ import Matches from "./pages/user/Matches";
 import Notifications from "./pages/user/Notifications";
 import Admin from "./pages/admin/Admin";
 import AdminFeedback from "./pages/admin/AdminFeedback";
+import AdminContacts from "./pages/admin/AdminContacts";
 //  Protected Route Component
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth(); 
@@ -144,6 +145,12 @@ function AppContent() {
           <Route path="/admin/feedback" element={
   <ProtectedRoute>
     <AdminFeedback />
+  </ProtectedRoute>
+  
+} />
+<Route path="/admin/contacts" element={
+  <ProtectedRoute>
+    <AdminContacts />
   </ProtectedRoute>
 } />
           <Route path="*" element={<Navigate to="/" replace />} />

@@ -12,6 +12,7 @@ export default function Found() {
     description: "",
     location: "",
     isImportantDoc: false,
+    notForDonation: false,
     hiddenHints: "",
     image: "",
   });
@@ -70,7 +71,7 @@ export default function Found() {
     e.preventDefault();
     
     if (!form.name || !form.location) {
-      showMessage("⚠️ Please fill required fields (name, location).", "error");
+      showMessage("Please fill all required fields.", "error");
       return;
     }
 
@@ -105,7 +106,7 @@ export default function Found() {
       
       setMatches(uniqueMatches);
       
-      showMessage("✅ Found item reported successfully. You'll will be notified if matched.", "success");
+      showMessage("✅ Found item reported successfully. Please submit item to SSD office.", "success");
       
       setForm({
         name: "",
@@ -131,14 +132,14 @@ export default function Found() {
         <h2>Report Found Item</h2>
 
         {message && (
-          <div className={`notice ${messageType === 'success' ? 'success' : 'error'}`}>
+          <div className={`notice ${messageType === 'success' ? 'found-toast-success' : 'found-toast-error'}`}>
             {message}
           </div>
         )}
 
-        <form className="found-form" onSubmit={submit}>
+        <form className="found-form" onSubmit={submit} noValidate>
           <ItemForm form={form} setForm={setForm} mode="found" />
-
+          
           <button 
             type="submit" 
             className="found-submit"

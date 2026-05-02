@@ -8,6 +8,7 @@ const foundSchema = new mongoose.Schema({
   description: { type: String, default: "" },
   location: { type: String, required: true },
   isImportantDoc: { type: Boolean, default: false },
+  notForDonation: { type: Boolean, default: false },
   hiddenHints: { type: String, default: "" },
   image: { type: String, default: "" },
    claimed: { type: Boolean, default: false }, 

@@ -1,47 +1,40 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./UserSidebar.css";
-
+import logo from "../assets/logo.jpg";
 export default function UserSidebar({ isOpen, onClose }) {
   const navigate = useNavigate();
 
   return (
     <>
-      {isOpen && <div className="sidebar-overlay" onClick={onClose}></div>}
+      {isOpen && <div className="user-sidebar-overlay" onClick={onClose}></div>}
 
-      <aside className={`user-sidebar ${isOpen ? "open" : ""}`}>
-        <h2 className="user-logo">SafeReturn User</h2>
-
+       <aside className={`user-sidebar ${isOpen ? "open" : ""}`}
+       >
+        <div className="user-logo">
+          <img src={logo} alt="Logo" className="user-logo-img" />
+          <span>SafeReturn User</span>
+        </div>
         <nav className="user-nav">
           <Link to="/matches" className="user-link" onClick={onClose}>
-            🧩 Matched Items
+             Matched Items
           </Link>
           <Link to="/notifications" className="user-link" onClick={onClose}>
-            🔔 Notifications
+             Notifications
           </Link>
           <Link to="/history" className="user-link" onClick={onClose}>
-            🕓 History
+             History
           </Link>
           <Link to="/feedback" className="user-link" onClick={onClose}>
-            💬 Feedback
+             Feedback
           </Link>
           <Link to="/contact" className="user-link" onClick={onClose}>
-            📞 Contact
+             Contact
           </Link>
           <Link to="/profile" className="user-link" onClick={onClose}>
-            👤 Profile
+             Profile
           </Link>
         </nav>
-
-        <button
-          className="user-logout"
-          onClick={() => {
-            navigate("/login");
-            onClose();
-          }}
-        >
-          🚪 Logout
-        </button>
       </aside>
     </>
   );

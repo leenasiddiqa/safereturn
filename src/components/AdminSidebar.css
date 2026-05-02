@@ -30,36 +30,55 @@
   border: 2px solid #fff;
 }
 .admin-nav {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px !important;
+  width: 100%;
 }
 
 .admin-link {
-  text-decoration: none;
-  color: #fff;
-  padding: 10px 16px;
+  text-decoration: none !important;
+  color: #fff !important;
+  padding: 8px 12px;
   border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(175, 172, 194, 0.2) !important;
+  font-weight: 700 !important;
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  text-align: center !important;
   transition: all 0.3s ease;
+  margin: 0 !important;
+  height: 40px !important;
+  margin-bottom: 10px !important;
+   display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 12px !important;
+  height: 42px !important;
 }
 
 .admin-link:hover {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: #e68a62 !important;
 }
 
 .admin-logout {
   margin-top: auto;
-  background: #e68a62;
-  color: #fff;
+  background: #e68a62 !important;
+  color: #fff !important;
   border: none;
   border-radius: 8px;
   padding: 10px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 700 !important;
   transition: background 0.3s ease;
+   justify-content: center !important;
+   text-align: center;
+    align-items: center !important;
+    display: flex;
 }
 
 .admin-logout:hover {
-  background-color: #d76a3f;
+  background-color: #e68a62 !important;
 }

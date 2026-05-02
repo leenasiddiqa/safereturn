@@ -86,7 +86,40 @@
   font-weight: 400;
   font-size: 13px;
 }
+/* Toast messages for login - Same as signup style */
+.login-toast-success {
+  background: #e68a62 !important;
+  color: #fff !important;
+  border-left: 4px solid #28a745 !important;
+  padding: 12px 20px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  margin-bottom: 20px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  display: table !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: auto !important;
+  max-width: 90% !important;
+}
 
+.login-toast-error {
+  background: #e68a62 !important;
+  color: #fff !important;
+  border-left: 4px solid #28a745 !important;
+  padding: 12px 20px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  margin-bottom: 20px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  display: table !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: auto !important;
+  max-width: 90% !important;
+}
 
 .password-container {
   position: relative;
@@ -137,27 +170,7 @@
 }
 
 
-.notice {
-  padding: 12px 16px;
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: 500;
-  margin-bottom: 20px;
-}
 
-.notice.success {
-  background: #d4edda;
-  color: #155724;
-  border-left: 4px solid #28a745;
-}
-
-.error {
-  color: #ffb3b3;
-  font-size: 12px;
-  margin-top: 8px;
-  text-align: center;
-  font-weight: 500;
-}
 
 
 .login-form .footer-text {

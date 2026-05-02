@@ -49,20 +49,18 @@
   font-size: 15px;
 }
 
-.signup-form label {
-  color: #ffffff;
-  display: block;
-  margin-top: 10px ;
-   margin-bottom: 10px;
-  font-weight: 600;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+/* Signup Field Styles */
+.signup-field {
+  margin-bottom: 16px;
 }
 
-.signup-form input {
-  width: 100%;
-  padding: 14px 16px;
+
+
+/* Signup Field Styles - Update to match login size */
+.signup-field input {
+  margin-top: 8px !important;
+  width: 100% !important;
+  padding: 12px 16px;
   background: #f8fafc;
   border: 1.5px solid #e2e8f0;
   border-radius: 12px;
@@ -70,92 +68,93 @@
   color: #1e293b;
   font-weight: 500;
   transition: all 0.2s ease;
-  margin-top: 10;
-  margin-bottom: 8px;
-  display: block;
-  margin-top: 5px;
+  box-sizing: border-box;
 }
 
-.signup-form input:focus {
+/* Label ko bhi login jaisa gap do */
+.signup-field label {
+  color: #ffffff;
+  display: block;
+  margin-top: 10px !important;  /* ← YEH ADD KARO */
+  margin-bottom: 6px !important;  /* ← YEH ADD KARO */
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.signup-field input:focus {
   outline: none;
   border-color: #e68a62;
   background: #ffffff;
   box-shadow: 0 0 0 3px rgba(230, 138, 98, 0.1);
 }
 
-.signup-form input::placeholder {
+.signup-field input::placeholder {
   color: #94a3b8;
   font-weight: 400;
   font-size: 13px;
 }
-
-.signup-form button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 28px;
-  background-color: #e68a62;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 15px;
-  transition: all 0.2s ease;
-  margin-bottom: 20px;
+/* Toast messages for signup - Unique classes */
+.signup-toast-success {
+  background: #e68a62 !important;
+  color: #fff !important;
+  border-left: 4px solid #28a745 !important;
+  padding: 12px 20px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  margin-bottom: 20px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  display: table !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: auto !important;
+  max-width: 90% !important;
 }
 
-.signup-form button:hover {
-  background-color: #d47a54;
-  transform: translateY(-1px);
+.signup-toast-error {
+  background: #e68a62 !important;
+  color: #fff !important;
+  border-left: 4px solid #28a745 !important;
+  padding: 12px 20px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  margin-bottom: 20px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  display: table !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: auto !important;
+  max-width: 90% !important;
+}
+/* Error message styling */
+.signup-error {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 8px 12px;
+  background: #e68a62;
+  color: #fff;
+  border-left: 3px solid #28a745;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: none;
 }
 
-.signup-form button:active {
-  transform: translateY(0);
-}
-
-
-.notice {
+/* Success message */
+.signup-success {
+   background: #e68a62;
+  color: #fff;
+  border-left: 3px solid #28a745;
   padding: 10px 14px;
   border-radius: 8px;
-  font-size: -1px;
+  font-size: 12px;
   margin-bottom: 20px;
 }
 
-.notice.success {
-  background: #d4edda;
-  color: #155724;
-  border-left: 3px solid #28a745;
-  font-weight: 100;
-}
-
-.notice,
-.signup-form .form .notice,
-.signup-form .error {
-  text-transform: none !important;
-  font-size: 11px;
-  font-weight: 500;
-}
-
-.footer-text {
-  color: #000000 !important;
-  text-align: center;
-  margin-top: 24px;
-  font-size: 16px;
-}
-
-.footer-text a {
-  color: #d47a54;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.footer-text a:hover {
-  color: #d47a54;
-  text-decoration: underline;
-}
-
-
+/* Password container */
 .password-container {
   position: relative;
   width: 100%;
@@ -181,7 +180,69 @@
   color: #e68a62;
 }
 
+.signup-form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 28px;
+  background-color: #e68a62;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  margin-bottom: 20px;
+}
 
+.signup-form button:hover {
+  background-color: #e68a62 !important; 
+  color: white !important;
+}
+
+.footer-text {
+  color: #000000 !important;
+  text-align: center;
+  margin-top: 24px;
+  font-size: 16px;
+}
+
+.footer-text a {
+  color: #d47a54;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.footer-text a:hover {
+  color: #d47a54;
+  text-decoration: underline;
+}
+/* OTP input field - same as other fields */
+.otp-input {
+ width: 100%;
+  padding: 14px 16px;
+  background: #f8fafc;
+  border: 1.5px solid #e68a62;
+  border-radius: 12px;
+  font-size: 14px;
+  color: #1e293b;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.otp-input:focus {
+  outline: none;
+  border-color: #e68a62;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(230, 138, 98, 0.1);
+}
+
+.otp-input::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+  font-size: 13px;
+}
 @media (max-width: 600px) {
   .signup-form {
     padding: 28px 20px;
@@ -191,8 +252,4 @@
   .signup-form h2 {
     font-size: 24px;
   }
-}
-
-.signup-form .notice:empty {
-  display: none !important;
 }

@@ -1,0 +1,119 @@
+.contacts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.contact-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: 1px solid #e8ecf0;
+}
+
+.contact-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.contact-email {
+  font-size: 12px;
+  color: #888;
+  display: block;
+}
+
+.status-badge {
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.status-badge.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge.replied {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.contact-message, .contact-reply {
+  margin-bottom: 15px;
+}
+
+.contact-message p, .contact-reply p {
+  background: #f8fafc;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 5px;
+  color: #333;
+}
+
+.contact-reply-box textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  resize: vertical;
+  margin-bottom: 10px;
+}
+
+.contact-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.reply-btn {
+  background: #e68a62;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background:#e68a62;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.contact-date {
+  font-size: 11px;
+  color: #aaa;
+  margin-top: 12px;
+  text-align: right;
+}
+.notice {
+  display: block;   /* ✅ full width ke bajaye content ke hisaab se */
+  padding: 6px 12px;       /* ✅ size chhota */
+  font-size: 13px;         /* ✅ text thoda small */
+  border-radius: 8px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 500;
+  width: 35%;
+  margin: 0 auto 15px auto;
+}
+
+.notice.success {
+  background: #e68a62;
+  color: #fff;
+  border-left: 3px solid #28a745;
+}
+
+.notice.error {
+  background: #e68a62;
+  color: #fff;
+  border-left: 3px solid #28a745;
+}

@@ -13,16 +13,38 @@
   margin-bottom: 24px;
 }
 
-.claim-notice {
-  background: #e68a62;
+.claim-toast-success {
+  background: #e68a62 !important;
   color: #fff !important;
-  padding: 12px 16px;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  border-left: 4px solid #28a745 !important;
+  padding: 12px 20px !important;
+  border-radius: 8px !important;
   font-size: 14px !important;
-  border-left: 4px solid #2e7d32;
-  font-weight: 500 !important;
-  text-align: center;
+  margin-bottom: 20px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  display: table !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: auto !important;
+  max-width: 90% !important;
+}
+
+.claim-toast-error {
+  background: #e68a62 !important;
+  color: #fff !important;
+  border-left: 4px solid #28a745 !important;
+  padding: 12px 20px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  margin-bottom: 20px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  display: table !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: auto !important;
+  max-width: 90% !important;
 }
 
 .claim-form label {

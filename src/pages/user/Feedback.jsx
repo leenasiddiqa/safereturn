@@ -11,16 +11,16 @@ export default function Feedback() {
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState("");
 
-  const showMessage = (text, type) => {
-    setMessage(text);
-    setMessageType(type);
-    if (type === 'success') {
-      setTimeout(() => {
-        setMessage("");
-        setMessageType("");
-      }, 3000);
-    }
-  };
+ const showMessage = (text, type) => {
+  setMessage(text);
+  setMessageType(type);
+  
+  // Success aur error dono ke liye timeout
+  setTimeout(() => {
+    setMessage("");
+    setMessageType("");
+  }, 3000);
+};
 
   const handleFeedbackSubmit = async (e) => {
     e.preventDefault();
@@ -86,15 +86,15 @@ export default function Feedback() {
           you're facing with the SafeReturn platform.
         </p>
 
-        <p className="feedback"><strong>Logged in as:</strong> {user?.username || "Loading..."}</p>
+        <p className="feedback-user"><strong>Logged in as:</strong> {user?.username || "Loading..."}</p>
 
         {message && (
-          <div className={`feedback-notice ${messageType === 'success' ? 'success' : 'error'}`}>
+          <div className={`feedback-notice ${messageType === 'success' ? 'feedback-toast-success' : 'feedback-toast-error'}`}>
             {message}
           </div>
         )}
 
-        <form className="feedback-form" onSubmit={handleFeedbackSubmit}>
+        <form className="feedback-form" onSubmit={handleFeedbackSubmit} noValidate>
           <label htmlFor="feedback">Your Feedback *</label>
           <textarea
             id="feedback"

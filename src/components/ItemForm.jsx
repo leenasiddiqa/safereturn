@@ -254,8 +254,16 @@ export default function ItemForm({ form, setForm, onSubmit, mode = "lost" }) {
     checked={form.isImportantDoc || false}
     onChange={(e) => setForm((f) => ({ ...f, isImportantDoc: e.target.checked }))}
   />{" "}
-  Important document (IDs, CNIC, Passport, etc.)
+  Mark as Important 
 </label>
+<label className="inline">
+    <input
+      type="checkbox"
+      checked={form.notForDonation}
+      onChange={(e) => setForm({ ...form, notForDonation: e.target.checked })}
+    />
+    Not for Donation
+  </label>
         </div>
 
         <div className="right-column">

@@ -20,19 +20,22 @@ const handleLogout = () => {
         />SafeReturn Admin</h2>
       <nav className="admin-nav">
         <Link to="/admin" className="admin-link">
-          🏠 Dashboard
+           Dashboard
         </Link>
         <Link to="/admin/claims" className="admin-link">
-          📋 Manage Claims
+           Manage Claims
         </Link>
         <Link to="/admin/donation" className="admin-link">
-          💰 Donations
+           Donations
         </Link>
         <Link to="/admin/feedback" className="admin-link">
-  💬 Feedback
+   User Feedback
+</Link>
+<Link to="/admin/contacts" className="admin-link">
+  User Queries
 </Link>
         <button className="admin-logout" onClick={handleLogout}>
-          🚪 Logout
+           Logout
         </button>
       </nav>
     </aside>
