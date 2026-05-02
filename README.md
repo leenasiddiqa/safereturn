@@ -12,6 +12,16 @@ A simple React + Vite front-end prototype for a university Lost & Found portal. 
 - Auto-processing after 30 days: general items marked for donation; important docs for secure delivery
 - Simple admin dashboard for reviewing claims and activity logs
 
+## Tech Stack 
+Layer: Technology 
+
+Frontend: React.js, Bootstrap, CSS Modules
+Backend: Node.js, Express.js 
+Database: MongoDB Atlas 
+Authentication: JWT, Bcrypt 
+AI Integration: AI Image Recognition Service
+Email Service: Nodemailer (OTP & Notifications) 
+
 ## Getting started
 
 Prerequisites: Node 18+ recommended.
