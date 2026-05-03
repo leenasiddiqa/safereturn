@@ -7,17 +7,45 @@ import "./Login.css"; // make sure this file contains your CSS
 export default function Login() {
   const { login } = useAuth();
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  function handleLogin({ username, password }) {
+  const togglePassword = () => setShowPassword(!showPassword);
+
+  async function handleLogin({ username, password }) {
     setLoading(true);
-    const res = login(username, password);
-    setLoading(false);
-    if (res.success) {
-      navigate("/");
-    } else {
-      setError(res.message || "Login failed");
+    setError("");
+    setSuccess("");
+
+    try {
+      console.log("🔄 Login process started...");
+
+      const res = await login(username, password);
+      console.log("📨 Login result:", res);
+
+      if (res.success) {
+        // ✅ Success message set karen
+        setSuccess("✅ Login successful!");
+
+        // ✅ Thoda delay karke navigate karen taaki user success message dekh sake
+        setTimeout(() => {
+          // ✅ CHECK USER ROLE (res.user use karen)
+          if (res.user && res.user.role === "admin") {
+            navigate("/admin"); // ✅ Admin dashboard
+          } else {
+            navigate("/main"); // ✅ User dashboard
+          }
+        }, 1000);
+      } else {
+        setError(res.message || "Login failed");
+      }
+    } catch (err) {
+      console.error("❌ Login catch error:", err);
+      setError("Something went wrong");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -35,17 +63,89 @@ export default function Login() {
           Please sign in to your account
         </p>
 
-        <AuthForm
-          mode="login"
-          onSubmit={handleLogin}
-          loading={loading}
-          error={error}
-        />
+        {success && <div className="notice success">{success}</div>}
+
+        {/* ✅ Custom form without email validation for admin */}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const username = formData.get("username");
+            const password = formData.get("password");
+            handleLogin({ username, password });
+          }}
+        >
+          <label>
+            Username *
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                width: "100%",
+                gap: "8px",
+              }}
+            >
+              <input
+                type="text"
+                name="username"
+                placeholder="Enter your username"
+                required
+                disabled={loading}
+                className="password-input"
+                style={{
+                  flex: 1,
+                  width: "100%",
+                  boxSizing: "border-box",
+                  padding: "12px",
+                }}
+              />
+            </div>
+          </label>
+
+          <label className="form-label">
+            Password *
+            <div
+              className="password-container"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                width: "100%",
+                gap: "8px",
+              }}
+            >
+              <input
+                name="password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password"
+                required
+                disabled={loading}
+                className="password-input"
+                style={{
+                  flex: 1,
+                  width: "100%",
+                  boxSizing: "border-box",
+                  padding: "12px",
+                }}
+              />
+              <span
+                className="toggle-icon"
+                onClick={togglePassword}
+                style={{ cursor: "pointer", fontSize: "18px", flexShrink: 0 }}
+              >
+                {showPassword ? "🙈" : "👁️"}
+              </span>
+            </div>
+          </label>
+
+          <button type="submit" disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
+          </button>
+        </form>
 
         {error && <p className="error">{error}</p>}
 
         <div className="footer-text">
-          Don’t have an account? <Link to="/signup">Sign up</Link>
+          Don't have an account? <Link to="/signup">Sign up</Link>
         </div>
       </div>
     </div>
