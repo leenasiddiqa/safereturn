@@ -23,7 +23,7 @@ router.post("/send-signup-otp", async (req, res) => {
 console.log("📧 EMAIL VALUE:", email); 
   try {
     // Check email exists or not
-    const existingUser = await Signup.findOne({ email });
+    const existingUser = await Signup.findOne({  username: email  });
     if (existingUser) {
       return res.status(400).json({ success: false, message: "Email already registered" });
     }
@@ -52,7 +52,7 @@ console.log("📧 EMAIL VALUE:", email);
 
 //  Verify OTP and complete signup
 router.post("/verify-signup-otp", async (req, res) => {
-  const { email, otp, username, password, name, cnic, phone } = req.body;
+  const { email, otp, username, password, name, sapid, phone } = req.body;
 
   try {
     const record = await OTP.findOne({ email, otp });
@@ -65,13 +65,11 @@ router.post("/verify-signup-otp", async (req, res) => {
 const sapidValue = email.split('@')[0];
     // User create karo
     const newUser = new Signup({
-       sapid: sapidValue,
-      username,
-      password,
+       sapid: sapid,
+      username: username, 
+       password: password,
       name,
-      cnic,
       phone,
-      email
     });
 
     await newUser.save();

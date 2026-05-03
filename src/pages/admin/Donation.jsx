@@ -30,7 +30,7 @@ export default function Donation() {
 
         for (const item of foundItems) {
           const foundDate = new Date(item.dateReported);
-          const diffDays = (now - foundDate) / (1000 * 60 * 60 * 24); 
+          const diffDays = (now - foundDate) / (1000 * 60 * 60 * 24);
 
           //  30 DAYS CONDITION 
           if (!item.claimed && diffDays > 30 && item.category?.toLowerCase() !== "document" && item.notForDonation !== true) {

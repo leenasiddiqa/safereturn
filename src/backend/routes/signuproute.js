@@ -45,11 +45,11 @@ router.post("/", async (req, res) => {
       });
     }
     //  CHECK 2.5: SAP ID format validation 
-    const sapidFormatRegex = /^(?:f\d{5}|\d{5})$/;
+    const sapidFormatRegex = /^(?:f\d{4}|\d{5})$/;
     if (!sapidFormatRegex.test(sapid)) {
       return res.status(400).json({
         success: false,
-        message: "SAP ID must be 5 digits (e.g., 46416) OR 'f' followed by 5 digits (e.g., f12345)"
+        message: "SAP ID must be 5 digits (e.g., 46416) OR 'f' followed by 4 digits (e.g., f1234)"
       });
     }
     //  CHECK 3: Check if SAP ID already exists

@@ -67,13 +67,17 @@ export default function Matches() {
         for (const foundItem of allFoundItems) {
           // unclaimed found items only
           if (foundItem.claimed) continue;
-          
+          // Location partial matching
+const lostLocation = lostItem.location?.toLowerCase().trim() || "";
+const foundLocation = foundItem.location?.toLowerCase().trim() || "";
+const isLocationMatch = lostLocation.includes(foundLocation) || foundLocation.includes(lostLocation);
+
           //  MATCH CHECK: Name, Category, Location
           const isMatch = 
             lostItem.name && foundItem.name && 
             lostItem.name.toLowerCase() === foundItem.name.toLowerCase() &&
             lostItem.category === foundItem.category &&
-            lostItem.location === foundItem.location;
+             isLocationMatch; 
           
           if (isMatch) {
             console.log("✅ MATCH FOUND for lost item:", lostItem.name);

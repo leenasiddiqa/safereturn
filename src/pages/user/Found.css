@@ -75,41 +75,7 @@
   width: 100%;
 }
 
-/* Make checkbox sections stable */
-.checkbox-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 30px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  clear: both;
-  position: relative;
-  z-index: 1;
-}
 
-.donation-checkbox {
-  display: inline-flex !important;
-  align-items: center;
-  gap: 8px;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 600 !important;
-  margin: 0 !important;
-  cursor: pointer;
-}
-
-.donation-checkbox input[type="checkbox"] {
-  accent-color: #e68a62;
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
-  margin: 0;
-}
-.image-preview-container {
-  min-height: 120px;
-  margin-bottom: 10px;
-}
 .found-submit {
   width: 50%;
   padding: 12px;

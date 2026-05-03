@@ -273,23 +273,25 @@ Empowering students, faculty to report lost belongings, discover found matches �
                 </div>
               </Reveal>
             )}
-          </div>
-
-          <div className="hero-img-wrap" style={{ flex: "1 1 38%", display: "flex", justifyContent: "center", position: "relative" }}>
-            <div style={{ position: "absolute", inset: -20, borderRadius: 30, background: "linear-gradient(135deg, rgba(230,138,98,0.15), transparent)", filter: "blur(40px)" }} />
-            <div style={{
-              width: "100%", maxWidth: 360, height: 260, borderRadius: 24, position: "relative", zIndex: 1,
-              background: "linear-gradient(135deg, #1a3f6e 0%, #2a5a9e 50%, #1a3f6e 100%)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
-            }}>
-              <div style={{ textAlign: "center" }}>
-                <div style={{ fontSize: 55 }}>🎒</div>
-                <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 11, marginTop: 10 }}>University Lost & Found</p>
-              </div>
             </div>
-          </div>
-        </div>
+          <div style={{ flex: "1 1 50%" }}>
+    <div style={{ position: "relative", maxWidth: "900px", width: "100%", borderRadius: "20px", overflow: "hidden" }}>
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+         disablePictureInPicture
+        style={{ width: "100%", height: "auto", display: "block", objectFit: "contain", borderRadius: "20px", height: "500px",borderRadius: "20px" }}
+      >
+        <source src="/project.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+
+</div>
+
+
       </section>
 
       {/* ═══ FEATURES ═══ */}

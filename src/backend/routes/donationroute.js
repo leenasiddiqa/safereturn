@@ -67,7 +67,7 @@ router.delete("/:id", async (req, res) => {
     console.log("🗑️ Deleting donation:", id);
     
     const deletedDonation = await Donation.findByIdAndDelete(id);
-    await Donation.deleteMany({ itemId: req.params.id });
+    
     if (!deletedDonation) {
       return res.status(404).json({ 
         success: false, 

@@ -256,6 +256,7 @@ export default function ItemForm({ form, setForm, onSubmit, mode = "lost" }) {
   />{" "}
   Mark as Important 
 </label>
+{mode === "found" && (
 <label className="inline">
     <input
       type="checkbox"
@@ -264,6 +265,7 @@ export default function ItemForm({ form, setForm, onSubmit, mode = "lost" }) {
     />
     Not for Donation
   </label>
+   )}
         </div>
 
         <div className="right-column">

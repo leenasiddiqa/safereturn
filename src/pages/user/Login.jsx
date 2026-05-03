@@ -18,6 +18,17 @@ export default function Login() {
 
  async function handleLogin(e) {
   e.preventDefault();
+   if (!username.trim()) {
+    setError("❌ Please fill all required fields");
+    setLoading(false);
+    return;
+  }
+  
+  if (!password.trim()) {
+    setError("❌ Please enter your password");
+    setLoading(false);
+    return;
+  }
   setLoading(true);
   setError("");
   setSuccess("");

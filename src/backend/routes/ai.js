@@ -28,9 +28,9 @@ router.post("/describe", async (req, res) => {
     const mimeType = `image/${base64Match[1]}`;
     const base64Data = base64Match[2];
    const model = genAI.getGenerativeModel({ 
-  model: "gemini-2.5-flash-lite",
+  model: "gemini-2.5-flash",
   generationConfig: {
-    temperature: 0,
+    temperature: 0.1,
     topP: 0.95,
     topK: 40,
   }
@@ -41,18 +41,19 @@ router.post("/describe", async (req, res) => {
 const prompt = `Analyze this lost/found item image CAREFULLY.
 
 **CRITICAL:** First identify EXACTLY what the item is:
+- WOMEN'S PURSE / HANDBAG / CLUTCH → name: "Purse" or "Handbag", category: "Wallet"
 - **Wallet**: If it holds cards/money
 - **Phone**: If it's a mobile device  
 - **Keys**: If they are keys
 - **ID Card**: If it's an identity document
 - **Book**: If it's a book or notebook
 - **Stationery**: Pens, pencils, notebooks
-- **Electronics**: Phones, chargers, headphones
+- **Electronics**: Phones, chargers, headphones, laptops, tablets, smartwatches, cameras, etc.
 - **Other**: If none of above
 
 **Return ONLY this JSON (NO other text):**
 {
-  "name": "EXACT ITEM NAME (e.g., 'Leather Wallet', 'iPhone 12', 'Car Keys')",
+  "name": "EXACT ITEM NAME (e.g., 'Wallet', 'iPhone 12', 'Car Keys')",
   "brand": "Brand if visible (e.g., 'Apple', 'Samsung', 'Nike') or empty string",
   "category": "EXACTLY ONE: ID Card, Book, Wallet, Stationery, Electronics, or Other",
   "description": "Detailed description: color, size, material, condition, features. 50-100 words.",

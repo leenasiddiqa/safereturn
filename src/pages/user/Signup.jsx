@@ -168,7 +168,7 @@ console.log("📤 Sending to backend:", {
     username: tempFormData.username,
     password: tempFormData.password,
     name: tempFormData.name,
-    cnic: "",
+    sapid: tempFormData.sapid,
     phone: tempFormData.phone
   });
 
@@ -182,7 +182,7 @@ console.log("📤 Sending to backend:", {
           username: tempFormData.username,
           password: tempFormData.password,
           name: tempFormData.name,
-          cnic: "",
+          sapid: tempFormData.sapid, 
           phone: tempFormData.phone
         })
       });
@@ -202,7 +202,36 @@ console.log("📤 Sending to backend:", {
       setLoading(false);
     }
   };
+const resendOTP = async () => {
+  if (!tempFormData?.email) {
+    setOtpError("No email found. Please go back and try again.");
+    return;
+  }
 
+  setLoading(true);
+  setOtpError("");
+  setSuccess("");
+
+  try {
+    const res = await fetch("http://localhost:5000/api/otp/send-signup-otp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: tempFormData.email })
+    });
+    
+    const data = await res.json();
+    
+    if (data.success) {
+      setSuccess("✅ OTP resent to your email!");
+    } else {
+      setOtpError(data.message || "Failed to resend OTP");
+    }
+  } catch (err) {
+    setOtpError("Failed to resend OTP");
+  } finally {
+    setLoading(false);
+  }
+};
   async function handleSignup(formData) {
     console.log("🟢 handleSignup called with:", formData); 
     await sendOTP(formData);
@@ -260,7 +289,24 @@ console.log("📤 Sending to backend:", {
         >
           Back
         </button>
-          
+          {/* ✅ RESEND OTP LINK - YAHAN DALNA */}
+        <div style={{ textAlign: "center", marginBottom: "15px" }}>
+          <span 
+            onClick={resendOTP}
+            style={{ 
+              color: "#E68A62", 
+              fontSize: "14px", 
+              cursor: "pointer", 
+              textDecoration: "underline",
+              fontWeight: "500",
+              transition: "color 0.3s ease"
+            }}
+            onMouseEnter={(e) => e.target.style.color = "#c55a3a"}
+            onMouseLeave={(e) => e.target.style.color = "#E68A62"}
+          >
+            {loading ? "Sending..." : "Resend OTP"}
+          </span>
+        </div>
         </div>
       </div>
     );
