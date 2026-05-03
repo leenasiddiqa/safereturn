@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 const contactSchema = new mongoose.Schema({
   email: { type: String, required: true },
   message: { type: String, required: true },
-  reply: { type: String, default: "" },      // ✅ Admin reply store
-  status: { type: String, default: "pending" }, // ✅ pending / replied
+  reply: { type: String, default: "" },      
+  status: { type: String, default: "pending" }, 
   repliedAt: { type: Date },
   createdAt: { type: Date, default: Date.now }
 });

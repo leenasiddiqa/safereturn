@@ -10,11 +10,11 @@ const transporter = nodemailer.createTransport({
     user: "irtazamuhammad030@gmail.com",
     pass: "myat dekx pwch nzjz"
   },
-   timeout: 10000,  // ✅ 10 seconds timeout
+   timeout: 10000,  //  10 seconds timeout
   socketTimeout: 10000
 });
 
-// ✅ User submit contact form
+//  User submit contact form
 router.post("/", async (req, res) => {
   try {
     const { email, message } = req.body;
@@ -36,7 +36,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// ✅ Admin get all contacts
+//  Admin get all contacts
 router.get("/", async (req, res) => {
   try {
     const contacts = await Contact.find().sort({ createdAt: -1 });
@@ -46,8 +46,8 @@ router.get("/", async (req, res) => {
   }
 });
 
-// ✅ Admin reply via email (ONLY email, no in-app notification)
-// ✅ Admin reply via email (background send — fast)
+
+//  Admin reply via email 
 router.post("/:id/reply", async (req, res) => {
   try {
     const { reply } = req.body;
@@ -57,20 +57,20 @@ router.post("/:id/reply", async (req, res) => {
       return res.status(404).json({ success: false, message: "Message not found" });
     }
     
-    // ✅ Update contact first (fast)
+    //  Update contact first 
     contact.reply = reply;
     contact.status = "replied";
     contact.repliedAt = new Date();
     await contact.save();
     
-    // ✅ Send email in background (NO await — doesn't wait)
+    //  Send email in background 
     transporter.sendMail({
       to: contact.email,
       subject: "SafeReturn Support - Response to Your Query",
       text: `Dear User,\n\nThank you for contacting SafeReturn.\n\nYour Message: "${contact.message}"\n\nOur Response: ${reply}\n\nBest regards,\nSafeReturn Team`
     }).catch(err => console.error("Email send error:", err));
     
-    // ✅ Immediate response to admin
+    //  Immediate response to admin
     res.json({ success: true, message: "Reply sent successfully!" });
     
   } catch (error) {
@@ -78,7 +78,7 @@ router.post("/:id/reply", async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 });
-// ✅ Admin delete contact
+//  Admin delete contact
 router.delete("/:id", async (req, res) => {
   try {
     await Contact.findByIdAndDelete(req.params.id);

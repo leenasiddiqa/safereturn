@@ -87,8 +87,7 @@
   background: #e68a62;
   transform: translateY(-2px);
 }
-/* ✅ Success & Error Notices */
-/* ✅ Success & Error Notices - Same style */
+
 .contact-toast-success {
   background: #e68a62 !important;
   color: #fff !important;
@@ -117,7 +116,7 @@
   width: 100% !important;
 }
 .readonly-input {
-  background-color: rgba(255, 255, 255, 0.221); /* ✅ Ya jo color chahiye */
+  background-color: rgba(255, 255, 255, 0.221); 
   cursor: default;
   opacity: 1;
   border: 1.5px solid rgba(255, 255, 255, 0.138);

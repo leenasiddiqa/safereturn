@@ -15,7 +15,6 @@ export default function Feedback() {
   setMessage(text);
   setMessageType(type);
   
-  // Success aur error dono ke liye timeout
   setTimeout(() => {
     setMessage("");
     setMessageType("");

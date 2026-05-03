@@ -3,7 +3,7 @@ import { useAuth } from "../../AuthContext";
 import "./Contact.css";
 
 export default function Contact() {
-  const { user } = useAuth();  // ✅ Get logged-in user
+  const { user } = useAuth();  //  Get logged-in user
   const [form, setForm] = useState({
     email: "",
     message: ""
@@ -13,7 +13,7 @@ export default function Contact() {
   const [messageType, setMessageType] = useState("");
   const [touched, setTouched] = useState({ email: false, message: false });
 
-  // ✅ Auto-fetch email from logged-in user
+  //  Auto-fetch email from logged-in user
   useEffect(() => {
     if (user) {
       const userEmail = user.username || user.email;
@@ -21,7 +21,7 @@ export default function Contact() {
     }
   }, [user]);
 
-  // ✅ Email validation - only Riphah domains
+  //  Email validation - only Riphah domains
   const validateEmail = (email) => {
     const riphahEmailRegex = /^[^\s@]+@(students\.riphah\.edu\.pk|riphah\.edu\.pk)$/;
     return riphahEmailRegex.test(email);
@@ -34,7 +34,7 @@ export default function Contact() {
   setTimeout(() => {
     setMessage("");
     setMessageType("");
-  }, 2000); // ✅ ab dono (success + error) hide honge
+  }, 2000); 
 };
 
   const handleChange = (e) => {
@@ -97,7 +97,7 @@ export default function Contact() {
 
       if (result.success) {
         showMessage("✅ " + result.message, "success");
-        setForm({ ...form, message: "" });  // ✅ Only clear message, email stays
+        setForm({ ...form, message: "" });  //  Only clear message, email stays
       } else {
         showMessage("❌ " + result.message, "error");
       }
@@ -140,7 +140,7 @@ export default function Contact() {
             name="email"
             placeholder="Your email will auto-fill"
             value={form.email}
-            readOnly  // ✅ Not editable
+            readOnly  
             disabled
             className="readonly-input"
           />

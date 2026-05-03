@@ -274,6 +274,7 @@ Empowering students, faculty to report lost belongings, discover found matches â
               </Reveal>
             )}
             </div>
+          {/* Video Section */}
           <div style={{ flex: "1 1 50%" }}>
     <div style={{ position: "relative", maxWidth: "900px", width: "100%", borderRadius: "20px", overflow: "hidden" }}>
       <video

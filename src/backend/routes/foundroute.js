@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const {userId, name, brand, category, description, location, isImportantDoc, notForDonation, hiddenHints, image } = req.body;
-console.log("📝 isImportantDoc received:", isImportantDoc);  // ✅ Debug
+console.log("📝 isImportantDoc received:", isImportantDoc); 
 const isImportant = isImportantDoc === true || isImportantDoc === "true";
 
     const isNotForDonation = notForDonation === true || notForDonation === "true";

@@ -95,9 +95,9 @@
   text-align: right;
 }
 .notice {
-  display: block;   /* ✅ full width ke bajaye content ke hisaab se */
-  padding: 6px 12px;       /* ✅ size chhota */
-  font-size: 13px;         /* ✅ text thoda small */
+  display: block;  
+  padding: 6px 12px;       
+  font-size: 13px;         
   border-radius: 8px;
   margin-bottom: 15px;
   text-align: center;

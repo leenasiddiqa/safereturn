@@ -26,7 +26,7 @@ export default function AdminContacts() {
 const handleReply = async (id) => {
   const replyMsg = replyText[id];
   
-  // ✅ Minimum 4 characters validation
+  //  Minimum 4 characters validation
   if (!replyMsg || replyMsg.trim().length < 4) {
     setMessage("❌ Reply must be at least 4 characters.");
     setMessageType("error");
@@ -173,8 +173,7 @@ const handleReply = async (id) => {
       </button>
     </div>
   )}
-</div>
-                
+</div>       
                 <div className="contact-date">
                   Received: {new Date(contact.createdAt).toLocaleString()}
                 </div>

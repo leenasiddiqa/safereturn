@@ -63,7 +63,7 @@ router.post("/verify-signup-otp", async (req, res) => {
     // OTP delete 
     await OTP.deleteOne({ email });
 const sapidValue = email.split('@')[0];
-    // User create karo
+    // create new user
     const newUser = new Signup({
        sapid: sapid,
       username: username, 

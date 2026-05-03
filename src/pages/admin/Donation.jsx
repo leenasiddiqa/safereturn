@@ -18,10 +18,7 @@ export default function Donation() {
       const donationsResponse = await fetch("http://localhost:5000/api/donations");
       const donations = await donationsResponse.json();
       
-      console.log("📦 Existing donations:", donations);
-      
-      
-        
+      console.log("📦 Existing donations:", donations);        
         const foundResponse = await fetch("http://localhost:5000/api/items/found");
         const foundItems = await foundResponse.json();
         const now = new Date();
