@@ -26,7 +26,14 @@
   align-items: center;
   margin-left: -8px;
 }
-
+.brand {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  margin-left: 12px; /* was -8px – remove negative and add positive space */
+}
 /* Navbar links */
 .navbar nav a {
   color: #fff;
