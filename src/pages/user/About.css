@@ -1,15 +1,15 @@
-/* Google Fonts import – add this to your index.html or main CSS file */
+
+/* Google Font */
 @import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap");
 
 .about-container {
   min-height: 100vh;
-  /* Fun polka dot pattern over a soft gradient background */
   background:
     linear-gradient(135deg, #f5f7fc 0%, #eef2f8 100%),
     repeating-radial-gradient(
       circle at 20px 30px,
-      rgba(230, 138, 98, 0.12) 0px,
-      rgba(230, 138, 98, 0.12) 3px,
+      rgba(230, 138, 98, 0.10) 0px,
+      rgba(230, 138, 98, 0.10) 3px,
       transparent 3px,
       transparent 24px
     );
@@ -17,106 +17,103 @@
   font-family: "Inter", sans-serif;
 }
 
+/* Content wrapper */
 .about-content {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
+/* Title */
 .about-title {
   color: #11315b;
   font-size: 3rem;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   background: linear-gradient(135deg, #11315b 0%, #1e4a76 100%);
-  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  position: relative;
-  display: inline-block;
-  width: 100%;
 }
 
+/* underline */
 .about-title::after {
   content: "";
   display: block;
-  width: 80px;
-  height: 4px;
+  width: 70px;
+  height: 3px;
   background: #e68a62;
-  margin: 16px auto 0;
+  margin: 14px auto 0;
   border-radius: 4px;
 }
 
+/* subtitle */
 .about-subtitle {
   text-align: center;
   color: #4a627a;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   max-width: 700px;
-  margin: 0 auto 50px auto;
-  line-height: 1.5;
+  margin: 0 auto 45px auto;
+  line-height: 1.6;
 }
 
+/* points wrapper */
 .about-points {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 28px;
 }
 
+/* card */
 .about-point {
   display: flex;
-  gap: 24px;
+  gap: 22px;
   align-items: flex-start;
   background: white;
   border-radius: 24px;
-  padding: 8px;
-  box-shadow:
-    0 10px 25px -5px rgba(0, 0, 0, 0.05),
-    0 8px 10px -6px rgba(0, 0, 0, 0.02);
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+  padding: 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+/* hover */
 .about-point:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 18px 28px rgba(0, 0, 0, 0.12);
 }
 
+/* number */
 .about-point-number {
   background: linear-gradient(135deg, #e68a62 0%, #d47a54 100%);
   color: white;
-  width: 56px;
-  height: 56px;
-  border-radius: 28px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   flex-shrink: 0;
-  margin-top: 8px;
-  margin-left: 8px;
-  box-shadow: 0 8px 14px -6px rgba(230, 138, 98, 0.4);
-  transition: transform 0.2s;
+  box-shadow: 0 6px 12px rgba(230, 138, 98, 0.35);
+  transition: transform 0.2s ease;
 }
 
 .about-point:hover .about-point-number {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
+/* text */
 .about-point-text {
   flex: 1;
-  padding: 12px 20px 20px 8px;
 }
 
 .about-point-text h3 {
   color: #11315b;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin: 0 0 12px 0;
-  letter-spacing: -0.01em;
+  margin: 0 0 10px 0;
 }
 
 .about-point-text p {
@@ -124,58 +121,26 @@
   color: #2c3e50;
   font-size: 1rem;
   line-height: 1.6;
-  font-weight: 400;
 }
 
+/* footer spacing */
 .about-footer-spacing {
-  height: 80px;
+  height: 70px;
 }
 
-/* Responsive */
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
-  .about-container {
-    padding: 20px 0;
-  }
-
   .about-title {
     font-size: 2.2rem;
   }
 
   .about-subtitle {
     font-size: 1rem;
-    margin-bottom: 30px;
   }
 
   .about-point {
     flex-direction: column;
-    align-items: center;
     text-align: center;
-    padding: 20px;
-  }
-
-  .about-point-number {
-    margin: 0 auto 10px;
-  }
-
-  .about-point-text {
-    padding: 0;
-  }
-
-  .about-point-text h3 {
-    font-size: 1.4rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .about-title {
-    font-size: 1.8rem;
-  }
-
-  .about-point-text h3 {
-    font-size: 1.2rem;
-  }
-
-  .about-point-text p {
-    font-size: 0.9rem;
+    align-items: center;
   }
 }
