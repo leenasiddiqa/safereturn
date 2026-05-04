@@ -147,7 +147,7 @@
 .navbar-left {
   display: flex;
   align-items: center;
-  gap: 24px; /* increased from 18px */
+  gap: 24px;
 }
 
 .brand {
@@ -156,7 +156,7 @@
   color: #fff;
   display: flex;
   align-items: center;
-  margin-left: 0; /* remove negative margin (was -8px) */
+  margin-left: 0;
 }
 @media (max-width: 900px) {
   .sidebar-toggle {
