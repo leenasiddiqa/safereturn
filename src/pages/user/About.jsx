@@ -1,8 +1,9 @@
+// src/pages/About.jsx
 import React from "react";
 import "./About.css";
 
 const About = () => {
-  // Array of emoji/icons for each point (optional)
+  // Fun emoji icons for each numbered card
   const icons = ["🏫", "🎯", "⭐", "⚙️"];
 
   return (
