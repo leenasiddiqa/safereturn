@@ -1,7 +1,12 @@
+// src/pages/Login/Login.jsx
 import { useState } from "react";
 import { useAuth } from "../../AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
+
+// Manually added eye icons only
+import EyeIcon from "../../icons/EyeIcon";
+import EyeOffIcon from "../../icons/EyeOffIcon";
 
 export default function Login() {
   const { login } = useAuth();
@@ -16,85 +21,104 @@ export default function Login() {
 
   const togglePassword = () => setShowPassword(!showPassword);
 
- async function handleLogin(e) {
-  e.preventDefault();
-   if (!username.trim()) {
-    setError("❌ Please fill all required fields");
-    setLoading(false);
-    return;
-  }
-  
-  if (!password.trim()) {
-    setError("❌ Please enter your password");
-    setLoading(false);
-    return;
-  }
-  setLoading(true);
-  setError("");
-  setSuccess("");
-
-  try {
-    if (role === "admin") {
-  if (username === "admin123" && password === "admin") {
-    const adminUser = {
-      id: "admin001",
-      username: "admin123",
-      name: "Administrator",
-      role: "admin"
-    };
-    
-    // sessionStorage for admin user
-    sessionStorage.setItem('admin', JSON.stringify(adminUser));
-    
-    setSuccess("✅ Admin Login successful!");
-    setUsername("");
-    setPassword("");
-    setTimeout(() => {
-      window.location.href = "/admin";
-    }, 1000);
-  } else {
-    setError("❌ Invalid admin credentials");
-    setUsername("");
-    setPassword("");
-  }
-  setLoading(false);
-  return;
-}
-    
-    const res = await login(username, password);
-    
-    if (res.success && res.user && res.user.role === "user") {
-      setSuccess("✅ Login successful!");
-      setUsername("");
-      setPassword("");
-      setTimeout(() => {
-        navigate("/main");
-      }, 1000);
-    } else {
-      setError("❌ Invalid user credentials");
-      setUsername("");
-      setPassword("");
+  async function handleLogin(e) {
+    e.preventDefault();
+    if (!username.trim()) {
+      setError("❌ Please fill all required fields");
+      setLoading(false);
+      return;
     }
-  } catch (err) {
-    setError("❌ Something went wrong");
-    setUsername("");
-    setPassword("");
-  } finally {
-    setLoading(false);
+
+    if (!password.trim()) {
+      setError("❌ Please enter your password");
+      setLoading(false);
+      return;
+    }
+    setLoading(true);
+    setError("");
+    setSuccess("");
+
+    try {
+      if (role === "admin") {
+        if (username === "admin123" && password === "admin") {
+          const adminUser = {
+            id: "admin001",
+            username: "admin123",
+            name: "Administrator",
+            role: "admin",
+          };
+          sessionStorage.setItem("admin", JSON.stringify(adminUser));
+          setSuccess("✅ Admin Login successful!");
+          setUsername("");
+          setPassword("");
+          setTimeout(() => {
+            window.location.href = "/admin";
+          }, 1000);
+        } else {
+          setError("❌ Invalid admin credentials");
+          setUsername("");
+          setPassword("");
+        }
+        setLoading(false);
+        return;
+      }
+
+      const res = await login(username, password);
+
+      if (res.success && res.user && res.user.role === "user") {
+        setSuccess("✅ Login successful!");
+        setUsername("");
+        setPassword("");
+        setTimeout(() => {
+          navigate("/main");
+        }, 1000);
+      } else {
+        setError("❌ Invalid user credentials");
+        setUsername("");
+        setPassword("");
+      }
+    } catch (err) {
+      setError("❌ Something went wrong");
+      setUsername("");
+      setPassword("");
+    } finally {
+      setLoading(false);
+    }
   }
-}
 
   return (
     <div className="login-background">
       <div className="login-form">
         <h2>Welcome Back</h2>
-        <p style={{ textAlign: "center", color: "#cbd5e0", marginBottom: "20px" }}>
+        <p
+          style={{
+            textAlign: "center",
+            color: "#cbd5e0",
+            marginBottom: "20px",
+          }}
+        >
           Please sign in to your account
         </p>
 
         {/* Role Selection */}
-        <div style={{ display: "flex", gap: "20px", justifyContent: "center", marginBottom: "20px", alignItems: "center"  }}>
-          <label style={{ display: "flex", alignItems: "center", gap: "8px", color: "#fff", cursor: "pointer" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: "20px",
+            justifyContent: "center",
+            marginBottom: "20px",
+            alignItems: "center",
+          }}
+        >
+          <label
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              color: "#fff",
+              cursor: "pointer",
+            }}
+          >
             <input
               type="radio"
               name="role"
@@ -105,11 +129,21 @@ export default function Login() {
                 setError("");
                 setSuccess("");
               }}
-              style={{ width: "16px", height: "16px",margin:"0"}}
+              style={{ width: "16px", height: "16px", margin: "0" }}
             />
-            <span style={{ position: "relative", top: "5px" }}>Login as User</span>
+            <span style={{ position: "relative", top: "5px" }}>
+              Login as User
+            </span>
           </label>
-          <label style={{ display: "flex", alignItems: "center", gap: "8px", color: "#fff", cursor: "pointer" }}>
+          <label
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              color: "#fff",
+              cursor: "pointer",
+            }}
+          >
             <input
               type="radio"
               name="role"
@@ -122,47 +156,57 @@ export default function Login() {
               }}
               style={{ width: "16px", height: "16px" }}
             />
-            <span style={{ position: "relative", top: "5px" }}>Login as Admin</span>
+            <span style={{ position: "relative", top: "5px" }}>
+              Login as Admin
+            </span>
           </label>
         </div>
 
-       
+        {/* Mode Badge */}
         <div style={{ textAlign: "center", marginBottom: "20px" }}>
-          <span style={{ 
-            background: "#e68a62", 
-            padding: "4px 12px", 
-            borderRadius: "20px", 
-            color: "#fff", 
-            fontSize: "12px",
-            fontWeight: "bold"
-          }}>
+          <span
+            style={{
+              background: "#e68a62",
+              padding: "4px 12px",
+              borderRadius: "20px",
+              color: "#fff",
+              fontSize: "12px",
+              fontWeight: "bold",
+            }}
+          >
             {role === "admin" ? "🔐 ADMIN MODE" : "👤 USER MODE"}
           </span>
         </div>
 
-        {/*  Success & Error Messages  */}
+        {/* Success & Error Messages */}
         {success && (
-          <div className="login-toast-success" style={{ 
-            backgroundColor: "#e68a62", 
-            color: "#fff", 
-            padding: "12px 16px",
-            borderRadius: "10px",
-            marginBottom: "20px",
-            fontWeight: "500"
-          }}>
+          <div
+            className="login-toast-success"
+            style={{
+              backgroundColor: "#e68a62",
+              color: "#fff",
+              padding: "12px 16px",
+              borderRadius: "10px",
+              marginBottom: "20px",
+              fontWeight: "500",
+            }}
+          >
             {success}
           </div>
         )}
-        
+
         {error && (
-          <div className="login-toast-error" style={{ 
-            backgroundColor: "#e68a62", 
-            color: "#fff", 
-            padding: "12px 16px",
-            borderRadius: "10px",
-            marginBottom: "20px",
-            fontWeight: "600"
-          }}>
+          <div
+            className="login-toast-error"
+            style={{
+              backgroundColor: "#e68a62",
+              color: "#fff",
+              padding: "12px 16px",
+              borderRadius: "10px",
+              marginBottom: "20px",
+              fontWeight: "600",
+            }}
+          >
             {error}
           </div>
         )}
@@ -175,16 +219,28 @@ export default function Login() {
               name="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder={role === "admin" ? "Enter admin username" : "Enter your username"}
+              placeholder={
+                role === "admin"
+                  ? "Enter admin username"
+                  : "Enter your username"
+              }
               required
               disabled={loading}
-              style={{ width: "100%", padding: "14px", borderRadius: "12px", marginBottom: "20px" }}
+              style={{
+                width: "100%",
+                padding: "14px",
+                borderRadius: "12px",
+                marginBottom: "20px",
+              }}
             />
           </label>
 
           <label className="form-label">
             Password *
-            <div className="password-container" style={{ position: "relative" }}>
+            <div
+              className="password-container"
+              style={{ position: "relative" }}
+            >
               <input
                 name="password"
                 type={showPassword ? "text" : "password"}
@@ -198,21 +254,59 @@ export default function Login() {
               <span
                 className="toggle-icon"
                 onClick={togglePassword}
-                style={{ position: "absolute", right: "14px", top: "50%", transform: "translateY(-50%)", cursor: "pointer" }}
+                style={{
+                  position: "absolute",
+                  right: "14px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                }}
               >
-                {showPassword ? "🙈" : "👁️"}
+                {showPassword ? (
+                  <EyeOffIcon
+                    className="eye-icon"
+                    style={{ width: "20px", height: "20px", color: "#ff6666" }}
+                  />
+                ) : (
+                  <EyeIcon
+                    className="eye-icon"
+                    style={{ width: "20px", height: "20px", color: "#ff6666" }}
+                  />
+                )}
               </span>
             </div>
           </label>
 
-          <button type="submit" disabled={loading} style={{ width: "100%", padding: "14px", marginTop: "24px", backgroundColor: "#E68A62", border: "none", borderRadius: "12px", color: "#fff", fontWeight: "600", cursor: "pointer" }}>
+          <button
+            type="submit"
+            disabled={loading}
+            style={{
+              width: "100%",
+              padding: "14px",
+              marginTop: "24px",
+              backgroundColor: "#E68A62",
+              border: "none",
+              borderRadius: "12px",
+              color: "#fff",
+              fontWeight: "600",
+              cursor: "pointer",
+            }}
+          >
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 
         {role === "user" && (
-          <div className="footer-text" style={{ textAlign: "center", marginTop: "20px", color: "#fff" }}>
-            Don't have an account? <Link to="/signup" style={{ color: "#E68A62" }}>Sign up</Link>
+          <div
+            className="footer-text"
+            style={{ textAlign: "center", marginTop: "20px", color: "#fff" }}
+          >
+            Don't have an account?{" "}
+            <Link to="/signup" style={{ color: "#E68A62" }}>
+              Sign up
+            </Link>
           </div>
         )}
       </div>
