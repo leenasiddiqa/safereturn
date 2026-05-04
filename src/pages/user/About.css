@@ -3,7 +3,16 @@
 
 .about-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fc 0%, #eef2f8 100%);
+  /* Fun polka dot pattern over a soft gradient background */
+  background:
+    linear-gradient(135deg, #f5f7fc 0%, #eef2f8 100%),
+    repeating-radial-gradient(
+      circle at 20px 30px,
+      rgba(230, 138, 98, 0.12) 0px,
+      rgba(230, 138, 98, 0.12) 3px,
+      transparent 3px,
+      transparent 24px
+    );
   padding: 40px 0;
   font-family: "Inter", sans-serif;
 }
@@ -85,7 +94,7 @@
   align-items: center;
   justify-content: center;
   font-weight: 800;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   flex-shrink: 0;
   margin-top: 8px;
   margin-left: 8px;
@@ -118,7 +127,6 @@
   font-weight: 400;
 }
 
-/* Optional: add icon emoji before each heading for extra flair (JSX change) – see note below */
 .about-footer-spacing {
   height: 80px;
 }
