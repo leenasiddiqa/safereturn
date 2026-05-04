@@ -1,5 +1,5 @@
 .user-sidebar {
-  width: 240px;
+  width: 260px; /* increased from 240px */
   background-color: #11315b;
   color: #fff;
   display: flex;
@@ -11,7 +11,7 @@
   min-height: 100vh;
   position: fixed;
   top: 0;
-  left: -280px !important;
+  left: -280px !important; /* adjust to match new width (negative of width + some offset) */
   right: auto !important;
   transition: left 0.3s ease;
   z-index: 2000;
@@ -20,6 +20,15 @@
 
 .user-sidebar.open {
   left: 0 !important;
+}
+
+/* rest of the styles remain unchanged */
+
+@media (max-width: 768px) {
+  .user-sidebar {
+    width: 240px; /* optionally increase slightly on mobile too */
+    left: -260px !important;
+  }
 }
 
 .user-sidebar-overlay {
@@ -75,7 +84,7 @@
   margin: 0 !important;
   height: 40px !important;
   margin-bottom: 10px !important;
-   display: flex !important;
+  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   padding: 0 12px !important;
