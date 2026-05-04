@@ -65,7 +65,6 @@
   color: #e68a62;
 }
 
-/* ================= LOGIN BUTTON ================= */
 .login-btn {
   background-color: #e68a62;
   color: #11315b;
@@ -85,7 +84,6 @@
   border: 1px solid #e68a62;
 }
 
-/* ================= LOGOUT BUTTON ================= */
 .logout-btn {
   background: none;
   color: white;
@@ -106,7 +104,6 @@
   color: #11315b;
 }
 
-/* ================= LOGO ================= */
 .navbar-logo {
   width: 50px;
   height: 50px;
@@ -115,7 +112,6 @@
   border: 2px solid #fff;
 }
 
-/* ================= SIDEBAR ================= */
 .sidebar-overlay {
   position: fixed;
   top: 0;
@@ -148,7 +144,20 @@
   }
 }
 
-/* ================= RESPONSIVE ================= */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 24px; /* increased from 18px */
+}
+
+.brand {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  margin-left: 0; /* remove negative margin (was -8px) */
+}
 @media (max-width: 900px) {
   .sidebar-toggle {
     display: block;
