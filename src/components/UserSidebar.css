@@ -1,7 +1,8 @@
+
 /* ================= USER SIDEBAR ================= */
 .user-sidebar {
   width: 260px;
-  background-color: #0f2a4d;   /* darker, cleaner blue */
+  background-color: #0f2a4d;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -22,18 +23,18 @@
   left: 0 !important;
 }
 
-/* Overlay */
+/* ================= OVERLAY ================= */
 .user-sidebar-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(15, 42, 77, 0.6);  /* matches sidebar */
+  background: rgba(15, 42, 77, 0.6);
   z-index: 1500;
 }
 
-/* Logo */
+/* ================= LOGO ================= */
 .user-logo {
   font-size: 1.4rem;
   font-weight: bold;
@@ -46,7 +47,23 @@
   color: #fff;
 }
 
-/* Links */
+.user-logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+/* ================= NAV LINKS ================= */
+.user-nav {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px !important;
+  width: 100%;
+}
+
 .user-link {
   text-decoration: none !important;
   color: #fff !important;
@@ -66,4 +83,22 @@
 .user-link:hover {
   background-color: #e68a62 !important;
   color: #0f2a4d !important;
+  transform: translateX(3px);
+  box-shadow: 0 4px 12px rgba(230, 138, 98, 0.25);
+}
+
+/* Active link (NEW IMPROVEMENT) */
+.user-link.active {
+  background-color: rgba(230, 138, 98, 0.15) !important;
+  border-left: 4px solid #e68a62;
+  box-shadow: 0 2px 8px rgba(230, 138, 98, 0.2);
+  color: #fff !important;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .user-sidebar {
+    width: 220px;
+    left: -260px !important;
+  }
 }
