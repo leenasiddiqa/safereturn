@@ -1,4 +1,3 @@
-/* ================= NAVBAR ================= */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -12,11 +11,10 @@
   z-index: 1000;
 }
 
-/* Left side */
 .navbar-left {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 24px; /* was 18px – increase to your liking */
 }
 
 /* Brand */
@@ -91,7 +89,9 @@
   font-family: "Inter", sans-serif;
   border: none;
   border-radius: 8px;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
 .logout-btn:hover {
