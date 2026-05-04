@@ -1,4 +1,4 @@
-// src/pages/Home.jsx (adjust path as needed)
+// src/pages/Home.jsx
 import { Link } from "react-router-dom";
 import { useStore } from "../../StoreContext";
 import { useEffect, useMemo } from "react";
@@ -10,7 +10,6 @@ export default function Home() {
     autoProcessAging();
   }, []);
 
-  // Find aging updates in logs
   const updates = useMemo(
     () => state.logs.filter((l) => l.type.startsWith("aging:")).slice(0, 10),
     [state.logs],
@@ -179,7 +178,287 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Optional: display aging logs (your existing code might show these) */}
+      <div
+        style={{
+          marginTop: "60px",
+          padding: "40px 20px",
+          backgroundColor: "#fff",
+          borderRadius: "20px",
+          textAlign: "center",
+          fontFamily: "'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+        }}
+      >
+        <h2
+          style={{
+            fontSize: "2.5rem",
+            fontWeight: "800",
+            color: "#11315b",
+            marginBottom: "20px",
+            letterSpacing: "-0.5px",
+          }}
+        >
+          Everything You Need
+        </h2>
+        <p
+          style={{
+            fontSize: "1.2rem",
+            color: "#2c3e50",
+            maxWidth: "700px",
+            margin: "0 auto 40px auto",
+            lineHeight: "1.6",
+          }}
+        >
+          All the tools to recover lost items, donate, and stay safe.
+        </p>
+
+        {/* GRID: exactly 3 cards per row */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "30px",
+            maxWidth: "1200px",
+            margin: "0 auto",
+          }}
+        >
+          {/* Card 1 */}
+          <div
+            style={{
+              padding: "24px",
+              backgroundColor: "#f9f9fc",
+              borderRadius: "16px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+              transition: "transform 0.2s",
+              textAlign: "center",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "translateY(-5px)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.transform = "translateY(0)")
+            }
+          >
+            <div style={{ fontSize: "2.5rem", marginBottom: "15px" }}>📱</div>
+            <h3
+              style={{
+                fontSize: "1.3rem",
+                fontWeight: "700",
+                color: "#11315b",
+                marginBottom: "10px",
+              }}
+            >
+              Mobile Alerts
+            </h3>
+            <p
+              style={{
+                fontSize: "0.95rem",
+                color: "#5a6e8a",
+                lineHeight: "1.5",
+              }}
+            >
+              Get instant notifications when your lost item is matched.
+            </p>
+          </div>
+
+          {/* Card 2 */}
+          <div
+            style={{
+              padding: "24px",
+              backgroundColor: "#f9f9fc",
+              borderRadius: "16px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+              transition: "transform 0.2s",
+              textAlign: "center",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "translateY(-5px)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.transform = "translateY(0)")
+            }
+          >
+            <div style={{ fontSize: "2.5rem", marginBottom: "15px" }}>🗺️</div>
+            <h3
+              style={{
+                fontSize: "1.3rem",
+                fontWeight: "700",
+                color: "#11315b",
+                marginBottom: "10px",
+              }}
+            >
+              Location Tracking
+            </h3>
+            <p
+              style={{
+                fontSize: "0.95rem",
+                color: "#5a6e8a",
+                lineHeight: "1.5",
+              }}
+            >
+              See where your item was last reported or found.
+            </p>
+          </div>
+
+          {/* Card 3 */}
+          <div
+            style={{
+              padding: "24px",
+              backgroundColor: "#f9f9fc",
+              borderRadius: "16px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+              transition: "transform 0.2s",
+              textAlign: "center",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "translateY(-5px)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.transform = "translateY(0)")
+            }
+          >
+            <div style={{ fontSize: "2.5rem", marginBottom: "15px" }}>📄</div>
+            <h3
+              style={{
+                fontSize: "1.3rem",
+                fontWeight: "700",
+                color: "#11315b",
+                marginBottom: "10px",
+              }}
+            >
+              Digital Receipts
+            </h3>
+            <p
+              style={{
+                fontSize: "0.95rem",
+                color: "#5a6e8a",
+                lineHeight: "1.5",
+              }}
+            >
+              Get a verified digital receipt for every claim or donation.
+            </p>
+          </div>
+
+          {/* Card 4 (second row, first column) */}
+          <div
+            style={{
+              padding: "24px",
+              backgroundColor: "#f9f9fc",
+              borderRadius: "16px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+              transition: "transform 0.2s",
+              textAlign: "center",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "translateY(-5px)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.transform = "translateY(0)")
+            }
+          >
+            <div style={{ fontSize: "2.5rem", marginBottom: "15px" }}>🔔</div>
+            <h3
+              style={{
+                fontSize: "1.3rem",
+                fontWeight: "700",
+                color: "#11315b",
+                marginBottom: "10px",
+              }}
+            >
+              Real-Time Updates
+            </h3>
+            <p
+              style={{
+                fontSize: "0.95rem",
+                color: "#5a6e8a",
+                lineHeight: "1.5",
+              }}
+            >
+              Track the status of your report from lost to found.
+            </p>
+          </div>
+
+          {/* Card 5 */}
+          <div
+            style={{
+              padding: "24px",
+              backgroundColor: "#f9f9fc",
+              borderRadius: "16px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+              transition: "transform 0.2s",
+              textAlign: "center",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "translateY(-5px)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.transform = "translateY(0)")
+            }
+          >
+            <div style={{ fontSize: "2.5rem", marginBottom: "15px" }}>🔐</div>
+            <h3
+              style={{
+                fontSize: "1.3rem",
+                fontWeight: "700",
+                color: "#11315b",
+                marginBottom: "10px",
+              }}
+            >
+              Privacy First
+            </h3>
+            <p
+              style={{
+                fontSize: "0.95rem",
+                color: "#5a6e8a",
+                lineHeight: "1.5",
+              }}
+            >
+              Your data is encrypted and never shared without permission.
+            </p>
+          </div>
+
+          {/* Card 6 */}
+          <div
+            style={{
+              padding: "24px",
+              backgroundColor: "#f9f9fc",
+              borderRadius: "16px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+              transition: "transform 0.2s",
+              textAlign: "center",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "translateY(-5px)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.transform = "translateY(0)")
+            }
+          >
+            <div style={{ fontSize: "2.5rem", marginBottom: "15px" }}>📞</div>
+            <h3
+              style={{
+                fontSize: "1.3rem",
+                fontWeight: "700",
+                color: "#11315b",
+                marginBottom: "10px",
+              }}
+            >
+              Direct Helpdesk
+            </h3>
+            <p
+              style={{
+                fontSize: "0.95rem",
+                color: "#5a6e8a",
+                lineHeight: "1.5",
+              }}
+            >
+              Call or chat with our support team anytime.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Optional: display aging logs */}
       {updates.length > 0 && (
         <div
           style={{
