@@ -1,6 +1,7 @@
+/* ================= USER SIDEBAR ================= */
 .user-sidebar {
-  width: 260px; /* increased from 240px */
-  background-color: #11315b;
+  width: 260px;
+  background-color: #0f2a4d;   /* darker, cleaner blue */
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -11,8 +12,7 @@
   min-height: 100vh;
   position: fixed;
   top: 0;
-  left: -280px !important; /* adjust to match new width (negative of width + some offset) */
-  right: auto !important;
+  left: -280px !important;
   transition: left 0.3s ease;
   z-index: 2000;
   box-sizing: border-box;
@@ -22,25 +22,18 @@
   left: 0 !important;
 }
 
-/* rest of the styles remain unchanged */
-
-@media (max-width: 768px) {
-  .user-sidebar {
-    width: 240px; /* optionally increase slightly on mobile too */
-    left: -260px !important;
-  }
-}
-
+/* Overlay */
 .user-sidebar-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(15, 42, 77, 0.6);  /* matches sidebar */
   z-index: 1500;
 }
 
+/* Logo */
 .user-logo {
   font-size: 1.4rem;
   font-weight: bold;
@@ -53,51 +46,24 @@
   color: #fff;
 }
 
-.user-logo-img {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid #fff;
-}
-
-.user-nav {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px !important;
-  width: 100%;
-}
-
+/* Links */
 .user-link {
   text-decoration: none !important;
   color: #fff !important;
-  padding: 8px 12px;
+  padding: 10px 12px;
   border-radius: 8px;
-  background-color: rgba(175, 172, 194, 0.2) !important;
-  font-weight: 700 !important;
-  display: block !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  text-align: center !important;
-  transition: all 0.3s ease;
-  margin: 0 !important;
-  height: 40px !important;
-  margin-bottom: 10px !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  font-weight: 600 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 0 12px !important;
   height: 42px !important;
+  transition: all 0.3s ease;
+  margin-bottom: 10px !important;
 }
 
+/* Hover effect */
 .user-link:hover {
   background-color: #e68a62 !important;
-  color: #fff !important;
-}
-
-@media (max-width: 768px) {
-  .user-sidebar {
-    width: 220px;
-  }
+  color: #0f2a4d !important;
 }
