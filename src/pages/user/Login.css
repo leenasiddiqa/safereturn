@@ -186,6 +186,16 @@
   color: #e68a62;
   text-decoration: underline;
 }
+.eye-icon {
+  width: 20px;
+  height: 20px;
+  color: #cbd5e0; /* your desired color */
+  transition: color 0.2s;
+}
+
+.eye-icon:hover {
+  color: #e68a62; /* optional hover effect */
+}
 
 @media (max-width: 600px) {
   .login-form {
