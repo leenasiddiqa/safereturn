@@ -1,12 +1,15 @@
+
+/* ================= PAGE ================= */
 .feedback-page {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(120deg, #0f2b4d 60%, #f0f4f8 40%);
+  background: linear-gradient(120deg, #0f2b4d 65%, #f0f4f8 35%);
   padding: 20px;
 }
 
+/* ================= CONTAINER ================= */
 .feedback-container {
   background: #11315b;
   border-radius: 20px;
@@ -18,22 +21,16 @@
   font-family: "Inter", sans-serif;
   color: #fff;
 }
-.feedback{
-  color: #e68a62;
-}
+
+/* Title */
 .feedback-container h2 {
   color: #fff;
   font-size: 26px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   font-weight: bold;
 }
 
-.feedback-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  text-align: left;
-}
+/* Description */
 .feedback-description {
   text-align: center;
   color: #e9f2f9;
@@ -42,14 +39,22 @@
   line-height: 1.5;
 }
 
-/* Logged in as text */
+/* User info */
 .feedback-user {
   text-align: center;
   color: #e68a62;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   padding: 10px;
   border-radius: 8px;
+}
+
+/* ================= FORM ================= */
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
 }
 
 .feedback-form label {
@@ -58,25 +63,28 @@
   font-size: 15px;
 }
 
+/* TEXTAREA */
 .feedback-form textarea {
   width: 100%;
   padding: 12px 15px;
-  border: 1.5px solid rgba(17, 49, 91, 0.2);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   font-size: 15px;
   resize: vertical;
   background: #f9fafc;
   color: #11315b;
-  transition: border 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.3s ease;
 }
 
+/* focus improvement */
 .feedback-form textarea:focus {
   outline: none;
   border-color: #e68a62;
-  box-shadow: 0 0 6px rgba(230, 138, 98, 0.3);
+  box-shadow: 0 0 8px rgba(230, 138, 98, 0.4);
   background: #fff;
 }
 
+/* ================= BUTTON ================= */
 .feedback-form button {
   background-color: #e68a62;
   color: white;
@@ -86,14 +94,16 @@
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
 }
 
+/* improved hover */
 .feedback-form button:hover {
-  background-color: #e68a62;
+  background-color: #cf724c;
   transform: translateY(-2px);
 }
 
+/* report button */
 .report-btn {
   background-color: #e68a62;
 }
@@ -102,21 +112,23 @@
   background-color: #cf724c;
 }
 
+/* divider */
 .feedback-divider {
   margin: 30px 0;
   border: none;
   height: 2px;
-  background: rgba(17, 49, 91, 0.1);
+  background: rgba(255, 255, 255, 0.08);
 }
+
+/* ================= TOASTS ================= */
 .feedback-toast-success {
-  background: #e68a62 !important;
+  background: #28a745 !important;
   color: #fff !important;
-  border-left: 4px solid #28a745 !important;
   padding: 12px 20px !important;
   border-radius: 8px !important;
   font-size: 14px !important;
   margin-bottom: 20px !important;
-  font-weight: 700 !important;
+  font-weight: 600 !important;
   text-align: center !important;
   display: table !important;
   margin-left: auto !important;
@@ -126,14 +138,13 @@
 }
 
 .feedback-toast-error {
-  background: #e68a62 !important;
+  background: #dc3545 !important;
   color: #fff !important;
-  border-left: 4px solid #28a745 !important;
   padding: 12px 20px !important;
   border-radius: 8px !important;
   font-size: 14px !important;
   margin-bottom: 20px !important;
-  font-weight: 700 !important;
+  font-weight: 600 !important;
   text-align: center !important;
   display: table !important;
   margin-left: auto !important;
@@ -142,8 +153,7 @@
   max-width: 90% !important;
 }
 
- 
-
+/* ================= MOBILE ================= */
 @media (max-width: 600px) {
   .feedback-container {
     padding: 30px 25px;
